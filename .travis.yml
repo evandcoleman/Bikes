@@ -3,6 +3,7 @@ rvm: 1.9.3
 xcode_workspace: Bikes.xcworkspace
 xcode_scheme: BikesTests
 xcode_sdk: iphonesimulator7.0
+before_install: brew install cocoapods
 env:
   global:
   - LANG="en_US.UTF-8"
