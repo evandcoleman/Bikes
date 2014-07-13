@@ -21,4 +21,5 @@ Docs/API
 *.xcodeproj/project.xcworkspace/
 *.xcodeproj/xcuserdata/
 *.xcodeproj/xcshareddata/
+*.xcworkspace/xcshareddata/
 Pods/
