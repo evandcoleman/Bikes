@@ -1,0 +1,10 @@
+language: objective-c
+rvm: 1.9.3
+xcode_workspace: Bikes.xcworkspace
+xcode_scheme: BikesTests
+xcode_sdk: iphonesimulator7.0
+env:
+  global:
+  - LANG="en_US.UTF-8"
+notifications:
+  email: false
