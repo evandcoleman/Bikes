@@ -28,6 +28,16 @@ PODS:
   - Mantle (1.5):
     - Mantle/extobjc
   - Mantle/extobjc (1.5)
+  - Overcoat/Core (2.0.2):
+    - AFNetworking (~> 2.0)
+    - Mantle (~> 1.3)
+  - Overcoat/NSURLSession (2.0.2):
+    - Overcoat/Core
+  - Overcoat/ReactiveCocoa (2.0.2):
+    - Overcoat/Core
+    - Overcoat/NSURLSession
+    - ReactiveCocoa
+  - PureLayout (1.0.1)
   - ReactiveCocoa (2.3.1):
     - ReactiveCocoa/UI
   - ReactiveCocoa/Core (2.3.1):
@@ -43,6 +53,8 @@ DEPENDENCIES:
   - AFNetworking
   - CocoaLumberjack
   - Mantle
+  - Overcoat/ReactiveCocoa (~> 2.0)
+  - PureLayout
   - ReactiveCocoa
   - ReactiveViewModel
   - SVProgressHUD
@@ -51,6 +63,8 @@ SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
   CocoaLumberjack: 94accd5749f5c5d15134c8d50f34a973aed8ef69
   Mantle: c67a7e45e14196ed42b2a7cbb98ff6a9920e6b92
+  Overcoat: a9504cd1f0389641526ba1784592503c012c4b5f
+  PureLayout: 972964b21dbcbc5cc36785aed16aba03176f057d
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
   ReactiveViewModel: 78387196df2e7535bb2776c41df15dbb17300f8a
   SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50

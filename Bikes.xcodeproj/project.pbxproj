@@ -20,6 +20,8 @@
 		20AAE6A319731E0500E73391 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 20AAE6A119731E0500E73391 /* InfoPlist.strings */; };
 		20AAE6A519731E0500E73391 /* BikesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE6A419731E0500E73391 /* BikesTests.m */; };
 		20AAE6B119732B9300E73391 /* BKStation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE6B019732B9300E73391 /* BKStation.m */; };
+		20AAE6B9197330E700E73391 /* BKAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE6B8197330E700E73391 /* BKAPIClient.m */; };
+		20AAE6BC197374C800E73391 /* BKStationsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE6BB197374C800E73391 /* BKStationsResponse.m */; };
 		9A7F808407D24599B0404B1A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56CDA9C4674A467BACEF226D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +54,10 @@
 		20AAE6A419731E0500E73391 /* BikesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BikesTests.m; sourceTree = "<group>"; };
 		20AAE6AF19732B9300E73391 /* BKStation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKStation.h; sourceTree = "<group>"; };
 		20AAE6B019732B9300E73391 /* BKStation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKStation.m; sourceTree = "<group>"; };
+		20AAE6B7197330E700E73391 /* BKAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKAPIClient.h; sourceTree = "<group>"; };
+		20AAE6B8197330E700E73391 /* BKAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKAPIClient.m; sourceTree = "<group>"; };
+		20AAE6BA197374C800E73391 /* BKStationsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKStationsResponse.h; sourceTree = "<group>"; };
+		20AAE6BB197374C800E73391 /* BKStationsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKStationsResponse.m; sourceTree = "<group>"; };
 		56CDA9C4674A467BACEF226D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA66F26E4EA4434B43390F3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,6 +124,8 @@
 			children = (
 				20AAE68E19731E0500E73391 /* BKAppDelegate.h */,
 				20AAE68F19731E0500E73391 /* BKAppDelegate.m */,
+				20AAE6B31973300A00E73391 /* API */,
+				20AAE6B219732FE400E73391 /* View Models */,
 				20AAE6AE19732B7B00E73391 /* Models */,
 				20AAE69119731E0500E73391 /* Images.xcassets */,
 				20AAE68619731E0500E73391 /* Supporting Files */,
@@ -161,6 +169,24 @@
 				20AAE6B019732B9300E73391 /* BKStation.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		20AAE6B219732FE400E73391 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "View Models";
+			sourceTree = "<group>";
+		};
+		20AAE6B31973300A00E73391 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				20AAE6B7197330E700E73391 /* BKAPIClient.h */,
+				20AAE6B8197330E700E73391 /* BKAPIClient.m */,
+				20AAE6BA197374C800E73391 /* BKStationsResponse.h */,
+				20AAE6BB197374C800E73391 /* BKStationsResponse.m */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,7 +322,9 @@
 			files = (
 				20AAE68C19731E0500E73391 /* main.m in Sources */,
 				20AAE6B119732B9300E73391 /* BKStation.m in Sources */,
+				20AAE6B9197330E700E73391 /* BKAPIClient.m in Sources */,
 				20AAE69019731E0500E73391 /* BKAppDelegate.m in Sources */,
+				20AAE6BC197374C800E73391 /* BKStationsResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

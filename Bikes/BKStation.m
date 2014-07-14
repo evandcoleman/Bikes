@@ -25,9 +25,14 @@
 }
 
 + (NSValueTransformer *)statusJSONTransformer {
-    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:@{
-       @"1": @(BKStationStatusInService),
-       @"3": @(BKStationStatusOutOfService),
+    return [MTLValueTransformer transformerWithBlock:^id(id obj) {
+        NSUInteger status = [obj integerValue];
+        if (status == 1) {
+            return @(BKStationStatusInService);
+        } else if (status == 3) {
+            return @(BKStationStatusOutOfService);
+        }
+        return @(BKStationStatusUnknown);
     }];
 }
 
