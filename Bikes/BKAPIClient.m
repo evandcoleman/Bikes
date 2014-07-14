@@ -9,7 +9,6 @@
 #import "BKAPIClient.h"
 
 #import "BKStation.h"
-#import "BKStationsResponse.h"
 
 #import <Overcoat/ReactiveCocoa+Overcoat.h>
 

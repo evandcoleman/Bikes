@@ -7,6 +7,7 @@
 //
 
 #import <Overcoat/OVCResponse.h>
+#import "BKStation.h"
 
 @interface BKStationsResponse : OVCResponse
 

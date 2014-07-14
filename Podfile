@@ -8,3 +8,9 @@ pod 'PureLayout'
 pod 'ReactiveCocoa'
 pod 'ReactiveViewModel'
 pod 'SVProgressHUD'
+
+target :BikesTests, :exclusive => true do
+  pod 'Specta'
+  pod 'Expecta'
+  pod 'OCMockito'
+end

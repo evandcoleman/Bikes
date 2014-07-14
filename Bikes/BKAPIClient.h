@@ -7,6 +7,7 @@
 //
 
 #import <Overcoat/OVCHTTPSessionManager.h>
+#import "BKStationsResponse.h"
 
 @interface BKAPIClient : OVCHTTPSessionManager
 

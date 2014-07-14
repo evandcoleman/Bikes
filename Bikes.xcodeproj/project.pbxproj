@@ -18,11 +18,12 @@
 		20AAE69A19731E0500E73391 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AAE67F19731E0500E73391 /* Foundation.framework */; };
 		20AAE69B19731E0500E73391 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AAE68319731E0500E73391 /* UIKit.framework */; };
 		20AAE6A319731E0500E73391 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 20AAE6A119731E0500E73391 /* InfoPlist.strings */; };
-		20AAE6A519731E0500E73391 /* BikesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE6A419731E0500E73391 /* BikesTests.m */; };
+		20AAE6A519731E0500E73391 /* BKAPIClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE6A419731E0500E73391 /* BKAPIClientSpec.m */; };
 		20AAE6B119732B9300E73391 /* BKStation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE6B019732B9300E73391 /* BKStation.m */; };
 		20AAE6B9197330E700E73391 /* BKAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE6B8197330E700E73391 /* BKAPIClient.m */; };
 		20AAE6BC197374C800E73391 /* BKStationsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE6BB197374C800E73391 /* BKStationsResponse.m */; };
 		9A7F808407D24599B0404B1A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56CDA9C4674A467BACEF226D /* libPods.a */; };
+		AC4E696B3DB24A169B7B6397 /* libPods-BikesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 795F318C83E2479C89BCDD62 /* libPods-BikesTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +52,7 @@
 		20AAE69819731E0500E73391 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		20AAE6A019731E0500E73391 /* BikesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BikesTests-Info.plist"; sourceTree = "<group>"; };
 		20AAE6A219731E0500E73391 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		20AAE6A419731E0500E73391 /* BikesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BikesTests.m; sourceTree = "<group>"; };
+		20AAE6A419731E0500E73391 /* BKAPIClientSpec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKAPIClientSpec.m; sourceTree = "<group>"; };
 		20AAE6AF19732B9300E73391 /* BKStation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKStation.h; sourceTree = "<group>"; };
 		20AAE6B019732B9300E73391 /* BKStation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKStation.m; sourceTree = "<group>"; };
 		20AAE6B7197330E700E73391 /* BKAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKAPIClient.h; sourceTree = "<group>"; };
@@ -59,6 +60,8 @@
 		20AAE6BA197374C800E73391 /* BKStationsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKStationsResponse.h; sourceTree = "<group>"; };
 		20AAE6BB197374C800E73391 /* BKStationsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKStationsResponse.m; sourceTree = "<group>"; };
 		56CDA9C4674A467BACEF226D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		58622F9041A24240B098E32C /* Pods-BikesTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikesTests.xcconfig"; path = "Pods/Pods-BikesTests.xcconfig"; sourceTree = "<group>"; };
+		795F318C83E2479C89BCDD62 /* libPods-BikesTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BikesTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA66F26E4EA4434B43390F3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,6 +84,7 @@
 				20AAE69919731E0500E73391 /* XCTest.framework in Frameworks */,
 				20AAE69B19731E0500E73391 /* UIKit.framework in Frameworks */,
 				20AAE69A19731E0500E73391 /* Foundation.framework in Frameworks */,
+				AC4E696B3DB24A169B7B6397 /* libPods-BikesTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +99,7 @@
 				20AAE67E19731E0500E73391 /* Frameworks */,
 				20AAE67D19731E0500E73391 /* Products */,
 				FCA66F26E4EA4434B43390F3 /* Pods.xcconfig */,
+				58622F9041A24240B098E32C /* Pods-BikesTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -115,6 +120,7 @@
 				20AAE68319731E0500E73391 /* UIKit.framework */,
 				20AAE69819731E0500E73391 /* XCTest.framework */,
 				56CDA9C4674A467BACEF226D /* libPods.a */,
+				795F318C83E2479C89BCDD62 /* libPods-BikesTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -147,7 +153,7 @@
 		20AAE69E19731E0500E73391 /* BikesTests */ = {
 			isa = PBXGroup;
 			children = (
-				20AAE6A419731E0500E73391 /* BikesTests.m */,
+				20AAE6A419731E0500E73391 /* BKAPIClientSpec.m */,
 				20AAE69F19731E0500E73391 /* Supporting Files */,
 			);
 			path = BikesTests;
@@ -215,9 +221,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 20AAE6AB19731E0500E73391 /* Build configuration list for PBXNativeTarget "BikesTests" */;
 			buildPhases = (
+				21F4D82AA9C4457792E4792B /* Check Pods Manifest.lock */,
 				20AAE69319731E0500E73391 /* Sources */,
 				20AAE69419731E0500E73391 /* Frameworks */,
 				20AAE69519731E0500E73391 /* Resources */,
+				C2DDC6F4C98B42E893DB91F3 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -298,6 +306,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		21F4D82AA9C4457792E4792B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		BD87373C935D4741971E931B /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -311,6 +334,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2DDC6F4C98B42E893DB91F3 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-BikesTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -332,7 +370,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20AAE6A519731E0500E73391 /* BikesTests.m in Sources */,
+				20AAE6A519731E0500E73391 /* BKAPIClientSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +506,7 @@
 		};
 		20AAE6AC19731E0500E73391 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58622F9041A24240B098E32C /* Pods-BikesTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Bikes.app/Bikes";
@@ -491,6 +530,7 @@
 		};
 		20AAE6AD19731E0500E73391 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58622F9041A24240B098E32C /* Pods-BikesTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Bikes.app/Bikes";
