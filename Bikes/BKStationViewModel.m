@@ -24,7 +24,7 @@
 
 @implementation BKStationViewModel
 
-- (instancetype)initWithStation:(BKStation *)station {
+- (instancetype)initWithStation:(BKStation *)station openStationCommand:(RACCommand *)openStationCommand {
     self = [super init];
     if (self != nil) {
         _station = station;
@@ -47,10 +47,7 @@
             _statusColor = [UIColor bikes_green];
         }
         
-        _selectStationCommand =
-            [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-                return nil;
-            }];
+        _selectStationCommand = openStationCommand;
     }
     return self;
 }

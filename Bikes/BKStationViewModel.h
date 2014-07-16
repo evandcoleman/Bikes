@@ -25,6 +25,6 @@
 
 @property (nonatomic, readonly) RACCommand *selectStationCommand;
 
-- (instancetype)initWithStation:(BKStation *)station;
+- (instancetype)initWithStation:(BKStation *)station openStationCommand:(RACCommand *)openStationCommand;
 
 @end

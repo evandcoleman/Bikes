@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class BKMapViewModel;
+
 @interface BKMapViewController : UIViewController
+
+- (instancetype)initWithViewModel:(BKMapViewModel *)viewModel;
 
 @end

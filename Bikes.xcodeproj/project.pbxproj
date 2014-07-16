@@ -29,9 +29,13 @@
 		20AAE6CE1974C01300E73391 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AAE6CD1974C01300E73391 /* QuartzCore.framework */; };
 		20AAE6D11974C43500E73391 /* BKLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE6D01974C43500E73391 /* BKLocationManager.m */; };
 		20AAE6D41974C95D00E73391 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AAE6D31974C95D00E73391 /* MapKit.framework */; };
-		20AAE6D71974CC1000E73391 /* BKPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE6D61974CC1000E73391 /* BKPageViewController.m */; };
+		20AAE6D71974CC1000E73391 /* BKTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE6D61974CC1000E73391 /* BKTabBarController.m */; };
 		20AAE6DA1975FAF600E73391 /* BKAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE6D91975FAF600E73391 /* BKAnnotationView.m */; };
 		20AAE6DE197613A500E73391 /* UIColor+Bikes.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE6DD197613A500E73391 /* UIColor+Bikes.m */; };
+		20AAE6E11976210600E73391 /* Globals.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE6E01976210600E73391 /* Globals.m */; };
+		20AAE6E41976221B00E73391 /* BKTabBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE6E31976221B00E73391 /* BKTabBarViewModel.m */; };
+		20AAE6E7197624B100E73391 /* BKMapViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE6E6197624B100E73391 /* BKMapViewModel.m */; };
+		20AAE6EA1976277300E73391 /* BKTabBarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE6E91976277300E73391 /* BKTabBarModel.m */; };
 		9A7F808407D24599B0404B1A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56CDA9C4674A467BACEF226D /* libPods.a */; };
 		AC4E696B3DB24A169B7B6397 /* libPods-BikesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 795F318C83E2479C89BCDD62 /* libPods-BikesTests.a */; };
 /* End PBXBuildFile section */
@@ -80,12 +84,20 @@
 		20AAE6CF1974C43500E73391 /* BKLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKLocationManager.h; sourceTree = "<group>"; };
 		20AAE6D01974C43500E73391 /* BKLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKLocationManager.m; sourceTree = "<group>"; };
 		20AAE6D31974C95D00E73391 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		20AAE6D51974CC1000E73391 /* BKPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKPageViewController.h; sourceTree = "<group>"; };
-		20AAE6D61974CC1000E73391 /* BKPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKPageViewController.m; sourceTree = "<group>"; };
+		20AAE6D51974CC1000E73391 /* BKTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKTabBarController.h; sourceTree = "<group>"; };
+		20AAE6D61974CC1000E73391 /* BKTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKTabBarController.m; sourceTree = "<group>"; };
 		20AAE6D81975FAF600E73391 /* BKAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKAnnotationView.h; sourceTree = "<group>"; };
 		20AAE6D91975FAF600E73391 /* BKAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKAnnotationView.m; sourceTree = "<group>"; };
 		20AAE6DC197613A500E73391 /* UIColor+Bikes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Bikes.h"; sourceTree = "<group>"; };
 		20AAE6DD197613A500E73391 /* UIColor+Bikes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Bikes.m"; sourceTree = "<group>"; };
+		20AAE6DF1976210600E73391 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
+		20AAE6E01976210600E73391 /* Globals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Globals.m; sourceTree = "<group>"; };
+		20AAE6E21976221B00E73391 /* BKTabBarViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKTabBarViewModel.h; sourceTree = "<group>"; };
+		20AAE6E31976221B00E73391 /* BKTabBarViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKTabBarViewModel.m; sourceTree = "<group>"; };
+		20AAE6E5197624B100E73391 /* BKMapViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKMapViewModel.h; sourceTree = "<group>"; };
+		20AAE6E6197624B100E73391 /* BKMapViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKMapViewModel.m; sourceTree = "<group>"; };
+		20AAE6E81976277300E73391 /* BKTabBarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKTabBarModel.h; sourceTree = "<group>"; };
+		20AAE6E91976277300E73391 /* BKTabBarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKTabBarModel.m; sourceTree = "<group>"; };
 		56CDA9C4674A467BACEF226D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		58622F9041A24240B098E32C /* Pods-BikesTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikesTests.xcconfig"; path = "Pods/Pods-BikesTests.xcconfig"; sourceTree = "<group>"; };
 		795F318C83E2479C89BCDD62 /* libPods-BikesTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BikesTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,6 +219,8 @@
 		20AAE6AE19732B7B00E73391 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				20AAE6E81976277300E73391 /* BKTabBarModel.h */,
+				20AAE6E91976277300E73391 /* BKTabBarModel.m */,
 				20AAE6AF19732B9300E73391 /* BKStation.h */,
 				20AAE6B019732B9300E73391 /* BKStation.m */,
 				20AAE6BA197374C800E73391 /* BKStationsResponse.h */,
@@ -218,6 +232,10 @@
 		20AAE6B219732FE400E73391 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				20AAE6E21976221B00E73391 /* BKTabBarViewModel.h */,
+				20AAE6E31976221B00E73391 /* BKTabBarViewModel.m */,
+				20AAE6E5197624B100E73391 /* BKMapViewModel.h */,
+				20AAE6E6197624B100E73391 /* BKMapViewModel.m */,
 				20AAE6C11973820F00E73391 /* BKStationViewModel.h */,
 				20AAE6C21973820F00E73391 /* BKStationViewModel.m */,
 			);
@@ -247,8 +265,8 @@
 		20AAE6C41974BEC800E73391 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				20AAE6D51974CC1000E73391 /* BKPageViewController.h */,
-				20AAE6D61974CC1000E73391 /* BKPageViewController.m */,
+				20AAE6D51974CC1000E73391 /* BKTabBarController.h */,
+				20AAE6D61974CC1000E73391 /* BKTabBarController.m */,
 				20AAE6C51974BEFA00E73391 /* BKMapViewController.h */,
 				20AAE6C61974BEFA00E73391 /* BKMapViewController.m */,
 				20AAE6D81975FAF600E73391 /* BKAnnotationView.h */,
@@ -260,6 +278,8 @@
 		20AAE6DB1976138D00E73391 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				20AAE6DF1976210600E73391 /* Globals.h */,
+				20AAE6E01976210600E73391 /* Globals.m */,
 				20AAE6DC197613A500E73391 /* UIColor+Bikes.h */,
 				20AAE6DD197613A500E73391 /* UIColor+Bikes.m */,
 			);
@@ -431,16 +451,20 @@
 			files = (
 				20AAE68C19731E0500E73391 /* main.m in Sources */,
 				20AAE6C019737D5400E73391 /* BKNotificationsController.m in Sources */,
-				20AAE6D71974CC1000E73391 /* BKPageViewController.m in Sources */,
+				20AAE6D71974CC1000E73391 /* BKTabBarController.m in Sources */,
 				20AAE6C71974BEFA00E73391 /* BKMapViewController.m in Sources */,
+				20AAE6EA1976277300E73391 /* BKTabBarModel.m in Sources */,
 				20AAE6B119732B9300E73391 /* BKStation.m in Sources */,
 				20AAE6B9197330E700E73391 /* BKAPIClient.m in Sources */,
+				20AAE6E11976210600E73391 /* Globals.m in Sources */,
 				20AAE69019731E0500E73391 /* BKAppDelegate.m in Sources */,
 				20AAE6BC197374C800E73391 /* BKStationsResponse.m in Sources */,
 				20AAE6DE197613A500E73391 /* UIColor+Bikes.m in Sources */,
 				20AAE6C31973820F00E73391 /* BKStationViewModel.m in Sources */,
 				20AAE6D11974C43500E73391 /* BKLocationManager.m in Sources */,
 				20AAE6DA1975FAF600E73391 /* BKAnnotationView.m in Sources */,
+				20AAE6E7197624B100E73391 /* BKMapViewModel.m in Sources */,
+				20AAE6E41976221B00E73391 /* BKTabBarViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

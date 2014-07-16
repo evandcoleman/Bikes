@@ -12,6 +12,8 @@
 
 @interface BKAnnotationView : MKAnnotationView
 
+@property (nonatomic, readonly) BKStationViewModel *viewModel;
+
 - (id)initWithStationViewModel:(BKStationViewModel *)viewModel reuseIdentifier:(NSString *)reuseIdentifier;
 
 @end

@@ -33,10 +33,16 @@
 }
 
 - (RACSignal *)fetchStations {
-    return [[self rac_GET:@"stations/json" parameters:nil]
-                map:^id(BKStationsResponse *response) {
-                    return response.result;
-                }];
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [[[self rac_GET:@"stations/json" parameters:nil]
+         map:^id(BKStationsResponse *response) {
+             return response.result;
+         }] subscribeNext:^(NSArray *stations) {
+             [stations.rac_sequence.signal subscribe:subscriber];
+         }];
+        
+        return nil;
+    }];
 }
 
 @end

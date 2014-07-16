@@ -15,7 +15,12 @@
     #import <Foundation/Foundation.h>
     #import <QuartzCore/QuartzCore.h>
     #import <ReactiveCocoa/ReactiveCocoa.h>
+    #import <CocoaLumberjack/DDLog.h>
     #import <EXTScope.h>
 
     #import "UIColor+Bikes.h"
 #endif
+
+
+// Utility classes
+#import "Globals.h"

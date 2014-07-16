@@ -7,49 +7,50 @@
 //
 
 #import "BKMapViewController.h"
-#import "BKAPIClient.h"
 #import "BKStationViewModel.h"
 #import "BKAnnotationView.h"
+#import "BKMapViewModel.h"
 
 #import <MapKit/MapKit.h>
 #import <PureLayout/PureLayout.h>
 
 @interface BKMapViewController () <MKMapViewDelegate>
 
-@property (nonatomic) BKAPIClient *apiClient;
 @property (nonatomic) MKMapView *mapView;
+
+@property (nonatomic) BKMapViewModel *viewModel;
 
 @end
 
 @implementation BKMapViewController
 
-- (id)init {
+- (id)initWithViewModel:(BKMapViewModel *)viewModel {
     self = [super initWithNibName:nil bundle:nil];
     if (self != nil) {
-        @weakify(self);
+        self.title = @"Map";
         
-        _apiClient = [[BKAPIClient alloc] init];
-        [[_apiClient fetchStations]
-            subscribeNext:^(NSArray *stations) {
-                [stations.rac_sequence.signal subscribeNext:^(BKStation *station) {
-                    @strongify(self);
-                    
-                    BKStationViewModel *stationViewModel = [[BKStationViewModel alloc] initWithStation:station];
-                    [self.mapView addAnnotation:stationViewModel];
-                }];
-            }];
+        _viewModel = viewModel;
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationController.navigationBarHidden = YES;
 	
     self.mapView = [[MKMapView alloc] initWithFrame:CGRectZero];
     self.mapView.showsUserLocation = YES;
     self.mapView.userTrackingMode = MKUserTrackingModeFollow;
     self.mapView.delegate = self;
     [self.view addSubview:self.mapView];
+    
+    
+    @weakify(self);
+    [[RACObserve(self.viewModel, stationViewModels) ignore:nil] subscribeNext:^(NSArray *viewModels) {
+        @strongify(self);
+        [self.mapView addAnnotations:viewModels];
+    }];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -65,11 +66,17 @@
         
         annotationView.canShowCallout = YES;
         annotationView.annotation = annotation;
+        annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         
         return annotationView;
     }
     
     return nil;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    BKStationViewModel *viewModel = [(BKAnnotationView *)view viewModel];
+    [viewModel.selectStationCommand execute:nil];
 }
 
 @end
