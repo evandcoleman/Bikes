@@ -7,15 +7,19 @@
 //
 
 #import "BKAppDelegate.h"
+#import "BKPageViewController.h"
 
 @implementation BKAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    
+    BKPageViewController *pageViewController = [[BKPageViewController alloc] init];
+    self.window.rootViewController = pageViewController;
+    
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

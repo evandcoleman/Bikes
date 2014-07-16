@@ -33,7 +33,10 @@
 }
 
 - (RACSignal *)fetchStations {
-    return [self rac_GET:@"stations/json" parameters:nil];
+    return [[self rac_GET:@"stations/json" parameters:nil]
+                map:^id(BKStationsResponse *response) {
+                    return response.result;
+                }];
 }
 
 @end

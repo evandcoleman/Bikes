@@ -11,6 +11,7 @@
 
 @interface BKAPIClient : OVCHTTPSessionManager
 
+// Sends NSArray of BKStation
 - (RACSignal *)fetchStations;
 
 @end
