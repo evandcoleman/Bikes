@@ -8,25 +8,23 @@
 
 #import "BKTabBarViewModel.h"
 
-#import "BKTabBarModel.h"
-#import "BKStationViewModel.h"
+#import "BKAPIClient.h"
 #import "BKStation.h"
 
 @interface BKTabBarViewModel ()
 
-@property (nonatomic) BKTabBarModel *tabBarModel;
+@property (nonatomic) BKAPIClient *apiClient;
 @property (nonatomic) RACSignal *presentViewModelSignal;
 @property (nonatomic) RACCommand *openViewModelCommand;
-@property (nonatomic) NSArray *stationViewModels;
 
 @end
 
 @implementation BKTabBarViewModel
 
-- (instancetype)initWithTabBarModel:(BKTabBarModel *)tabBarModel {
+- (instancetype)initWithAPIClient:(BKAPIClient *)client {
     self = [super init];
     if (self != nil) {
-        _tabBarModel = tabBarModel;
+        _apiClient = client;
         
         _openViewModelCommand = [[RACCommand alloc] initWithEnabled:RACObserve(self, active) signalBlock:^RACSignal *(RVMViewModel *viewModel) {
             return [RACSignal return:viewModel];
@@ -34,10 +32,6 @@
         
         _presentViewModelSignal = [[_openViewModelCommand executionSignals]
                                        switchToLatest];
-        
-        RAC(self, stationViewModels) = [[RACObserve(self.tabBarModel, stations) ignore:nil] map:^BKStationViewModel *(BKStation *station) {
-            return [[BKStationViewModel alloc] initWithStation:station openStationCommand:_openViewModelCommand];
-        }];
     }
     return self;
 }

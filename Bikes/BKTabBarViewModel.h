@@ -8,7 +8,7 @@
 
 #import "RVMViewModel.h"
 
-@class BKTabBarModel;
+@class BKAPIClient;
 
 @interface BKTabBarViewModel : RVMViewModel
 
@@ -16,8 +16,8 @@
 
 @property (nonatomic, readonly) RACCommand *openViewModelCommand;
 
-@property (nonatomic, readonly) NSArray *stationViewModels;
+@property (nonatomic, readonly) BKAPIClient *apiClient;
 
-- (instancetype)initWithTabBarModel:(BKTabBarModel *)tabBarModel;
+- (instancetype)initWithAPIClient:(BKAPIClient *)client;
 
 @end

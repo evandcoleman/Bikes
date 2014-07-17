@@ -33,16 +33,20 @@
 }
 
 - (RACSignal *)fetchStations {
-    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [[[self rac_GET:@"stations/json" parameters:nil]
-         map:^id(BKStationsResponse *response) {
-             return response.result;
-         }] subscribeNext:^(NSArray *stations) {
-             [stations.rac_sequence.signal subscribe:subscriber];
+    RACReplaySubject *subject = [RACReplaySubject subject];
+    
+    [[[self rac_GET:@"stations/json" parameters:nil]
+     map:^id(BKStationsResponse *response) {
+         return response.result;
+     }] subscribeNext:^(NSArray *stations) {
+         [stations.rac_sequence.signal subscribeNext:^(BKStation *station) {
+             [subject sendNext:station];
+         } completed:^{
+             [subject sendCompleted];
          }];
-        
-        return nil;
-    }];
+     }];
+    
+    return subject;
 }
 
 @end

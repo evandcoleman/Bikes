@@ -8,7 +8,7 @@
 
 #import "BKAppDelegate.h"
 #import "BKTabBarController.h"
-#import "BKTabBarModel.h"
+#import "BKAPIClient.h"
 #import "BKTabBarViewModel.h"
 
 #import <CocoaLumberjack/DDASLLogger.h>
@@ -21,8 +21,8 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    BKTabBarModel *model = [[BKTabBarModel alloc] init];
-    BKTabBarViewModel *viewModel = [[BKTabBarViewModel alloc] initWithTabBarModel:model];
+    BKAPIClient *apiClient = [[BKAPIClient alloc] init];
+    BKTabBarViewModel *viewModel = [[BKTabBarViewModel alloc] initWithAPIClient:apiClient];
     BKTabBarController *pageViewController = [[BKTabBarController alloc] initWithViewModel:viewModel];
     self.window.rootViewController = pageViewController;
     

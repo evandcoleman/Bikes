@@ -8,6 +8,7 @@
 
 #import "BKMapViewModel.h"
 
+#import "BKAPIClient.h"
 #import "BKStationViewModel.h"
 
 @interface BKMapViewModel ()
@@ -19,12 +20,14 @@
 
 @implementation BKMapViewModel
 
-- (instancetype)initWithStationSignal:(RACSignal *)stationSignal openStationCommand:(RACCommand *)openStationCommand {
+- (instancetype)initWithAPIClient:(BKAPIClient *)client openStationCommand:(RACCommand *)openStationCommand {
     self = [super init];
     if (self != nil) {
         _openStationCommand = openStationCommand;
         
-        RAC(self, stationViewModels) = [[stationSignal take:50] collect];
+        RAC(self, stationViewModels) = [[client fetchStations] map:^BKStationViewModel *(BKStation *station) {
+            return [[BKStationViewModel alloc] initWithStation:station openStationCommand:_openStationCommand];
+        }];
     }
     return self;
 }

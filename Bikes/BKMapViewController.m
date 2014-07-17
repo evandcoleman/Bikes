@@ -47,9 +47,9 @@
     
     
     @weakify(self);
-    [[RACObserve(self.viewModel, stationViewModels) ignore:nil] subscribeNext:^(NSArray *viewModels) {
+    [[RACObserve(self.viewModel, stationViewModels) ignore:nil] subscribeNext:^(BKStationViewModel *viewModel) {
         @strongify(self);
-        [self.mapView addAnnotations:viewModels];
+        [self.mapView addAnnotation:viewModel];
     }];
 }
 

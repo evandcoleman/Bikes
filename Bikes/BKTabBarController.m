@@ -28,7 +28,7 @@
     if (self != nil) {
         _viewModel = viewModel;
         
-        BKMapViewModel *mapViewModel = [[BKMapViewModel alloc] initWithStationSignal:[RACObserve(self.viewModel, stationViewModels) ignore:nil] openStationCommand:_presentViewModelCommand];
+        BKMapViewModel *mapViewModel = [[BKMapViewModel alloc] initWithAPIClient:viewModel.apiClient openStationCommand:_presentViewModelCommand];
         UINavigationController *mapNavigationController = [[UINavigationController alloc] initWithRootViewController:[[BKMapViewController alloc] initWithViewModel:mapViewModel]];
         
         
