@@ -66,17 +66,11 @@
         
         annotationView.canShowCallout = YES;
         annotationView.annotation = annotation;
-        annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         
         return annotationView;
     }
     
     return nil;
-}
-
-- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-    BKStationViewModel *viewModel = [(BKAnnotationView *)view viewModel];
-    [viewModel.selectStationCommand execute:viewModel];
 }
 
 @end
