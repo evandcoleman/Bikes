@@ -27,7 +27,8 @@
 - (id)initWithViewModel:(BKMapViewModel *)viewModel {
     self = [super initWithNibName:nil bundle:nil];
     if (self != nil) {
-        self.title = @"Map";
+        self.tabBarItem.image = [UIImage imageNamed:@"map"];
+        [self.tabBarItem setImageInsets:UIEdgeInsetsMake(5, 0, -5, 0)];
         
         _viewModel = viewModel;
     }
@@ -44,7 +45,7 @@
     self.mapView.userTrackingMode = MKUserTrackingModeFollow;
     self.mapView.delegate = self;
     [self.view addSubview:self.mapView];
-    
+
     
     @weakify(self);
     [[RACObserve(self.viewModel, stationViewModels) ignore:nil] subscribeNext:^(BKStationViewModel *viewModel) {
