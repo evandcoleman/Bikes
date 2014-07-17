@@ -38,16 +38,10 @@
     return self;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
-    self.viewModel.active = YES;
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    
-    self.viewModel.active = NO;
+    [self.viewModel.updateCommand execute:nil];
 }
 
 #pragma mark - UITableViewDataSource

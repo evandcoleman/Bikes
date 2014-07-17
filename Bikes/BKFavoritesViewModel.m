@@ -15,6 +15,7 @@
 @interface BKFavoritesViewModel ()
 
 @property (nonatomic) NSArray *stationViewModels;
+@property (nonatomic) RACCommand *updateCommand;
 
 @end
 
@@ -24,18 +25,20 @@
     self = [super init];
     if (self != nil) {
 
-        // TODO: Use a command for refreshing
-        RAC(self, stationViewModels) =
-            [[[[self didBecomeActiveSignal]
-              flattenMap:^RACStream *(id _) {
-                  BKLocationManager *locationManager = [[BKLocationManager alloc] init];
-                  return [locationManager.locationSignal take:1];
-              }]
-              flattenMap:^RACStream *(CLLocation *location) {
-                  return [[[apiClient stationsNearLocation:location] map:^BKStationViewModel *(BKStation *station) {
-                      return [[BKStationViewModel alloc] initWithStation:station openStationCommand:nil];
-                  }] collect];
-              }] deliverOn:[RACScheduler mainThreadScheduler]];
+        _updateCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id _) {
+            BKLocationManager *locationManager = [[BKLocationManager alloc] init];
+            return [[[locationManager.locationSignal
+                    take:1]
+                    flattenMap:^RACStream *(CLLocation *location) {
+                        return [[[apiClient stationsNearLocation:location]
+                                map:^BKStationViewModel *(BKStation *station) {
+                                    return [[BKStationViewModel alloc] initWithStation:station openStationCommand:nil];
+                                }] collect];
+                    }] deliverOn:[RACScheduler mainThreadScheduler]];
+        }];
+        
+        RAC(self, stationViewModels) = [[_updateCommand executionSignals]
+                                        switchToLatest];
     }
     return self;
 }
