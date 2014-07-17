@@ -23,20 +23,19 @@
 - (instancetype)initWithAPIClient:(BKAPIClient *)apiClient {
     self = [super init];
     if (self != nil) {
-        
-        BKLocationManager *locationManager = [[BKLocationManager alloc] init];
-        
+
+        // TODO: Use a command to do this that executes when the view becomes active
         RAC(self, stationViewModels) =
-            [[[[[RACObserve(self, active)
-              ignore:@NO]
+            [[[[[[[self didBecomeActiveSignal] take:1]
               flattenMap:^RACStream *(id _) {
+                  BKLocationManager *locationManager = [[BKLocationManager alloc] init];
                   return [locationManager.locationSignal take:1];
               }]
               flattenMap:^RACStream *(CLLocation *location) {
                   return [apiClient stationsNearLocation:location];
               }] map:^BKStationViewModel *(BKStation *station) {
                   return [[BKStationViewModel alloc] initWithStation:station openStationCommand:nil];
-              }] collect];
+              }] collect] deliverOn:[RACScheduler mainThreadScheduler]];
     }
     return self;
 }

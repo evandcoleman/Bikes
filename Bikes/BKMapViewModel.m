@@ -25,9 +25,14 @@
     if (self != nil) {
         _openStationCommand = openStationCommand;
         
-        RAC(self, stationViewModels) = [[client fetchStations] map:^BKStationViewModel *(BKStation *station) {
-            return [[BKStationViewModel alloc] initWithStation:station openStationCommand:_openStationCommand];
-        }];
+        RAC(self, stationViewModels) =
+            [[client.stationsSignal
+            flattenMap:^RACStream *(NSArray *stations) {
+                return stations.rac_sequence.signal;
+            }]
+            map:^BKStationViewModel *(BKStation *station) {
+                return [[BKStationViewModel alloc] initWithStation:station openStationCommand:_openStationCommand];
+            }];
     }
     return self;
 }

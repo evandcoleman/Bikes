@@ -46,11 +46,9 @@
     [self.view addSubview:self.mapView];
     
     @weakify(self);
-    [[RACObserve(self.viewModel, stationViewModels) ignore:nil] subscribeNext:^(BKStationViewModel *viewModel) {
+    [[[RACObserve(self.viewModel, stationViewModels) ignore:nil] deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(BKStationViewModel *viewModel) {
         @strongify(self);
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.mapView addAnnotation:viewModel];
-        });
+        [self.mapView addAnnotation:viewModel];
     }];
 }
 

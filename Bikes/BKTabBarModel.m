@@ -25,7 +25,7 @@
     if (self != nil) {
         _apiClient = [[BKAPIClient alloc] init];
         
-        RAC(self, stations) = [_apiClient fetchStations];
+        RAC(self, stations) = _apiClient.stationsSignal;
     }
     return self;
 }
