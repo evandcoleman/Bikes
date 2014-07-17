@@ -41,21 +41,29 @@
     self.navigationController.navigationBarHidden = YES;
 	
     self.mapView = [[MKMapView alloc] initWithFrame:CGRectZero];
+//    self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(40.712784, -74.005941), MKCoordinateSpanMake(0.03, 0.03));
     self.mapView.showsUserLocation = YES;
     self.mapView.userTrackingMode = MKUserTrackingModeFollow;
     self.mapView.delegate = self;
     [self.view addSubview:self.mapView];
-
     
     @weakify(self);
     [[RACObserve(self.viewModel, stationViewModels) ignore:nil] subscribeNext:^(BKStationViewModel *viewModel) {
         @strongify(self);
-        [self.mapView addAnnotation:viewModel];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.mapView addAnnotation:viewModel];
+        });
     }];
 }
 
 - (void)viewWillLayoutSubviews {
     [self.mapView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    
 }
 
 #pragma mark - MKMapViewDelegate
@@ -72,6 +80,10 @@
     }
     
     return nil;
+}
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
+    mapView.region = MKCoordinateRegionMake(userLocation.coordinate, MKCoordinateSpanMake(0.01, 0.01));
 }
 
 @end

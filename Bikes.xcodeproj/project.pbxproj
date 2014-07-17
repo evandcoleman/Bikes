@@ -43,6 +43,9 @@
 		20AAE6FF19776A6400E73391 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20AAE6FD19776A6400E73391 /* settings@2x.png */; };
 		20AAE70219776B4400E73391 /* favorites.png in Resources */ = {isa = PBXBuildFile; fileRef = 20AAE70019776B4400E73391 /* favorites.png */; };
 		20AAE70319776B4400E73391 /* favorites@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20AAE70119776B4400E73391 /* favorites@2x.png */; };
+		20AAE70619776F9200E73391 /* BKFavoritesViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE70519776F9200E73391 /* BKFavoritesViewModel.m */; };
+		20AAE70919776FA300E73391 /* BKFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE70819776FA300E73391 /* BKFavoritesViewController.m */; };
+		20AAE70C1977700700E73391 /* BKUserPreferencesClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE70B1977700700E73391 /* BKUserPreferencesClient.m */; };
 		9A7F808407D24599B0404B1A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56CDA9C4674A467BACEF226D /* libPods.a */; };
 		AC4E696B3DB24A169B7B6397 /* libPods-BikesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 795F318C83E2479C89BCDD62 /* libPods-BikesTests.a */; };
 /* End PBXBuildFile section */
@@ -113,6 +116,12 @@
 		20AAE6FD19776A6400E73391 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		20AAE70019776B4400E73391 /* favorites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorites.png; sourceTree = "<group>"; };
 		20AAE70119776B4400E73391 /* favorites@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorites@2x.png"; sourceTree = "<group>"; };
+		20AAE70419776F9200E73391 /* BKFavoritesViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKFavoritesViewModel.h; sourceTree = "<group>"; };
+		20AAE70519776F9200E73391 /* BKFavoritesViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKFavoritesViewModel.m; sourceTree = "<group>"; };
+		20AAE70719776FA300E73391 /* BKFavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKFavoritesViewController.h; sourceTree = "<group>"; };
+		20AAE70819776FA300E73391 /* BKFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKFavoritesViewController.m; sourceTree = "<group>"; };
+		20AAE70A1977700700E73391 /* BKUserPreferencesClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKUserPreferencesClient.h; sourceTree = "<group>"; };
+		20AAE70B1977700700E73391 /* BKUserPreferencesClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKUserPreferencesClient.m; sourceTree = "<group>"; };
 		56CDA9C4674A467BACEF226D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		58622F9041A24240B098E32C /* Pods-BikesTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikesTests.xcconfig"; path = "Pods/Pods-BikesTests.xcconfig"; sourceTree = "<group>"; };
 		795F318C83E2479C89BCDD62 /* libPods-BikesTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BikesTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -254,6 +263,8 @@
 				20AAE6E6197624B100E73391 /* BKMapViewModel.m */,
 				20AAE6C11973820F00E73391 /* BKStationViewModel.h */,
 				20AAE6C21973820F00E73391 /* BKStationViewModel.m */,
+				20AAE70419776F9200E73391 /* BKFavoritesViewModel.h */,
+				20AAE70519776F9200E73391 /* BKFavoritesViewModel.m */,
 			);
 			name = "View Models";
 			sourceTree = "<group>";
@@ -265,6 +276,8 @@
 				20AAE6B8197330E700E73391 /* BKAPIClient.m */,
 				20AAE6CF1974C43500E73391 /* BKLocationManager.h */,
 				20AAE6D01974C43500E73391 /* BKLocationManager.m */,
+				20AAE70A1977700700E73391 /* BKUserPreferencesClient.h */,
+				20AAE70B1977700700E73391 /* BKUserPreferencesClient.m */,
 			);
 			name = "Data Sources";
 			sourceTree = "<group>";
@@ -287,6 +300,8 @@
 				20AAE6C61974BEFA00E73391 /* BKMapViewController.m */,
 				20AAE6D81975FAF600E73391 /* BKAnnotationView.h */,
 				20AAE6D91975FAF600E73391 /* BKAnnotationView.m */,
+				20AAE70719776FA300E73391 /* BKFavoritesViewController.h */,
+				20AAE70819776FA300E73391 /* BKFavoritesViewController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -497,8 +512,11 @@
 				20AAE69019731E0500E73391 /* BKAppDelegate.m in Sources */,
 				20AAE6BC197374C800E73391 /* BKStationsResponse.m in Sources */,
 				20AAE6DE197613A500E73391 /* UIColor+Bikes.m in Sources */,
+				20AAE70619776F9200E73391 /* BKFavoritesViewModel.m in Sources */,
 				20AAE6F3197759FC00E73391 /* UIFont+Bikes.m in Sources */,
+				20AAE70C1977700700E73391 /* BKUserPreferencesClient.m in Sources */,
 				20AAE6C31973820F00E73391 /* BKStationViewModel.m in Sources */,
+				20AAE70919776FA300E73391 /* BKFavoritesViewController.m in Sources */,
 				20AAE6D11974C43500E73391 /* BKLocationManager.m in Sources */,
 				20AAE6DA1975FAF600E73391 /* BKAnnotationView.m in Sources */,
 				20AAE6E7197624B100E73391 /* BKMapViewModel.m in Sources */,
