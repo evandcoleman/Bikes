@@ -35,6 +35,8 @@
     self = [super initWithBaseURL:[NSURL URLWithString:@"http://citibikenyc.com"]];
     if (self != nil) {
 
+        // TODO: Add APICacheClient that gets a new replay subject each time and saves it.
+        // The cache client will decide whether to send that along or get a new one.
         self.stationsSignal = [[[self rac_GET:@"stations/json" parameters:nil]
           map:^id(BKStationsResponse *response) {
               return response.result;
