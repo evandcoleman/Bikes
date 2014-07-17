@@ -13,8 +13,6 @@
 #import "BKStationViewModel.h"
 #import "BKTabBarViewModel.h"
 
-#import "BKStationViewController.h"
-
 @interface BKTabBarController ()
 
 @property (nonatomic) BKTabBarViewModel *viewModel;
@@ -38,11 +36,7 @@
         
         [_viewModel.presentViewModelSignal subscribeNext:^(RVMViewModel *viewModel) {
             DDLogInfo(@"BKTabBarController wants to present %@", NSStringFromClass([viewModel class]));
-            if ([viewModel isKindOfClass:[BKStationViewModel class]]) {
-                BKStationViewController *stationViewController = [[BKStationViewController alloc] init];
-                stationViewController.viewModel = (BKStationViewModel *)viewModel;
-                [self presentViewController:stationViewController animated:YES completion:nil];
-            }
+            
         }];
     }
     return self;

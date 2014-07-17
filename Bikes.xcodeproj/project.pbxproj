@@ -36,7 +36,6 @@
 		20AAE6E41976221B00E73391 /* BKTabBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE6E31976221B00E73391 /* BKTabBarViewModel.m */; };
 		20AAE6E7197624B100E73391 /* BKMapViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE6E6197624B100E73391 /* BKMapViewModel.m */; };
 		20AAE6EA1976277300E73391 /* BKTabBarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE6E91976277300E73391 /* BKTabBarModel.m */; };
-		20AAE6F01977561900E73391 /* BKStationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE6EF1977561900E73391 /* BKStationViewController.m */; };
 		20AAE6F3197759FC00E73391 /* UIFont+Bikes.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE6F2197759FC00E73391 /* UIFont+Bikes.m */; };
 		9A7F808407D24599B0404B1A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56CDA9C4674A467BACEF226D /* libPods.a */; };
 		AC4E696B3DB24A169B7B6397 /* libPods-BikesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 795F318C83E2479C89BCDD62 /* libPods-BikesTests.a */; };
@@ -100,8 +99,6 @@
 		20AAE6E6197624B100E73391 /* BKMapViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKMapViewModel.m; sourceTree = "<group>"; };
 		20AAE6E81976277300E73391 /* BKTabBarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKTabBarModel.h; sourceTree = "<group>"; };
 		20AAE6E91976277300E73391 /* BKTabBarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKTabBarModel.m; sourceTree = "<group>"; };
-		20AAE6EE1977561900E73391 /* BKStationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKStationViewController.h; sourceTree = "<group>"; };
-		20AAE6EF1977561900E73391 /* BKStationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKStationViewController.m; sourceTree = "<group>"; };
 		20AAE6F1197759FC00E73391 /* UIFont+Bikes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Bikes.h"; sourceTree = "<group>"; };
 		20AAE6F2197759FC00E73391 /* UIFont+Bikes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Bikes.m"; sourceTree = "<group>"; };
 		56CDA9C4674A467BACEF226D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -277,8 +274,6 @@
 				20AAE6C61974BEFA00E73391 /* BKMapViewController.m */,
 				20AAE6D81975FAF600E73391 /* BKAnnotationView.h */,
 				20AAE6D91975FAF600E73391 /* BKAnnotationView.m */,
-				20AAE6EE1977561900E73391 /* BKStationViewController.h */,
-				20AAE6EF1977561900E73391 /* BKStationViewController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -475,7 +470,6 @@
 				20AAE6D11974C43500E73391 /* BKLocationManager.m in Sources */,
 				20AAE6DA1975FAF600E73391 /* BKAnnotationView.m in Sources */,
 				20AAE6E7197624B100E73391 /* BKMapViewModel.m in Sources */,
-				20AAE6F01977561900E73391 /* BKStationViewController.m in Sources */,
 				20AAE6E41976221B00E73391 /* BKTabBarViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
