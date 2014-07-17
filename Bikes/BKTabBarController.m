@@ -12,8 +12,10 @@
 #import "BKMapViewModel.h"
 #import "BKStationViewModel.h"
 #import "BKTabBarViewModel.h"
+#import "BKFavoritesViewModel.h"
+#import "BKFavoritesViewController.h"
 
-@interface BKTabBarController ()
+@interface BKTabBarController () <UITabBarControllerDelegate>
 
 @property (nonatomic) BKTabBarViewModel *viewModel;
 
@@ -28,14 +30,24 @@
     if (self != nil) {
         _viewModel = viewModel;
         
+        self.delegate = self;
+        
         BKMapViewModel *mapViewModel = [[BKMapViewModel alloc] initWithAPIClient:viewModel.apiClient openStationCommand:viewModel.openViewModelCommand];
         UINavigationController *mapNavigationController = [[UINavigationController alloc] initWithRootViewController:[[BKMapViewController alloc] initWithViewModel:mapViewModel]];
         
-        [self setViewControllers:@[mapNavigationController]
+        BKFavoritesViewModel *favoritesViewModel = [[BKFavoritesViewModel alloc] initWithAPIClient:viewModel.apiClient];
+        UINavigationController *favoritesNavigationController = [[UINavigationController alloc] initWithRootViewController:[[BKFavoritesViewController alloc] initWithViewModel:favoritesViewModel]];
+        
+        [self setViewControllers:@[mapNavigationController, favoritesNavigationController]
                         animated:NO];
         
         [_viewModel.presentViewModelSignal subscribeNext:^(RVMViewModel *viewModel) {
             DDLogInfo(@"BKTabBarController wants to present %@", NSStringFromClass([viewModel class]));
+            
+        }];
+        
+        [[self rac_signalForSelector:@selector(tabBarController:didSelectViewController:) fromProtocol:@protocol(UITabBarControllerDelegate)]
+         subscribeNext:^(UIViewController *viewController) {
             
         }];
     }

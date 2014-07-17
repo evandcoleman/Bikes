@@ -25,12 +25,10 @@
 @implementation BKMapViewController
 
 - (id)initWithViewModel:(BKMapViewModel *)viewModel {
-    self = [super initWithNibName:nil bundle:nil];
+    self = [super initWithViewModel:viewModel];
     if (self != nil) {
         self.tabBarItem.image = [UIImage imageNamed:@"map"];
-        [self.tabBarItem setImageInsets:UIEdgeInsetsMake(5, 0, -5, 0)];
-        
-        _viewModel = viewModel;
+        [self.tabBarItem setImageInsets:UIEdgeInsetsMake(5, 0, -5, 0)];        
     }
     return self;
 }

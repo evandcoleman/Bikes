@@ -6,8 +6,12 @@
 //  Copyright (c) 2014 Evan Coleman. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@class BKFavoritesViewModel;
 
-@interface BKFavoritesViewController : UIViewController
+@interface BKFavoritesViewController : UITableViewController
+
+@property (nonatomic, readonly) BKFavoritesViewModel *viewModel;
+
+- (instancetype)initWithViewModel:(BKFavoritesViewModel *)viewModel;
 
 @end

@@ -11,6 +11,7 @@
 #import "BKStation.h"
 
 #import <Overcoat/ReactiveCocoa+Overcoat.h>
+#import <CoreLocation/CoreLocation.h>
 
 @implementation BKAPIClient
 
@@ -48,6 +49,14 @@
      }];
     
     return subject;
+}
+
+- (RACSignal *)stationsNearLocation:(CLLocation *)location {
+    return [[self fetchStations]
+                filter:^BOOL(BKStation *station) {
+                    CLLocation *stationLocation = [[CLLocation alloc] initWithLatitude:station.latitude longitude:station.longitude];
+                    return ([stationLocation distanceFromLocation:location] < 500);
+                }];
 }
 
 @end

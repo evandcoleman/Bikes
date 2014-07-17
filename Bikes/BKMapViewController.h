@@ -6,12 +6,8 @@
 //  Copyright (c) 2014 Evan Coleman. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BKViewController.h"
 
-@class BKMapViewModel;
-
-@interface BKMapViewController : UIViewController
-
-- (instancetype)initWithViewModel:(BKMapViewModel *)viewModel;
+@interface BKMapViewController : BKViewController
 
 @end

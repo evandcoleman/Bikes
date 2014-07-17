@@ -8,6 +8,12 @@
 
 #import "RVMViewModel.h"
 
+@class BKAPIClient;
+
 @interface BKFavoritesViewModel : RVMViewModel
+
+@property (nonatomic, readonly) NSArray *stationViewModels;
+
+- (instancetype)initWithAPIClient:(BKAPIClient *)apiClient;
 
 @end

@@ -9,9 +9,11 @@
 #import <Overcoat/OVCHTTPSessionManager.h>
 #import "BKStationsResponse.h"
 
+@class CLLocation;
+
 @interface BKAPIClient : OVCHTTPSessionManager
 
-// Sends NSArray of BKStation
 - (RACSignal *)fetchStations;
+- (RACSignal *)stationsNearLocation:(CLLocation *)location;
 
 @end
