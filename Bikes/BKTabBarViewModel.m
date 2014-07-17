@@ -26,7 +26,7 @@
     if (self != nil) {
         _apiClient = client;
         
-        _openViewModelCommand = [[RACCommand alloc] initWithEnabled:RACObserve(self, active) signalBlock:^RACSignal *(RVMViewModel *viewModel) {
+        _openViewModelCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(RVMViewModel *viewModel) {
             return [RACSignal return:viewModel];
         }];
         

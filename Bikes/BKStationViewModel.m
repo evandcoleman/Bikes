@@ -18,6 +18,7 @@
 @property (nonatomic) NSString *availableDocks;
 @property (nonatomic) NSString *availableBikes;
 @property (nonatomic) CGFloat fillPercentage;
+@property (nonatomic) NSString *lastUpdated;
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 
 @end
@@ -39,13 +40,20 @@
         }
         _coordinate = CLLocationCoordinate2DMake(station.latitude, station.longitude);
         
-        if (_fillPercentage <= 10) {
+        if (station.status == BKStationStatusOutOfService) {
+            _statusColor = [UIColor bikes_darkGray];
+        } else if (_fillPercentage <= 10) {
             _statusColor = [UIColor bikes_red];
         } else if (_fillPercentage > 10 && _fillPercentage <= 40) {
             _statusColor = [UIColor bikes_orange];
         } else {
             _statusColor = [UIColor bikes_green];
         }
+        
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        df.dateStyle = NSDateFormatterMediumStyle;
+        df.timeStyle = NSDateFormatterMediumStyle;
+        _lastUpdated = [df stringFromDate:station.lastUpdated];
         
         _selectStationCommand = openStationCommand;
     }
@@ -57,7 +65,11 @@
 }
 
 - (NSString *)subtitle {
-    return [NSString stringWithFormat:@"%@ Bikes, %@ Docks", self.availableBikes, self.availableDocks];
+    if (self.station.status == BKStationStatusOutOfService) {
+        return self.status;
+    } else {
+        return [NSString stringWithFormat:@"%@ Bikes, %@ Docks", self.availableBikes, self.availableDocks];
+    }
 }
 
 @end

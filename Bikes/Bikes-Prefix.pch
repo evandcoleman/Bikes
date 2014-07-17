@@ -19,6 +19,7 @@
     #import <EXTScope.h>
 
     #import "UIColor+Bikes.h"
+    #import "UIFont+Bikes.h"
 #endif
 
 

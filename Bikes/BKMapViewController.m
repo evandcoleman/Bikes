@@ -76,7 +76,7 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
     BKStationViewModel *viewModel = [(BKAnnotationView *)view viewModel];
-    [viewModel.selectStationCommand execute:nil];
+    [viewModel.selectStationCommand execute:viewModel];
 }
 
 @end

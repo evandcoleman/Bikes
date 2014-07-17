@@ -13,6 +13,8 @@
 #import "BKStationViewModel.h"
 #import "BKTabBarViewModel.h"
 
+#import "BKStationViewController.h"
+
 @interface BKTabBarController ()
 
 @property (nonatomic) BKTabBarViewModel *viewModel;
@@ -28,9 +30,8 @@
     if (self != nil) {
         _viewModel = viewModel;
         
-        BKMapViewModel *mapViewModel = [[BKMapViewModel alloc] initWithAPIClient:viewModel.apiClient openStationCommand:_presentViewModelCommand];
+        BKMapViewModel *mapViewModel = [[BKMapViewModel alloc] initWithAPIClient:viewModel.apiClient openStationCommand:viewModel.openViewModelCommand];
         UINavigationController *mapNavigationController = [[UINavigationController alloc] initWithRootViewController:[[BKMapViewController alloc] initWithViewModel:mapViewModel]];
-        
         
         [self setViewControllers:@[mapNavigationController]
                         animated:NO];
@@ -38,7 +39,9 @@
         [_viewModel.presentViewModelSignal subscribeNext:^(RVMViewModel *viewModel) {
             DDLogInfo(@"BKTabBarController wants to present %@", NSStringFromClass([viewModel class]));
             if ([viewModel isKindOfClass:[BKStationViewModel class]]) {
-                
+                BKStationViewController *stationViewController = [[BKStationViewController alloc] init];
+                stationViewController.viewModel = (BKStationViewModel *)viewModel;
+                [self presentViewController:stationViewController animated:YES completion:nil];
             }
         }];
     }

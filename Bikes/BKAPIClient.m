@@ -40,6 +40,7 @@
          return response.result;
      }] subscribeNext:^(NSArray *stations) {
          [stations.rac_sequence.signal subscribeNext:^(BKStation *station) {
+             station.lastUpdated = [NSDate date];
              [subject sendNext:station];
          } completed:^{
              [subject sendCompleted];

@@ -25,5 +25,6 @@ typedef NS_ENUM(NSUInteger, BKStationStatus) {
 @property (nonatomic) CGFloat longitude;
 @property (nonatomic) BKStationStatus status;
 @property (nonatomic) NSString *statusValue;
+@property (nonatomic) NSDate *lastUpdated;
 
 @end

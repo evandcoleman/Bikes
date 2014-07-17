@@ -22,5 +22,10 @@ extern UIColor *UIColorFromRGBA(NSUInteger r, NSUInteger g, NSUInteger b, CGFloa
 + (UIColor *)bikes_green;
 + (UIColor *)bikes_orange;
 + (UIColor *)bikes_red;
++ (UIColor *)bikes_darkerGray;
++ (UIColor *)bikes_darkGray;
++ (UIColor *)bikes_gray;
++ (UIColor *)bikes_lightGray;
++ (UIColor *)bikes_white;
 
 @end

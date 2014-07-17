@@ -22,6 +22,7 @@
 @property (nonatomic, readonly) NSString *availableBikes;
 @property (nonatomic, readonly) CGFloat fillPercentage;
 @property (nonatomic, readonly) UIColor *statusColor;
+@property (nonatomic, readonly) NSString *lastUpdated;
 
 @property (nonatomic, readonly) RACCommand *selectStationCommand;
 
