@@ -24,18 +24,18 @@
     self = [super init];
     if (self != nil) {
 
-        // TODO: Use a command to do this that executes when the view becomes active
+        // TODO: Use a command for refreshing
         RAC(self, stationViewModels) =
-            [[[[[[[self didBecomeActiveSignal] take:1]
+            [[[[self didBecomeActiveSignal]
               flattenMap:^RACStream *(id _) {
                   BKLocationManager *locationManager = [[BKLocationManager alloc] init];
                   return [locationManager.locationSignal take:1];
               }]
               flattenMap:^RACStream *(CLLocation *location) {
-                  return [apiClient stationsNearLocation:location];
-              }] map:^BKStationViewModel *(BKStation *station) {
-                  return [[BKStationViewModel alloc] initWithStation:station openStationCommand:nil];
-              }] collect] deliverOn:[RACScheduler mainThreadScheduler]];
+                  return [[[apiClient stationsNearLocation:location] map:^BKStationViewModel *(BKStation *station) {
+                      return [[BKStationViewModel alloc] initWithStation:station openStationCommand:nil];
+                  }] collect];
+              }] deliverOn:[RACScheduler mainThreadScheduler]];
     }
     return self;
 }
