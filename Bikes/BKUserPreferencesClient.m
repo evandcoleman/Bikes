@@ -10,19 +10,13 @@
 
 @implementation BKUserPreferencesClient
 
-- (RACSignal *)setObject:(id<NSCoding>)object forKey:(NSString *)aKey {
-    return [RACSignal defer:^RACSignal *{
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:object forKey:aKey];
-        if ([defaults synchronize]) {
-            return [RACSignal empty];
-        } else {
-            return [RACSignal error:nil];
-        }
-    }];
++ (void)setObject:(id<NSCoding>)object forKey:(NSString *)aKey {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:object forKey:aKey];
+    [defaults synchronize];
 }
 
-- (RACSignal *)objectForKey:(NSString *)aKey {
++ (RACSignal *)objectForKey:(NSString *)aKey {
     return [RACSignal return:[[NSUserDefaults standardUserDefaults] objectForKey:aKey]];
 }
 

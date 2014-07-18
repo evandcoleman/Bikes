@@ -12,6 +12,7 @@
 #import "BKFavoritesViewModel.h"
 #import "BKStationTableViewCell.h"
 #import "BKAnnotationView.h"
+#import "BKStation.h"
 
 #import <MapKit/MapKit.h>
 #import <PureLayout/PureLayout.h>
@@ -30,77 +31,136 @@
 - (instancetype)initWithViewModel:(BKFavoritesViewModel *)viewModel {
     self = [super initWithViewModel:viewModel];
     if (self != nil) {
-        self.navigationItem.title = @"Stations";
         self.tabBarItem.image = [UIImage imageNamed:@"favorites"];
         [self.tabBarItem setImageInsets:UIEdgeInsetsMake(5, 0, -5, 0)];
         self.automaticallyAdjustsScrollViewInsets = NO;
-        
-        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-        [_tableView registerClass:[BKStationTableViewCell class] forCellReuseIdentifier:NSStringFromClass([BKStationTableViewCell class])];
-        [self.view addSubview:_tableView];
-        
-        _mapView = [[MKMapView alloc] initWithFrame:CGRectZero];
-        _mapView.delegate = self;
-        [self.view addSubview:_mapView];
-        
-        [_mapView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:(UIView *)self.topLayoutGuide];
-        [_mapView autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:0];
-        [_mapView autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:0];
-        [_mapView autoSetDimension:ALDimensionHeight toSize:120];
-        
-        [_tableView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_mapView withOffset:0];
-        [_tableView autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:0];
-        [_tableView autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:0];
-        [_tableView autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:(UIView *)self.bottomLayoutGuide];
-        
-        [[RACObserve(self, viewModel.stationViewModels)
-            mapReplace:_tableView]
-            subscribeNext:^(UITableView *tableView) {
-                 [tableView reloadData];
-            }];
-        
-        @weakify(self);
-        [[[[self rac_signalForSelector:@selector(tableView:didSelectRowAtIndexPath:) fromProtocol:@protocol(UITableViewDelegate)]
-            reduceEach:^NSNumber *(UITableView *_, NSIndexPath *indexPath){
-                return @(indexPath.row);
-            }] map:^BKStationViewModel *(NSNumber *idx) {
-                @strongify(self);
-                return self.viewModel.stationViewModels[[idx integerValue]];
-            }] subscribeNext:^(BKStationViewModel *stationViewModel) {
-                @strongify(self);
-                [self.mapView removeAnnotations:self.mapView.annotations];
-                [self.mapView addAnnotation:stationViewModel];
-                [self.mapView setRegion:MKCoordinateRegionMake(stationViewModel.coordinate, MKCoordinateSpanMake(0.003, 0.003)) animated:YES];
-            }];
     }
     return self;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.navigationController.navigationBarHidden = YES;
+    
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self.tableView registerClass:[BKStationTableViewCell class] forCellReuseIdentifier:NSStringFromClass([BKStationTableViewCell class])];
+    [self.view addSubview:self.tableView];
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    // TODO: Execute both commands
+    refreshControl.rac_command = self.viewModel.updateNearbyCommand;
+    [self.tableView addSubview:refreshControl];
+    
+    self.mapView = [[MKMapView alloc] initWithFrame:CGRectZero];
+    self.mapView.delegate = self;
+    self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(40.712784, -74.005941), MKCoordinateSpanMake(0.03, 0.03));
+    [self.view addSubview:self.mapView];
+    
+    [self.mapView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:0];
+    [self.mapView autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:0];
+    [self.mapView autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:0];
+    [self.mapView autoSetDimension:ALDimensionHeight toSize:130];
+    
+    [self.tableView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.mapView withOffset:0];
+    [self.tableView autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:0];
+    [self.tableView autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:0];
+    [self.tableView autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:(UIView *)self.bottomLayoutGuide];
+    
+    [[RACObserve(self, viewModel.favoriteStationViewModels)
+      mapReplace:self.tableView]
+     subscribeNext:^(UITableView *tableView) {
+         [tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+     }];
+    
+    [[RACObserve(self, viewModel.nearbyStationViewModels)
+      mapReplace:self.tableView]
+     subscribeNext:^(UITableView *tableView) {
+         [tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
+     }];
+    
+    @weakify(self);
+    
+    [[[[self rac_signalForSelector:@selector(tableView:didSelectRowAtIndexPath:) fromProtocol:@protocol(UITableViewDelegate)]
+       reduceEach:^NSIndexPath *(UITableView *_, NSIndexPath *indexPath){
+           return indexPath;
+       }] map:^BKStationViewModel *(NSIndexPath *indexPath) {
+           @strongify(self);
+           if (indexPath.section == 0) {
+               return self.viewModel.favoriteStationViewModels[indexPath.row];
+           } else {
+               return self.viewModel.nearbyStationViewModels[indexPath.row];
+           }
+       }] subscribeNext:^(BKStationViewModel *stationViewModel) {
+           @strongify(self);
+           [self.mapView removeAnnotations:self.mapView.annotations];
+           [self.mapView addAnnotation:stationViewModel];
+           [self.mapView setRegion:MKCoordinateRegionMake(stationViewModel.coordinate, MKCoordinateSpanMake(0.003, 0.003)) animated:YES];
+       }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self.viewModel.updateCommand execute:nil];
+    [self.viewModel.updateFavoritesCommand execute:nil];
+    [self.viewModel.updateNearbyCommand execute:nil];
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.viewModel.stationViewModels count];
+    if (section == 0) {
+        return [self.viewModel.favoriteStationViewModels count];
+    } else {
+        return [self.viewModel.nearbyStationViewModels count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     BKStationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BKStationTableViewCell class])];
     
-    BKStationViewModel *stationViewModel = self.viewModel.stationViewModels[indexPath.row];
+    BKStationViewModel *stationViewModel = nil;
+    UIImageView *favoriteImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"star"]];
+    if (indexPath.section == 0) {
+        stationViewModel = self.viewModel.favoriteStationViewModels[indexPath.row];
+        [cell setSwipeGestureWithView:favoriteImageView
+                                color:[UIColor bikes_red]
+                                 mode:MCSwipeTableViewCellModeExit
+                                state:MCSwipeTableViewCellState3
+                      completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+                          stationViewModel.station.favorite = NO;
+                          [self.viewModel.updateFavoritesCommand execute:nil];
+                          [self.viewModel.updateNearbyCommand execute:nil];
+                      }];
+    } else {
+        stationViewModel = self.viewModel.nearbyStationViewModels[indexPath.row];
+        [cell setSwipeGestureWithView:favoriteImageView
+                                color:[UIColor bikes_green]
+                                 mode:MCSwipeTableViewCellModeExit
+                                state:MCSwipeTableViewCellState3
+                      completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+                          stationViewModel.station.favorite = YES;
+                          [self.viewModel.updateFavoritesCommand execute:nil];
+                          [self.viewModel.updateNearbyCommand execute:nil];
+                      }];
+    }
     cell.viewModel = stationViewModel;
     
     return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return @"Favorites";
+    } else {
+        return @"Nearby";
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

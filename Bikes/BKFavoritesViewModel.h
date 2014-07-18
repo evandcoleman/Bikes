@@ -12,8 +12,10 @@
 
 @interface BKFavoritesViewModel : RVMViewModel
 
-@property (nonatomic, readonly) NSArray *stationViewModels;
-@property (nonatomic, readonly) RACCommand *updateCommand;
+@property (nonatomic, readonly) NSArray *nearbyStationViewModels;
+@property (nonatomic, readonly) NSArray *favoriteStationViewModels;
+@property (nonatomic, readonly) RACCommand *updateNearbyCommand;
+@property (nonatomic, readonly) RACCommand *updateFavoritesCommand;
 
 - (instancetype)initWithAPIClient:(BKAPIClient *)apiClient;
 

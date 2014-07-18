@@ -48,6 +48,8 @@
 		20AAE70C1977700700E73391 /* BKUserPreferencesClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE70B1977700700E73391 /* BKUserPreferencesClient.m */; };
 		20AAE70F197772D100E73391 /* BKStationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE70E197772D100E73391 /* BKStationTableViewCell.m */; };
 		20AAE7121977781B00E73391 /* BKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE7111977781B00E73391 /* BKViewController.m */; };
+		20AAE71C1978C6E000E73391 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 20AAE71A1978C6E000E73391 /* star.png */; };
+		20AAE71D1978C6E000E73391 /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20AAE71B1978C6E000E73391 /* star@2x.png */; };
 		9A7F808407D24599B0404B1A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56CDA9C4674A467BACEF226D /* libPods.a */; };
 		AC4E696B3DB24A169B7B6397 /* libPods-BikesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 795F318C83E2479C89BCDD62 /* libPods-BikesTests.a */; };
 /* End PBXBuildFile section */
@@ -128,6 +130,8 @@
 		20AAE70E197772D100E73391 /* BKStationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKStationTableViewCell.m; sourceTree = "<group>"; };
 		20AAE7101977781B00E73391 /* BKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKViewController.h; sourceTree = "<group>"; };
 		20AAE7111977781B00E73391 /* BKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKViewController.m; sourceTree = "<group>"; };
+		20AAE71A1978C6E000E73391 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
+		20AAE71B1978C6E000E73391 /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@2x.png"; sourceTree = "<group>"; };
 		56CDA9C4674A467BACEF226D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		58622F9041A24240B098E32C /* Pods-BikesTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikesTests.xcconfig"; path = "Pods/Pods-BikesTests.xcconfig"; sourceTree = "<group>"; };
 		795F318C83E2479C89BCDD62 /* libPods-BikesTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BikesTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -332,6 +336,8 @@
 		20AAE6F71977675D00E73391 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				20AAE71A1978C6E000E73391 /* star.png */,
+				20AAE71B1978C6E000E73391 /* star@2x.png */,
 				20AAE6F81977676E00E73391 /* map.png */,
 				20AAE6F91977676E00E73391 /* map@2x.png */,
 				20AAE6FC19776A6400E73391 /* settings.png */,
@@ -424,9 +430,11 @@
 			files = (
 				20AAE70319776B4400E73391 /* favorites@2x.png in Resources */,
 				20AAE6FA1977676E00E73391 /* map.png in Resources */,
+				20AAE71C1978C6E000E73391 /* star.png in Resources */,
 				20AAE6FF19776A6400E73391 /* settings@2x.png in Resources */,
 				20AAE6FE19776A6400E73391 /* settings.png in Resources */,
 				20AAE6FB1977676E00E73391 /* map@2x.png in Resources */,
+				20AAE71D1978C6E000E73391 /* star@2x.png in Resources */,
 				20AAE68A19731E0500E73391 /* InfoPlist.strings in Resources */,
 				20AAE69219731E0500E73391 /* Images.xcassets in Resources */,
 				20AAE70219776B4400E73391 /* favorites.png in Resources */,

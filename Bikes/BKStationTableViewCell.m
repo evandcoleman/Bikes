@@ -18,6 +18,8 @@
 @property (nonatomic) UILabel *docksValueLabel;
 @property (nonatomic) UILabel *nameLabel;
 
+@property (nonatomic) RACSignal *favoriteSignal;
+
 @end
 
 @implementation BKStationTableViewCell
@@ -38,7 +40,7 @@
         [self.contentView addSubview:_docksValueLabel];
         
         _nameLabel = [[UILabel alloc] initForAutoLayout];
-        _nameLabel.font = [UIFont bikes_regularWithSize:17];
+        _nameLabel.font = [UIFont bikes_regularWithSize:16];
         [self.contentView addSubview:_nameLabel];
         
         UILabel *bikesLabel = [[UILabel alloc] initForAutoLayout];
@@ -56,11 +58,11 @@
         [self.contentView addSubview:docksLabel];
         
         [_docksValueLabel autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:14];
-        [_docksValueLabel autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
+        [_docksValueLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView withOffset:-5];
         [_docksValueLabel autoSetDimension:ALDimensionWidth toSize:30];
         
         [_bikesValueLabel autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:_docksValueLabel withOffset:-10];
-        [_bikesValueLabel autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
+        [_bikesValueLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_docksValueLabel];
         [_bikesValueLabel autoMatchDimension:ALDimensionWidth toDimension:ALDimensionWidth ofView:_docksValueLabel];
         
         [_nameLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:18];

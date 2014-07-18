@@ -14,8 +14,10 @@
 
 @interface BKFavoritesViewModel ()
 
-@property (nonatomic) NSArray *stationViewModels;
-@property (nonatomic) RACCommand *updateCommand;
+@property (nonatomic) NSArray *nearbyStationViewModels;
+@property (nonatomic) NSArray *favoriteStationViewModels;
+@property (nonatomic) RACCommand *updateNearbyCommand;
+@property (nonatomic) RACCommand *updateFavoritesCommand;
 
 @end
 
@@ -25,14 +27,14 @@
     self = [super init];
     if (self != nil) {
 
-        _updateCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id _) {
+        _updateNearbyCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id _) {
             BKLocationManager *locationManager = [[BKLocationManager alloc] init];
             return [[[locationManager.locationSignal
                     take:1]
                     flattenMap:^RACStream *(CLLocation *location) {
                         return [[[[apiClient stationsNearLocation:location]
                                  filter:^BOOL(BKStation *station) {
-                                     return (station.status == BKStationStatusInService);
+                                     return ((station.status == BKStationStatusInService) && !station.isFavorite);
                                  }]
                                  map:^BKStationViewModel *(BKStation *station) {
                                      return [[BKStationViewModel alloc] initWithStation:station openStationCommand:nil];
@@ -40,8 +42,23 @@
                     }] deliverOn:[RACScheduler mainThreadScheduler]];
         }];
         
-        RAC(self, stationViewModels) = [[_updateCommand executionSignals]
-                                        switchToLatest];
+        _updateFavoritesCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id _) {
+            return [[[[[[apiClient stationsSignal]
+                        flattenMap:^RACStream *(NSArray *stations) {
+                            return stations.rac_sequence.signal;
+                        }]
+                        filter:^BOOL(BKStation *station) {
+                            return station.isFavorite;
+                        }] map:^BKStationViewModel *(BKStation *station) {
+                            return [[BKStationViewModel alloc] initWithStation:station openStationCommand:nil];
+                        }] collect] deliverOn:[RACScheduler mainThreadScheduler]];
+        }];
+        
+        RAC(self, nearbyStationViewModels) = [[_updateNearbyCommand executionSignals]
+                                                switchToLatest];
+        
+        RAC(self, favoriteStationViewModels) = [[_updateFavoritesCommand executionSignals]
+                                                  switchToLatest];
     }
     return self;
 }

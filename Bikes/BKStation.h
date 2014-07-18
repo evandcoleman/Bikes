@@ -26,5 +26,6 @@ typedef NS_ENUM(NSUInteger, BKStationStatus) {
 @property (nonatomic) BKStationStatus status;
 @property (nonatomic) NSString *statusValue;
 @property (nonatomic) NSDate *lastUpdated;
+@property (nonatomic, getter = isFavorite) BOOL favorite;
 
 @end

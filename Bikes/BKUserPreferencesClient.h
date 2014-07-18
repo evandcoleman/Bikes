@@ -10,7 +10,7 @@
 
 @interface BKUserPreferencesClient : NSObject
 
-- (RACSignal *)setObject:(id<NSCoding>)object forKey:(NSString *)aKey;
-- (RACSignal *)objectForKey:(NSString *)aKey;
++ (void)setObject:(id<NSCoding>)object forKey:(NSString *)aKey;
++ (RACSignal *)objectForKey:(NSString *)aKey;
 
 @end
