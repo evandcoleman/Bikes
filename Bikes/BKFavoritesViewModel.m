@@ -18,6 +18,7 @@
 @property (nonatomic) NSArray *favoriteStationViewModels;
 @property (nonatomic) RACCommand *updateNearbyCommand;
 @property (nonatomic) RACCommand *updateFavoritesCommand;
+@property (nonatomic) RACCommand *refreshCommand;
 
 @end
 
@@ -32,13 +33,17 @@
             return [[[locationManager.locationSignal
                     take:1]
                     flattenMap:^RACStream *(CLLocation *location) {
-                        return [[[[apiClient stationsNearLocation:location]
+                        return [[[[[apiClient stationsNearLocation:location]
                                  filter:^BOOL(BKStation *station) {
                                      return ((station.status == BKStationStatusInService) && !station.isFavorite);
                                  }]
                                  map:^BKStationViewModel *(BKStation *station) {
                                      return [[BKStationViewModel alloc] initWithStation:station openStationCommand:nil];
-                                 }] collect];
+                                 }] collect] map:^id(NSArray *stationViewModels) {
+                                     // TODO: Sort stations here.
+                                     // Add distance to model and view model
+                                     return stationViewModels;
+                                 }];
                     }] deliverOn:[RACScheduler mainThreadScheduler]];
         }];
         
@@ -53,12 +58,25 @@
                             return [[BKStationViewModel alloc] initWithStation:station openStationCommand:nil];
                         }] collect] deliverOn:[RACScheduler mainThreadScheduler]];
         }];
-        
-        RAC(self, nearbyStationViewModels) = [[_updateNearbyCommand executionSignals]
-                                                switchToLatest];
-        
-        RAC(self, favoriteStationViewModels) = [[_updateFavoritesCommand executionSignals]
-                                                  switchToLatest];
+
+        @weakify(self);
+        _refreshCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id _) {
+            @strongify(self);
+            return [RACSignal combineLatest:@[ [self.updateFavoritesCommand execute:nil], [self.updateNearbyCommand execute:nil] ]];
+        }];
+
+        // TODO: Make commands to handle the favoriting. Pass in the view model.
+        [[[_updateNearbyCommand executionSignals]
+            switchToLatest] subscribeNext:^(NSArray *stationViewModels) {
+                @strongify(self);
+                self.nearbyStationViewModels = stationViewModels;
+            }];
+
+        [[[_updateFavoritesCommand executionSignals]
+              switchToLatest] subscribeNext:^(NSArray *stationViewModels) {
+                @strongify(self);
+                self.favoriteStationViewModels = stationViewModels;
+            }];
     }
     return self;
 }

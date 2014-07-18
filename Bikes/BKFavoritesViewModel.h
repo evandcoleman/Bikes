@@ -14,8 +14,7 @@
 
 @property (nonatomic, readonly) NSArray *nearbyStationViewModels;
 @property (nonatomic, readonly) NSArray *favoriteStationViewModels;
-@property (nonatomic, readonly) RACCommand *updateNearbyCommand;
-@property (nonatomic, readonly) RACCommand *updateFavoritesCommand;
+@property (nonatomic, readonly) RACCommand *refreshCommand;
 
 - (instancetype)initWithAPIClient:(BKAPIClient *)apiClient;
 

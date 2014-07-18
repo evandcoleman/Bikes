@@ -51,7 +51,7 @@
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     // TODO: Execute both commands
-    refreshControl.rac_command = self.viewModel.updateNearbyCommand;
+    refreshControl.rac_command = self.viewModel.refreshCommand;
     [self.tableView addSubview:refreshControl];
     
     self.mapView = [[MKMapView alloc] initWithFrame:CGRectZero];
@@ -104,8 +104,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self.viewModel.updateFavoritesCommand execute:nil];
-    [self.viewModel.updateNearbyCommand execute:nil];
+    [self.viewModel.refreshCommand execute:nil];
 }
 
 #pragma mark - UITableViewDataSource
@@ -129,14 +128,15 @@
     UIImageView *favoriteImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"star"]];
     if (indexPath.section == 0) {
         stationViewModel = self.viewModel.favoriteStationViewModels[indexPath.row];
+        // TODO: Do this in the cell
         [cell setSwipeGestureWithView:favoriteImageView
                                 color:[UIColor bikes_red]
                                  mode:MCSwipeTableViewCellModeExit
                                 state:MCSwipeTableViewCellState3
                       completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+                          // TODO: Make this a command on the view model to handle favoriting
                           stationViewModel.station.favorite = NO;
-                          [self.viewModel.updateFavoritesCommand execute:nil];
-                          [self.viewModel.updateNearbyCommand execute:nil];
+                          [self.viewModel.refreshCommand execute:nil];
                       }];
     } else {
         stationViewModel = self.viewModel.nearbyStationViewModels[indexPath.row];
@@ -146,8 +146,7 @@
                                 state:MCSwipeTableViewCellState3
                       completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
                           stationViewModel.station.favorite = YES;
-                          [self.viewModel.updateFavoritesCommand execute:nil];
-                          [self.viewModel.updateNearbyCommand execute:nil];
+                          [self.viewModel.refreshCommand execute:nil];
                       }];
     }
     cell.viewModel = stationViewModel;
