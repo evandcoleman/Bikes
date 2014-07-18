@@ -21,6 +21,8 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
+    [[UINavigationBar appearance] setTitleTextAttributes:@{ NSFontAttributeName: [UIFont bikes_boldWithSize:16] }];
+    
     BKAPIClient *apiClient = [[BKAPIClient alloc] init];
     BKTabBarViewModel *viewModel = [[BKTabBarViewModel alloc] initWithAPIClient:apiClient];
     BKTabBarController *pageViewController = [[BKTabBarController alloc] initWithViewModel:viewModel];

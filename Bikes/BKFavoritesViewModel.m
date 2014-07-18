@@ -30,10 +30,13 @@
             return [[[locationManager.locationSignal
                     take:1]
                     flattenMap:^RACStream *(CLLocation *location) {
-                        return [[[apiClient stationsNearLocation:location]
-                                map:^BKStationViewModel *(BKStation *station) {
-                                    return [[BKStationViewModel alloc] initWithStation:station openStationCommand:nil];
-                                }] collect];
+                        return [[[[apiClient stationsNearLocation:location]
+                                 filter:^BOOL(BKStation *station) {
+                                     return (station.status == BKStationStatusInService);
+                                 }]
+                                 map:^BKStationViewModel *(BKStation *station) {
+                                     return [[BKStationViewModel alloc] initWithStation:station openStationCommand:nil];
+                                 }] collect];
                     }] deliverOn:[RACScheduler mainThreadScheduler]];
         }];
         

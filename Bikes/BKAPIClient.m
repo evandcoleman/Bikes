@@ -52,7 +52,7 @@
                 }]
                 filter:^BOOL(BKStation *station) {
                     CLLocation *stationLocation = [[CLLocation alloc] initWithLatitude:station.latitude longitude:station.longitude];
-                    return ([stationLocation distanceFromLocation:location] < 500);
+                    return ([stationLocation distanceFromLocation:location] < 1000);
                 }];
 }
 

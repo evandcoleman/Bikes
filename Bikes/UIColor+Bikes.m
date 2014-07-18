@@ -35,6 +35,6 @@ UIColor *UIColorFromRGBA(NSUInteger r, NSUInteger g, NSUInteger b, CGFloat a) {
 + (UIColor *)bikes_darkGray { return UIColorFromRGB(102, 102, 102); }
 + (UIColor *)bikes_gray { return UIColorFromRGB(153, 153, 153); }
 + (UIColor *)bikes_lightGray { return UIColorFromRGB(204, 204, 204); }
-+ (UIColor *)bikes_white { return UIColorFromRGB(230, 230, 230); }
++ (UIColor *)bikes_lighterGray { return UIColorFromRGB(230, 230, 230); }
 
 @end
