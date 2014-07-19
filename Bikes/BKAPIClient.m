@@ -51,8 +51,11 @@
                     return stations.rac_sequence.signal;
                 }]
                 filter:^BOOL(BKStation *station) {
+                    // Is doing this here The Right Way To Do It™?
                     CLLocation *stationLocation = [[CLLocation alloc] initWithLatitude:station.latitude longitude:station.longitude];
-                    return ([stationLocation distanceFromLocation:location] < 1000);
+                    CGFloat distance = [stationLocation distanceFromLocation:location];
+                    station.distance = distance;
+                    return (distance < 1000);
                 }];
 }
 

@@ -40,9 +40,8 @@
                                  map:^BKStationViewModel *(BKStation *station) {
                                      return [[BKStationViewModel alloc] initWithStation:station openStationCommand:nil];
                                  }] collect] map:^id(NSArray *stationViewModels) {
-                                     // TODO: Sort stations here.
-                                     // Add distance to model and view model
-                                     return stationViewModels;
+                                     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"distance" ascending:YES];
+                                     return [stationViewModels sortedArrayUsingDescriptors:@[sortDescriptor]];
                                  }];
                     }] deliverOn:[RACScheduler mainThreadScheduler]];
         }];

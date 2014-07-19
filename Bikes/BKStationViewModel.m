@@ -18,6 +18,7 @@
 @property (nonatomic) NSString *availableDocks;
 @property (nonatomic) NSString *availableBikes;
 @property (nonatomic) CGFloat fillPercentage;
+@property (nonatomic) NSString *distance;
 @property (nonatomic) NSString *lastUpdated;
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 
@@ -49,6 +50,8 @@
         } else {
             _statusColor = [UIColor bikes_green];
         }
+        
+        _distance = [NSString stringWithFormat:@"%0.2f miles", station.distance / 5280];
         
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         df.dateStyle = NSDateFormatterMediumStyle;
