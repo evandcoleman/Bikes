@@ -72,6 +72,14 @@
         annotationView.canShowCallout = YES;
         annotationView.annotation = annotation;
         
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setImage:[UIImage imageNamed:@"star_off"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"star_on"] forState:UIControlStateSelected];
+        [button setImage:[UIImage imageNamed:@"star_on"] forState:UIControlStateHighlighted];
+        [button sizeToFit];
+        
+        annotationView.rightCalloutAccessoryView = button;
+        
         return annotationView;
     }
     
@@ -80,6 +88,13 @@
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
     mapView.region = MKCoordinateRegionMake(userLocation.coordinate, MKCoordinateSpanMake(0.01, 0.01));
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    BKAnnotationView *aView = (BKAnnotationView *)view;
+    [[aView.viewModel.favoriteStationCommand execute:@(!control.selected)] subscribeCompleted:^{
+        control.selected = !control.selected;
+    }];
 }
 
 @end
