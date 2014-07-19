@@ -134,9 +134,9 @@
                                  mode:MCSwipeTableViewCellModeExit
                                 state:MCSwipeTableViewCellState3
                       completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-                          // TODO: Make this a command on the view model to handle favoriting
-                          stationViewModel.station.favorite = NO;
-                          [self.viewModel.refreshCommand execute:nil];
+                          [[stationViewModel.favoriteStationCommand execute:@NO] subscribeCompleted:^{
+                              [self.viewModel.refreshCommand execute:nil];
+                          }];
                       }];
     } else {
         stationViewModel = self.viewModel.nearbyStationViewModels[indexPath.row];
@@ -145,8 +145,9 @@
                                  mode:MCSwipeTableViewCellModeExit
                                 state:MCSwipeTableViewCellState3
                       completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-                          stationViewModel.station.favorite = YES;
-                          [self.viewModel.refreshCommand execute:nil];
+                          [[stationViewModel.favoriteStationCommand execute:@YES] subscribeCompleted:^{
+                              [self.viewModel.refreshCommand execute:nil];
+                          }];
                       }];
     }
     cell.viewModel = stationViewModel;

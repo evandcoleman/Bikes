@@ -7,6 +7,8 @@
 //
 
 #import "BKStationViewModel.h"
+
+#import "BKUserPreferencesClient.h"
 #import "BKStation.h"
 
 @interface BKStationViewModel ()
@@ -21,6 +23,9 @@
 @property (nonatomic) NSString *distance;
 @property (nonatomic) NSString *lastUpdated;
 @property (nonatomic) CLLocationCoordinate2D coordinate;
+
+@property (nonatomic) RACCommand *selectStationCommand;
+@property (nonatomic) RACCommand *favoriteStationCommand;
 
 @end
 
@@ -59,6 +64,25 @@
         _lastUpdated = [df stringFromDate:station.lastUpdated];
         
         _selectStationCommand = openStationCommand;
+        
+        @weakify(self);
+        _favoriteStationCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSNumber *favorite) {
+            @strongify(self);
+            self.station.favorite = [favorite boolValue];
+            [[[BKUserPreferencesClient objectForKey:@"BKFavoriteStations"]
+              map:^id(NSArray *favorites) {
+                  return [NSMutableSet setWithArray:favorites];
+              }] subscribeNext:^(NSMutableSet *favorites) {
+                  if ([favorite boolValue]) {
+                      [favorites addObject:@(self.station.stationID)];
+                  } else {
+                      [favorites removeObject:@(self.station.stationID)];
+                  }
+                  [BKUserPreferencesClient setObject:[favorites allObjects] forKey:@"BKFavoriteStations"];
+              }];
+            
+            return [RACSignal empty];
+        }];
     }
     return self;
 }

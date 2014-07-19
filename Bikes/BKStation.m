@@ -12,6 +12,8 @@
 
 @implementation BKStation
 
+@synthesize favorite = _favorite;
+
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
              @"stationID": @"id",
@@ -38,29 +40,17 @@
     }];
 }
 
-- (void)setFavorite:(BOOL)favorite {
-    @weakify(self);
-    [[[BKUserPreferencesClient objectForKey:@"BKFavoriteStations"]
-     map:^id(NSArray *favorites) {
-         return [NSMutableSet setWithArray:favorites];
-     }] subscribeNext:^(NSMutableSet *favorites) {
-         @strongify(self);
-         if (favorite) {
-             [favorites addObject:@(self.stationID)];
-         } else {
-             [favorites removeObject:@(self.stationID)];
-         }
-         [BKUserPreferencesClient setObject:[favorites allObjects] forKey:@"BKFavoriteStations"];
-     }];
-}
-
-- (BOOL)isFavorite {
-    return [[[[[BKUserPreferencesClient objectForKey:@"BKFavoriteStations"]
-                flattenMap:^RACStream *(NSArray *favorites) {
-                    return favorites.rac_sequence.signal;
-                }] filter:^BOOL(NSNumber *stationID) {
-                    return ([stationID integerValue] == self.stationID);
-                }] take:1] first];
+- (instancetype)init {
+    self = [super init];
+    if (self != nil) {
+//        RAC(self, favorite) = [[[[BKUserPreferencesClient objectForKey:@"BKFavoriteStations"]
+//                                   flattenMap:^RACStream *(NSArray *favorites) {
+//                                       return favorites.rac_sequence.signal;
+//                                   }] filter:^BOOL(NSNumber *stationID) {
+//                                       return ([stationID integerValue] == self.stationID);
+//                                   }] take:1];
+    }
+    return self;
 }
 
 @end
