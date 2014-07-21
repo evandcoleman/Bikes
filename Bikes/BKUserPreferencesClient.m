@@ -20,4 +20,13 @@
     return [RACSignal return:[[NSUserDefaults standardUserDefaults] objectForKey:aKey]];
 }
 
++ (BOOL)stationIsFavorite:(NSInteger)stationID {
+    return [[[[self objectForKey:@"BKFavoriteStations"]
+        flattenMap:^RACStream *(NSArray *favorites) {
+            return favorites.rac_sequence.signal;
+        }] filter:^BOOL(NSNumber *station) {
+            return ([station integerValue] == stationID);
+        }] first];
+}
+
 @end

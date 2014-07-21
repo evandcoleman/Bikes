@@ -9,6 +9,7 @@
 #import "BKAPIClient.h"
 
 #import "BKStation.h"
+#import "BKUserPreferencesClient.h"
 
 #import <Overcoat/ReactiveCocoa+Overcoat.h>
 #import <CoreLocation/CoreLocation.h>
@@ -37,10 +38,15 @@
 
         // TODO: Add APICacheClient that gets a new replay subject each time and saves it.
         // The cache client will decide whether to send that along or get a new one.
-        self.stationsSignal = [[[self rac_GET:@"stations/json" parameters:nil]
+        self.stationsSignal = [[[[[[self rac_GET:@"stations/json" parameters:nil]
           map:^id(BKStationsResponse *response) {
               return response.result;
-          }] replayLast];
+          }] flattenMap:^RACStream *(NSArray *stations) {
+              return stations.rac_sequence.signal;
+          }] map:^BKStation *(BKStation *station) {
+              station.favorite = [BKUserPreferencesClient stationIsFavorite:station.stationID];
+              return station;
+          }] collect] replayLast];
     }
     return self;
 }
