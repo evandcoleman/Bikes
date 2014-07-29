@@ -41,7 +41,6 @@
     self.navigationController.navigationBarHidden = YES;
 	
     self.mapView = [[MKMapView alloc] initWithFrame:CGRectZero];
-//    self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(40.712784, -74.005941), MKCoordinateSpanMake(0.03, 0.03));
     self.mapView.showsUserLocation = YES;
     self.mapView.delegate = self;
     [self.view addSubview:self.mapView];
@@ -67,19 +66,23 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {    
     if ([annotation isKindOfClass:[BKStationViewModel class]]) {
-        BKAnnotationView *annotationView = [[BKAnnotationView alloc] initWithStationViewModel:annotation reuseIdentifier:NSStringFromClass([BKAnnotationView class])];
-        annotationView.frame = CGRectMake(0, 0, 25, 50);
+        BKAnnotationView *annotationView = (BKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:NSStringFromClass([BKAnnotationView class])];
+        if (annotationView == nil) {
+            annotationView = [[BKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:NSStringFromClass([BKAnnotationView class])];
+            annotationView.frame = CGRectMake(0, 0, 25, 50);
+            
+            annotationView.canShowCallout = YES;
+            
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            [button setImage:[UIImage imageNamed:@"star_off"] forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:@"star_on"] forState:UIControlStateSelected];
+            [button setImage:[UIImage imageNamed:@"star_on"] forState:UIControlStateHighlighted];
+            [button sizeToFit];
+            
+            annotationView.rightCalloutAccessoryView = button;
+        }
         
-        annotationView.canShowCallout = YES;
         annotationView.annotation = annotation;
-        
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setImage:[UIImage imageNamed:@"star_off"] forState:UIControlStateNormal];
-        [button setImage:[UIImage imageNamed:@"star_on"] forState:UIControlStateSelected];
-        [button setImage:[UIImage imageNamed:@"star_on"] forState:UIControlStateHighlighted];
-        [button sizeToFit];
-        
-        annotationView.rightCalloutAccessoryView = button;
         
         return annotationView;
     }

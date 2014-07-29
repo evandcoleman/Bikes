@@ -11,33 +11,30 @@
 
 @interface BKAnnotationView ()
 
-@property (nonatomic) BKStationViewModel *viewModel;
 
 @end
 
 @implementation BKAnnotationView
 
-- (id)initWithStationViewModel:(BKStationViewModel *)viewModel reuseIdentifier:(NSString *)reuseIdentifier {
-    self = [super initWithAnnotation:viewModel reuseIdentifier:reuseIdentifier];
+- (id)initWithAnnotation:(id<MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
     if (self != nil) {
-        _viewModel = viewModel;
-        
         self.backgroundColor = [UIColor clearColor];
         self.layer.shadowRadius = 3.0;
         self.layer.shadowOpacity = 0.2;
         self.layer.shadowOffset = CGSizeMake(0, -1);
         self.layer.shouldRasterize = YES;
-        
-        @weakify(self);
-        [[[RACObserve(self, viewModel.statusColor)
-            ignore:nil]
-            distinctUntilChanged]
-            subscribeNext:^(id _) {
-                @strongify(self);
-                [self setNeedsDisplay];
-            }];
     }
     return self;
+}
+
+- (void)setAnnotation:(id<MKAnnotation>)annotation {
+    [super setAnnotation:annotation];
+    [self setNeedsDisplay];
+}
+
+- (BKStationViewModel *)viewModel {
+    return (BKStationViewModel *)self.annotation;
 }
 
 - (void)drawRect:(CGRect)rect {

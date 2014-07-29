@@ -177,7 +177,7 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     if ([annotation isKindOfClass:[BKStationViewModel class]]) {
-        BKAnnotationView *annotationView = [[BKAnnotationView alloc] initWithStationViewModel:annotation reuseIdentifier:NSStringFromClass([BKAnnotationView class])];
+        BKAnnotationView *annotationView = [[BKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:NSStringFromClass([BKAnnotationView class])];
         annotationView.frame = CGRectMake(0, 0, 25, 50);
         annotationView.annotation = annotation;
         
