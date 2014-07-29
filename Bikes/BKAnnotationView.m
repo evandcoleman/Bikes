@@ -28,10 +28,12 @@
         self.layer.shadowOffset = CGSizeMake(0, -1);
         self.layer.shouldRasterize = YES;
         
+        @weakify(self);
         [[[RACObserve(self, viewModel.statusColor)
             ignore:nil]
             distinctUntilChanged]
             subscribeNext:^(id _) {
+                @strongify(self);
                 [self setNeedsDisplay];
             }];
     }
