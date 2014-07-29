@@ -18,7 +18,9 @@
 
 @property (nonatomic) MKMapView *mapView;
 
-@property (nonatomic) BKMapViewModel *viewModel;
+@property (nonatomic, readonly) BKMapViewModel *viewModel;
+
+@property (nonatomic) BOOL didUpdateToLocation;
 
 @end
 
@@ -41,7 +43,6 @@
     self.mapView = [[MKMapView alloc] initWithFrame:CGRectZero];
 //    self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(40.712784, -74.005941), MKCoordinateSpanMake(0.03, 0.03));
     self.mapView.showsUserLocation = YES;
-    self.mapView.userTrackingMode = MKUserTrackingModeFollow;
     self.mapView.delegate = self;
     [self.view addSubview:self.mapView];
     
@@ -87,7 +88,10 @@
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
-    mapView.region = MKCoordinateRegionMake(userLocation.coordinate, MKCoordinateSpanMake(0.01, 0.01));
+    if (!self.didUpdateToLocation) {
+        mapView.region = MKCoordinateRegionMake(userLocation.coordinate, MKCoordinateSpanMake(0.01, 0.01));
+        self.didUpdateToLocation = YES;
+    }
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
