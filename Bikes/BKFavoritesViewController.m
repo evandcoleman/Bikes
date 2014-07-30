@@ -19,7 +19,7 @@
 
 @interface BKFavoritesViewController () <UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate>
 
-@property (nonatomic) BKFavoritesViewModel *viewModel;
+@property (nonatomic, readonly) BKFavoritesViewModel *viewModel;
 
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) MKMapView *mapView;

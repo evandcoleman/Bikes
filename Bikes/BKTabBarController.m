@@ -38,7 +38,7 @@
         BKFavoritesViewModel *favoritesViewModel = [[BKFavoritesViewModel alloc] initWithAPIClient:viewModel.apiClient];
         UINavigationController *favoritesNavigationController = [[UINavigationController alloc] initWithRootViewController:[[BKFavoritesViewController alloc] initWithViewModel:favoritesViewModel]];
         
-        [self setViewControllers:@[mapNavigationController, favoritesNavigationController]
+        [self setViewControllers:@[favoritesNavigationController, mapNavigationController]
                         animated:NO];
         
         [_viewModel.presentViewModelSignal subscribeNext:^(RVMViewModel *viewModel) {
