@@ -26,12 +26,14 @@
         _openStationCommand = openStationCommand;
         
         RAC(self, stationViewModels) =
-            [[client.stationsSignal
+            [client.stationsSignal
             flattenMap:^RACStream *(NSArray *stations) {
-                return stations.rac_sequence.signal;
-            }]
-            map:^BKStationViewModel *(BKStation *station) {
-                return [[BKStationViewModel alloc] initWithStation:station openStationCommand:_openStationCommand];
+                return [[[stations.rac_sequence
+                            map:^BKStationViewModel *(BKStation *station) {
+                                return [[BKStationViewModel alloc] initWithStation:station openStationCommand:_openStationCommand];
+                            }]
+                            signal]
+                            collect];
             }];
     }
     return self;

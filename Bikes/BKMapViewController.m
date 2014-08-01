@@ -46,10 +46,13 @@
     [self.view addSubview:self.mapView];
     
     @weakify(self);
-    [[[RACObserve(self.viewModel, stationViewModels) ignore:nil] deliverOn:[RACScheduler mainThreadScheduler]] subscribeNext:^(BKStationViewModel *viewModel) {
-        @strongify(self);
-        [self.mapView addAnnotation:viewModel];
-    }];
+    [[[RACObserve(self.viewModel, stationViewModels)
+        ignore:nil]
+        deliverOn:[RACScheduler mainThreadScheduler]]
+        subscribeNext:^(NSArray *viewModels) {
+            @strongify(self);
+            [self.mapView addAnnotations:viewModels];
+        }];
 }
 
 - (void)viewWillLayoutSubviews {
