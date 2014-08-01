@@ -21,12 +21,12 @@
 }
 
 + (BOOL)stationIsFavorite:(NSInteger)stationID {
-    return [[[[self objectForKey:@"BKFavoriteStations"]
+    return [[[[[self objectForKey:@"BKFavoriteStations"]
         flattenMap:^RACStream *(NSArray *favorites) {
             return favorites.rac_sequence.signal;
         }] filter:^BOOL(NSNumber *station) {
             return ([station integerValue] == stationID);
-        }] first];
+        }] first] boolValue];
 }
 
 @end
