@@ -75,14 +75,6 @@
             annotationView.frame = CGRectMake(0, 0, 25, 50);
             
             annotationView.canShowCallout = YES;
-            
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-            [button setImage:[UIImage imageNamed:@"star_off"] forState:UIControlStateNormal];
-            [button setImage:[UIImage imageNamed:@"star_on"] forState:UIControlStateSelected];
-            [button setImage:[UIImage imageNamed:@"star_on"] forState:UIControlStateHighlighted];
-            [button sizeToFit];
-            
-            annotationView.rightCalloutAccessoryView = button;
         }
         
         annotationView.annotation = annotation;

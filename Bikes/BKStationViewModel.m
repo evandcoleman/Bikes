@@ -23,6 +23,7 @@
 @property (nonatomic) NSString *distance;
 @property (nonatomic) NSString *lastUpdated;
 @property (nonatomic) CLLocationCoordinate2D coordinate;
+@property (nonatomic) BOOL favorite;
 
 @property (nonatomic) RACCommand *selectStationCommand;
 @property (nonatomic) RACCommand *favoriteStationCommand;
@@ -37,6 +38,7 @@
         _station = station;
         _name = station.name;
         _status = station.statusValue;
+        _favorite = station.favorite;
         _availableDocks = [@(station.availableDocks) stringValue];
         _availableBikes = [@(station.availableBikes) stringValue];
         if (station.availableBikes > 0 || station.availableDocks > 0) {
@@ -69,6 +71,7 @@
         _favoriteStationCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSNumber *favorite) {
             @strongify(self);
             self.station.favorite = [favorite boolValue];
+            self.favorite = [favorite boolValue];
             [[[BKUserPreferencesClient objectForKey:@"BKFavoriteStations"]
               map:^id(NSArray *favorites) {
                   return [NSMutableSet setWithArray:favorites];

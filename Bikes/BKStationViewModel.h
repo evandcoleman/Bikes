@@ -24,6 +24,7 @@
 @property (nonatomic, readonly) UIColor *statusColor;
 @property (nonatomic, readonly) NSString *distance;
 @property (nonatomic, readonly) NSString *lastUpdated;
+@property (nonatomic, readonly, getter = isFavorite) BOOL favorite;
 
 @property (nonatomic, readonly) RACCommand *selectStationCommand;
 

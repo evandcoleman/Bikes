@@ -24,6 +24,15 @@
         self.layer.shadowOpacity = 0.2;
         self.layer.shadowOffset = CGSizeMake(0, -1);
         self.layer.shouldRasterize = YES;
+        
+        // TODO: Keep this button state in sync with the favorite property on the view model.
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.adjustsImageWhenHighlighted = NO;
+        [button setImage:[UIImage imageNamed:@"star_off"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"star_on"] forState:UIControlStateSelected];
+        [button sizeToFit];
+        
+        self.rightCalloutAccessoryView = button;
     }
     return self;
 }
