@@ -33,7 +33,6 @@
     if (self != nil) {
         self.tabBarItem.image = [UIImage imageNamed:@"favorites"];
         [self.tabBarItem setImageInsets:UIEdgeInsetsMake(5, 0, -5, 0)];
-        self.automaticallyAdjustsScrollViewInsets = NO;
     }
     return self;
 }
@@ -64,10 +63,10 @@
     [self.mapView autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:0];
     [self.mapView autoSetDimension:ALDimensionHeight toSize:130];
     
-    [self.tableView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.mapView withOffset:0];
+    [self.tableView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.mapView withOffset:-20];
     [self.tableView autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:0];
     [self.tableView autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:0];
-    [self.tableView autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:(UIView *)self.bottomLayoutGuide];
+    [self.tableView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:0];
     
     [[RACObserve(self, viewModel.favoriteStationViewModels)
       mapReplace:self.tableView]
