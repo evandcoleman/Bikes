@@ -16,7 +16,9 @@
 
 @interface BKAPIClient ()
 
-@property (nonatomic) RACSignal *stationsSignal;
+@property (nonatomic) RACSignal *cachedStations;
+
+@property (nonatomic) NSDate *lastUpdateDate;
 
 @end
 
@@ -36,23 +38,21 @@
     self = [super initWithBaseURL:[NSURL URLWithString:@"http://citibikenyc.com"]];
     if (self != nil) {
 
-        // TODO: Add APICacheClient that gets a new replay subject each time and saves it.
-        // The cache client will decide whether to send that along or get a new one.
-        _stationsSignal = [[[[[[self rac_GET:@"stations/json" parameters:nil]
-          map:^id(BKStationsResponse *response) {
-              return response.result;
-          }] flattenMap:^RACStream *(NSArray *stations) {
-              return stations.rac_sequence.signal;
-          }] map:^BKStation *(BKStation *station) {
-              station.favorite = [BKUserPreferencesClient stationIsFavorite:station.stationID];
-              return station;
-          }] collect] replayLast];
+        _cachedStations = [[self stations] replayLast];
     }
     return self;
 }
 
+- (RACSignal *)cachedStations {
+    // Refetch every 5 minutes
+    if ([self.lastUpdateDate timeIntervalSinceNow] <= -60*5) {
+        _cachedStations = [[self stations] replayLast];
+    }
+    return _cachedStations;
+}
+
 - (RACSignal *)stationsNearLocation:(CLLocation *)location {
-    return [[self.stationsSignal
+    return [[self.cachedStations
                 flattenMap:^RACStream *(NSArray *stations) {
                     return stations.rac_sequence.signal;
                 }]
@@ -62,6 +62,26 @@
                     CGFloat distance = [stationLocation distanceFromLocation:location];
                     station.distance = distance;
                     return (distance < 1000);
+                }];
+}
+
+#pragma mark - Private
+
+- (RACSignal *)stations {
+    DDLogInfo(@"Fetching stations...");
+    self.lastUpdateDate = [NSDate date];
+    return [[[self rac_GET:@"stations/json" parameters:nil]
+                map:^id(BKStationsResponse *response) {
+                    return response.result;
+                }]
+                flattenMap:^RACStream *(NSArray *stations) {
+                    return [[[stations.rac_sequence
+                                map:^BKStation *(BKStation *station) {
+                                    station.favorite = [BKUserPreferencesClient stationIsFavorite:station.stationID];
+                                    return station;
+                                }]
+                                signal]
+                                collect];
                 }];
 }
 

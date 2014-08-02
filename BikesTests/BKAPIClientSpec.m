@@ -26,21 +26,21 @@ describe(@"BKAPIClient", ^{
     describe(@"-fetchStations", ^{
         
         it(@"should return array", ^AsyncBlock {
-            [apiClient.stationsSignal subscribeNext:^(NSArray *response) {
+            [apiClient.cachedStations subscribeNext:^(NSArray *response) {
                 expect(response).to.beKindOf([NSArray class]);
                 done();
             }];
         });
         
         it(@"should return multiple objects", ^AsyncBlock {
-            [apiClient.stationsSignal subscribeNext:^(NSArray *response) {
+            [apiClient.cachedStations subscribeNext:^(NSArray *response) {
                 expect(response).toNot.beEmpty();
                 done();
             }];
         });
         
         it(@"should return BKStation objects", ^AsyncBlock {
-            [apiClient.stationsSignal subscribeNext:^(NSArray *response) {
+            [apiClient.cachedStations subscribeNext:^(NSArray *response) {
                 expect([response firstObject]).to.beInstanceOf([BKStation class]);
                 done();
             }];

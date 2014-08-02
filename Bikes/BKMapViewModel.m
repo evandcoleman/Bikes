@@ -26,7 +26,7 @@
         _openStationCommand = openStationCommand;
         
         RAC(self, stationViewModels) =
-            [client.stationsSignal
+            [client.cachedStations
             flattenMap:^RACStream *(NSArray *stations) {
                 return [[[stations.rac_sequence
                             map:^BKStationViewModel *(BKStation *station) {

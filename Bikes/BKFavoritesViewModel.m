@@ -47,7 +47,7 @@
         }];
         
         _updateFavoritesCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id _) {
-            return [[[[[[apiClient stationsSignal]
+            return [[[[[[apiClient cachedStations]
                         flattenMap:^RACStream *(NSArray *stations) {
                             return stations.rac_sequence.signal;
                         }]
