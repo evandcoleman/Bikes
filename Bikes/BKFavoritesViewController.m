@@ -49,7 +49,6 @@
     [self.view addSubview:self.tableView];
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    // TODO: Execute both commands
     refreshControl.rac_command = self.viewModel.refreshCommand;
     [self.tableView addSubview:refreshControl];
     

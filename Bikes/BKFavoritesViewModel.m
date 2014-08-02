@@ -64,7 +64,6 @@
             return [RACSignal combineLatest:@[ [self.updateFavoritesCommand execute:nil], [self.updateNearbyCommand execute:nil] ]];
         }];
 
-        // TODO: Make commands to handle the favoriting. Pass in the view model.
         [[[_updateNearbyCommand executionSignals]
             switchToLatest] subscribeNext:^(NSArray *stationViewModels) {
                 @strongify(self);
