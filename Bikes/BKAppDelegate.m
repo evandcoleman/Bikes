@@ -13,11 +13,14 @@
 
 #import <CocoaLumberjack/DDASLLogger.h>
 #import <CocoaLumberjack/DDTTYLogger.h>
+#import <HockeySDK/HockeySDK.h>
 
 @implementation BKAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self setupLogger];
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"8ae5d4f1d795d7954070bba999915c06"];
+    [[BITHockeyManager sharedHockeyManager] startManager];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
