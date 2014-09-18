@@ -8,19 +8,41 @@
 
 #import "BKUserPreferencesClient.h"
 
+@interface BKUserPreferencesClient ()
+
+@property (nonatomic, readonly) NSUserDefaults *userDefaults;
+
+@end
+
 @implementation BKUserPreferencesClient
 
-+ (void)setObject:(id<NSCoding>)object forKey:(NSString *)aKey {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:object forKey:aKey];
-    [defaults synchronize];
++ (instancetype)sharedUserPreferencesClient {
+    static BKUserPreferencesClient *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[BKUserPreferencesClient alloc] init];
+    });
+    return sharedInstance;
 }
 
-+ (RACSignal *)objectForKey:(NSString *)aKey {
-    return [RACSignal return:[[NSUserDefaults standardUserDefaults] objectForKey:aKey]];
+- (instancetype)init {
+    self = [super init];
+    if (self != nil) {
+        _userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.net.evancoleman.Bikes"];
+    }
+    return self;
 }
 
-+ (BOOL)stationIsFavorite:(NSInteger)stationID {
+- (void)setObject:(id<NSCoding>)object forKey:(NSString *)aKey {
+    [self.userDefaults setObject:object forKey:aKey];
+    [self.userDefaults synchronize];
+}
+
+- (RACSignal *)objectForKey:(NSString *)aKey {
+    return [RACSignal return:[self.userDefaults objectForKey:aKey]];
+}
+
+- (BOOL)stationIsFavorite:(NSInteger)stationID {
     return [[[[[self objectForKey:@"BKFavoriteStations"]
         flattenMap:^RACStream *(NSArray *favorites) {
             return favorites.rac_sequence.signal;

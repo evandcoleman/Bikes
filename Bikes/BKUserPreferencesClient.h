@@ -10,9 +10,11 @@
 
 @interface BKUserPreferencesClient : NSObject
 
-+ (void)setObject:(id<NSCoding>)object forKey:(NSString *)aKey;
-+ (RACSignal *)objectForKey:(NSString *)aKey;
++ (instancetype)sharedUserPreferencesClient;
 
-+ (BOOL)stationIsFavorite:(NSInteger)stationID;
+- (void)setObject:(id<NSCoding>)object forKey:(NSString *)aKey;
+- (RACSignal *)objectForKey:(NSString *)aKey;
+
+- (BOOL)stationIsFavorite:(NSInteger)stationID;
 
 @end

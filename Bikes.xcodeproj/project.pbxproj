@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		207AD28719CBA51D00333345 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 207AD28619CBA51D00333345 /* NotificationCenter.framework */; };
+		207AD28D19CBA51D00333345 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 207AD28C19CBA51D00333345 /* TodayViewController.m */; };
+		207AD29219CBA51D00333345 /* Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 207AD28519CBA51D00333345 /* Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		20AAE68019731E0500E73391 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AAE67F19731E0500E73391 /* Foundation.framework */; };
 		20AAE68219731E0500E73391 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AAE68119731E0500E73391 /* CoreGraphics.framework */; };
 		20AAE68419731E0500E73391 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AAE68319731E0500E73391 /* UIKit.framework */; };
@@ -59,6 +62,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		207AD29019CBA51D00333345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20AAE67419731E0500E73391 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 207AD28419CBA51D00333345;
+			remoteInfo = Widget;
+		};
+		207AD29319CBA51D00333345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20AAE67419731E0500E73391 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 207AD28419CBA51D00333345;
+			remoteInfo = Widget;
+		};
 		20AAE69C19731E0500E73391 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 20AAE67419731E0500E73391 /* Project object */;
@@ -68,7 +85,28 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		207AD29819CBA51D00333345 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				207AD29219CBA51D00333345 /* Widget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		207AD28519CBA51D00333345 /* Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Widget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		207AD28619CBA51D00333345 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		207AD28A19CBA51D00333345 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		207AD28B19CBA51D00333345 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		207AD28C19CBA51D00333345 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		207AD29919CBA58700333345 /* Bikes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Bikes.entitlements; sourceTree = "<group>"; };
+		207AD29A19CBA5C700333345 /* Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Widget.entitlements; sourceTree = "<group>"; };
 		20AAE67C19731E0500E73391 /* Bikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bikes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20AAE67F19731E0500E73391 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		20AAE68119731E0500E73391 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -147,6 +185,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		207AD28219CBA51D00333345 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				207AD28719CBA51D00333345 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		20AAE67919731E0500E73391 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -175,11 +221,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		207AD28819CBA51D00333345 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				207AD29A19CBA5C700333345 /* Widget.entitlements */,
+				207AD28B19CBA51D00333345 /* TodayViewController.h */,
+				207AD28C19CBA51D00333345 /* TodayViewController.m */,
+				207AD28919CBA51D00333345 /* Supporting Files */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		207AD28919CBA51D00333345 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				207AD28A19CBA51D00333345 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		20AAE67319731E0500E73391 = {
 			isa = PBXGroup;
 			children = (
 				20AAE68519731E0500E73391 /* Bikes */,
 				20AAE69E19731E0500E73391 /* BikesTests */,
+				207AD28819CBA51D00333345 /* Widget */,
 				20AAE67E19731E0500E73391 /* Frameworks */,
 				20AAE67D19731E0500E73391 /* Products */,
 				FCA66F26E4EA4434B43390F3 /* Pods.xcconfig */,
@@ -192,6 +258,7 @@
 			children = (
 				20AAE67C19731E0500E73391 /* Bikes.app */,
 				20AAE69719731E0500E73391 /* BikesTests.xctest */,
+				207AD28519CBA51D00333345 /* Widget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -208,6 +275,7 @@
 				20AAE69819731E0500E73391 /* XCTest.framework */,
 				56CDA9C4674A467BACEF226D /* libPods.a */,
 				795F318C83E2479C89BCDD62 /* libPods-BikesTests.a */,
+				207AD28619CBA51D00333345 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -215,6 +283,7 @@
 		20AAE68519731E0500E73391 /* Bikes */ = {
 			isa = PBXGroup;
 			children = (
+				207AD29919CBA58700333345 /* Bikes.entitlements */,
 				20AAE68E19731E0500E73391 /* BKAppDelegate.h */,
 				20AAE68F19731E0500E73391 /* BKAppDelegate.m */,
 				20AAE6C41974BEC800E73391 /* UI */,
@@ -363,6 +432,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		207AD28419CBA51D00333345 /* Widget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 207AD29519CBA51D00333345 /* Build configuration list for PBXNativeTarget "Widget" */;
+			buildPhases = (
+				207AD28119CBA51D00333345 /* Sources */,
+				207AD28219CBA51D00333345 /* Frameworks */,
+				207AD28319CBA51D00333345 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Widget;
+			productName = Widget;
+			productReference = 207AD28519CBA51D00333345 /* Widget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		20AAE67B19731E0500E73391 /* Bikes */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 20AAE6A819731E0500E73391 /* Build configuration list for PBXNativeTarget "Bikes" */;
@@ -372,10 +458,13 @@
 				20AAE67919731E0500E73391 /* Frameworks */,
 				20AAE67A19731E0500E73391 /* Resources */,
 				BD87373C935D4741971E931B /* Copy Pods Resources */,
+				207AD29819CBA51D00333345 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				207AD29119CBA51D00333345 /* PBXTargetDependency */,
+				207AD29419CBA51D00333345 /* PBXTargetDependency */,
 			);
 			name = Bikes;
 			productName = Bikes;
@@ -412,8 +501,22 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Evan Coleman";
 				TargetAttributes = {
+					207AD28419CBA51D00333345 = {
+						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 52M9C6892K;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					20AAE67B19731E0500E73391 = {
 						DevelopmentTeam = 52M9C6892K;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					20AAE69619731E0500E73391 = {
 						TestTargetID = 20AAE67B19731E0500E73391;
@@ -434,11 +537,19 @@
 			targets = (
 				20AAE67B19731E0500E73391 /* Bikes */,
 				20AAE69619731E0500E73391 /* BikesTests */,
+				207AD28419CBA51D00333345 /* Widget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		207AD28319CBA51D00333345 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		20AAE67A19731E0500E73391 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -534,6 +645,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		207AD28119CBA51D00333345 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				207AD28D19CBA51D00333345 /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		20AAE67819731E0500E73391 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -574,6 +693,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		207AD29119CBA51D00333345 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 207AD28419CBA51D00333345 /* Widget */;
+			targetProxy = 207AD29019CBA51D00333345 /* PBXContainerItemProxy */;
+		};
+		207AD29419CBA51D00333345 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 207AD28419CBA51D00333345 /* Widget */;
+			targetProxy = 207AD29319CBA51D00333345 /* PBXContainerItemProxy */;
+		};
 		20AAE69D19731E0500E73391 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 20AAE67B19731E0500E73391 /* Bikes */;
@@ -601,6 +730,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		207AD29619CBA51D00333345 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = Widget/Widget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = Widget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		207AD29719CBA51D00333345 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = Widget/Widget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = Widget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		20AAE6A619731E0500E73391 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -679,6 +850,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Bikes/Bikes.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bikes/Bikes-Prefix.pch";
 				INFOPLIST_FILE = "Bikes/Bikes-Info.plist";
@@ -695,7 +869,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_ENTITLEMENTS = Bikes/Bikes.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bikes/Bikes-Prefix.pch";
 				INFOPLIST_FILE = "Bikes/Bikes-Info.plist";
@@ -753,6 +929,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		207AD29519CBA51D00333345 /* Build configuration list for PBXNativeTarget "Widget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				207AD29619CBA51D00333345 /* Debug */,
+				207AD29719CBA51D00333345 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		20AAE67719731E0500E73391 /* Build configuration list for PBXProject "Bikes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

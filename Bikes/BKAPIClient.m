@@ -77,7 +77,7 @@
                 flattenMap:^RACStream *(NSArray *stations) {
                     return [[[stations.rac_sequence
                                 map:^BKStation *(BKStation *station) {
-                                    station.favorite = [BKUserPreferencesClient stationIsFavorite:station.stationID];
+                                    station.favorite = [[BKUserPreferencesClient sharedUserPreferencesClient] stationIsFavorite:station.stationID];
                                     return station;
                                 }]
                                 signal]

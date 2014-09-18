@@ -72,7 +72,7 @@
             @strongify(self);
             self.station.favorite = [favorite boolValue];
             self.favorite = [favorite boolValue];
-            [[[BKUserPreferencesClient objectForKey:@"BKFavoriteStations"]
+            [[[[BKUserPreferencesClient sharedUserPreferencesClient] objectForKey:@"BKFavoriteStations"]
               map:^id(NSArray *favorites) {
                   return [NSMutableSet setWithArray:favorites];
               }] subscribeNext:^(NSMutableSet *favorites) {
@@ -81,7 +81,7 @@
                   } else {
                       [favorites removeObject:@(self.station.stationID)];
                   }
-                  [BKUserPreferencesClient setObject:[favorites allObjects] forKey:@"BKFavoriteStations"];
+                  [[BKUserPreferencesClient sharedUserPreferencesClient] setObject:[favorites allObjects] forKey:@"BKFavoriteStations"];
               }];
             
             return [RACSignal empty];
