@@ -26,21 +26,40 @@
         _manager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
         _manager.delegate = self;
         
+        @weakify(self);
         _locationSignal =
             [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+                @strongify(self);
                 [[[[self rac_signalForSelector:@selector(locationManager:didUpdateLocations:) fromProtocol:@protocol(CLLocationManagerDelegate)]
-                  reduceEach:^id(__unused CLLocationManager *_, NSArray *locations) {
-                      return locations;
-                  }] map:^id(NSArray *locations) {
-                      return [locations lastObject];
-                  }] subscribe:subscriber];
+                    reduceEach:^id(__unused CLLocationManager *_, NSArray *locations) {
+                        return locations;
+                    }]
+                    map:^id(NSArray *locations) {
+                        return [locations lastObject];
+                    }]
+                    subscribe:subscriber];
                 
                 return [RACDisposable disposableWithBlock:^{
-                    [_manager stopUpdatingLocation];
+                    [self.manager stopUpdatingLocation];
                 }];
             }];
         
-        [_manager startUpdatingLocation];
+        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+            [[[self rac_signalForSelector:@selector(locationManager:didChangeAuthorizationStatus:) fromProtocol:@protocol(CLLocationManagerDelegate)]
+                reduceEach:^NSNumber *(CLLocationManager *_, NSNumber *status){
+                    return status;
+                }]
+                subscribeNext:^(NSNumber *status) {
+                    @strongify(self);
+                    if ([status integerValue] == kCLAuthorizationStatusAuthorizedWhenInUse) {
+                        [self.manager startUpdatingLocation];
+                    }
+                }];
+            
+            [_manager requestWhenInUseAuthorization];
+        } else {
+            [_manager startUpdatingLocation];
+        }
     }
     return self;
 }
