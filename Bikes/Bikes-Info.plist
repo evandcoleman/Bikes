@@ -24,6 +24,10 @@
 	<string>2014080101</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Bikes needs your location to show you nearby stations.</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Bikes needs your location to show you nearby stations.</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

@@ -1,7 +1,9 @@
-platform :ios, "7.0"
+platform :ios, "8.0"
+
+link_with 'Bikes', 'Widget'
 
 pod 'AFNetworking'
-pod 'CocoaLumberjack'
+pod 'CocoaLumberjack', '~> 1.9'
 pod 'HockeySDK'
 pod 'Mantle'
 pod 'MCSwipeTableViewCell'
