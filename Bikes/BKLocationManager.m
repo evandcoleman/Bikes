@@ -44,22 +44,8 @@
                 }];
             }];
         
-        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
-            [[[self rac_signalForSelector:@selector(locationManager:didChangeAuthorizationStatus:) fromProtocol:@protocol(CLLocationManagerDelegate)]
-                reduceEach:^NSNumber *(CLLocationManager *_, NSNumber *status){
-                    return status;
-                }]
-                subscribeNext:^(NSNumber *status) {
-                    @strongify(self);
-                    if ([status integerValue] == kCLAuthorizationStatusAuthorizedWhenInUse) {
-                        [self.manager startUpdatingLocation];
-                    }
-                }];
-            
-            [_manager requestWhenInUseAuthorization];
-        } else {
-            [_manager startUpdatingLocation];
-        }
+        [_manager requestWhenInUseAuthorization];
+        [_manager startUpdatingLocation];
     }
     return self;
 }
