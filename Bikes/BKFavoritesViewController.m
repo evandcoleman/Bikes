@@ -68,35 +68,37 @@
     [self.tableView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:0];
     
     [[RACObserve(self, viewModel.favoriteStationViewModels)
-      mapReplace:self.tableView]
-     subscribeNext:^(UITableView *tableView) {
-         [tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
-     }];
+        mapReplace:self.tableView]
+        subscribeNext:^(UITableView *tableView) {
+            [tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+        }];
     
     [[RACObserve(self, viewModel.nearbyStationViewModels)
-      mapReplace:self.tableView]
-     subscribeNext:^(UITableView *tableView) {
-         [tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
-     }];
+        mapReplace:self.tableView]
+        subscribeNext:^(UITableView *tableView) {
+            [tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
+        }];
     
     @weakify(self);
     
     [[[[self rac_signalForSelector:@selector(tableView:didSelectRowAtIndexPath:) fromProtocol:@protocol(UITableViewDelegate)]
-       reduceEach:^NSIndexPath *(UITableView *_, NSIndexPath *indexPath){
-           return indexPath;
-       }] map:^BKStationViewModel *(NSIndexPath *indexPath) {
-           @strongify(self);
-           if (indexPath.section == 0) {
-               return self.viewModel.favoriteStationViewModels[indexPath.row];
-           } else {
-               return self.viewModel.nearbyStationViewModels[indexPath.row];
-           }
-       }] subscribeNext:^(BKStationViewModel *stationViewModel) {
-           @strongify(self);
-           [self.mapView removeAnnotations:self.mapView.annotations];
-           [self.mapView addAnnotation:stationViewModel];
-           [self.mapView setRegion:MKCoordinateRegionMake(stationViewModel.coordinate, MKCoordinateSpanMake(0.003, 0.003)) animated:YES];
-       }];
+        reduceEach:^NSIndexPath *(UITableView *_, NSIndexPath *indexPath){
+            return indexPath;
+        }]
+        map:^BKStationViewModel *(NSIndexPath *indexPath) {
+            @strongify(self);
+            if (indexPath.section == 0) {
+                return self.viewModel.favoriteStationViewModels[indexPath.row];
+            } else {
+                return self.viewModel.nearbyStationViewModels[indexPath.row];
+            }
+        }]
+        subscribeNext:^(BKStationViewModel *stationViewModel) {
+            @strongify(self);
+            [self.mapView removeAnnotations:self.mapView.annotations];
+            [self.mapView addAnnotation:stationViewModel];
+            [self.mapView setRegion:MKCoordinateRegionMake(stationViewModel.coordinate, MKCoordinateSpanMake(0.003, 0.003)) animated:YES];
+        }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

@@ -52,16 +52,17 @@
 }
 
 - (RACSignal *)stationsNearLocation:(CLLocation *)location {
-    return [[self.cachedStations
+    return [self.cachedStations
                 flattenMap:^RACStream *(NSArray *stations) {
-                    return stations.rac_sequence.signal;
-                }]
-                filter:^BOOL(BKStation *station) {
-                    // Is doing this here The Right Way To Do It™?
-                    CLLocation *stationLocation = [[CLLocation alloc] initWithLatitude:station.latitude longitude:station.longitude];
-                    CGFloat distance = [stationLocation distanceFromLocation:location];
-                    station.distance = distance;
-                    return (distance < 1000);
+                    return [[stations.rac_sequence
+                                filter:^BOOL(BKStation *station) {
+                                    // Is doing this here The Right Way To Do It™?
+                                    CLLocation *stationLocation = [[CLLocation alloc] initWithLatitude:station.latitude longitude:station.longitude];
+                                    CGFloat distance = [stationLocation distanceFromLocation:location];
+                                    station.distance = distance;
+                                    return (distance < 1000);
+                                }]
+                                signal];
                 }];
 }
 
