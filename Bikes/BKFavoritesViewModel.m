@@ -35,32 +35,39 @@
         @weakify(self);
         _updateNearbyCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id _) {
             @strongify(self);
-            return [[[self.locationManager.locationSignal
-                    take:1]
-                    flattenMap:^RACStream *(CLLocation *location) {
-                        return [[[[[apiClient stationsNearLocation:location]
-                                 filter:^BOOL(BKStation *station) {
-                                     return ((station.status == BKStationStatusInService) && !station.isFavorite);
-                                 }]
-                                 map:^BKStationViewModel *(BKStation *station) {
-                                     return [[BKStationViewModel alloc] initWithStation:station openStationCommand:nil];
-                                 }] collect] map:^id(NSArray *stationViewModels) {
-                                     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"distance" ascending:YES];
-                                     return [stationViewModels sortedArrayUsingDescriptors:@[sortDescriptor]];
-                                 }];
-                    }] deliverOn:[RACScheduler mainThreadScheduler]];
+            return [[[[self.locationManager.locationSignal
+                        take:1]
+                        flattenMap:^RACStream *(CLLocation *location) {
+                            return [[[[apiClient stationsNearLocation:location]
+                                        filter:^BOOL(BKStation *station) {
+                                            return ((station.status == BKStationStatusInService) && !station.isFavorite);
+                                        }]
+                                        map:^BKStationViewModel *(BKStation *station) {
+                                            return [[BKStationViewModel alloc] initWithStation:station openStationCommand:nil];
+                                        }]
+                                        collect];
+                        }]
+                        map:^id(NSArray *stationViewModels) {
+                            NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"distance" ascending:YES];
+                            return [stationViewModels sortedArrayUsingDescriptors:@[sortDescriptor]];
+                        }]
+                        deliverOn:[RACScheduler mainThreadScheduler]];
         }];
         
         _updateFavoritesCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id _) {
-            return [[[[[[apiClient cachedStations]
+            return [[[apiClient cachedStations]
                         flattenMap:^RACStream *(NSArray *stations) {
-                            return stations.rac_sequence.signal;
+                            return [[[[stations.rac_sequence
+                                        filter:^BOOL(BKStation *station) {
+                                            return station.isFavorite;
+                                        }]
+                                        map:^BKStationViewModel *(BKStation *station) {
+                                            return [[BKStationViewModel alloc] initWithStation:station openStationCommand:nil];
+                                        }]
+                                        signal]
+                                        collect];
                         }]
-                        filter:^BOOL(BKStation *station) {
-                            return station.isFavorite;
-                        }] map:^BKStationViewModel *(BKStation *station) {
-                            return [[BKStationViewModel alloc] initWithStation:station openStationCommand:nil];
-                        }] collect] deliverOn:[RACScheduler mainThreadScheduler]];
+                        deliverOn:[RACScheduler mainThreadScheduler]];
         }];
 
         _refreshCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id _) {
@@ -69,13 +76,15 @@
         }];
 
         [[[_updateNearbyCommand executionSignals]
-            switchToLatest] subscribeNext:^(NSArray *stationViewModels) {
+            switchToLatest]
+            subscribeNext:^(NSArray *stationViewModels) {
                 @strongify(self);
                 self.nearbyStationViewModels = stationViewModels;
             }];
 
         [[[_updateFavoritesCommand executionSignals]
-              switchToLatest] subscribeNext:^(NSArray *stationViewModels) {
+            switchToLatest]
+            subscribeNext:^(NSArray *stationViewModels) {
                 @strongify(self);
                 self.favoriteStationViewModels = stationViewModels;
             }];
