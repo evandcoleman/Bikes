@@ -20,6 +20,8 @@
 @property (nonatomic) RACCommand *updateFavoritesCommand;
 @property (nonatomic) RACCommand *refreshCommand;
 
+@property (nonatomic) BKLocationManager *locationManager;
+
 @end
 
 @implementation BKFavoritesViewModel
@@ -28,9 +30,12 @@
     self = [super init];
     if (self != nil) {
 
+        _locationManager = [[BKLocationManager alloc] init];
+        
+        @weakify(self);
         _updateNearbyCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id _) {
-            BKLocationManager *locationManager = [[BKLocationManager alloc] init];
-            return [[[locationManager.locationSignal
+            @strongify(self);
+            return [[[self.locationManager.locationSignal
                     take:1]
                     flattenMap:^RACStream *(CLLocation *location) {
                         return [[[[[apiClient stationsNearLocation:location]
@@ -58,7 +63,6 @@
                         }] collect] deliverOn:[RACScheduler mainThreadScheduler]];
         }];
 
-        @weakify(self);
         _refreshCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id _) {
             @strongify(self);
             return [RACSignal combineLatest:@[ [self.updateFavoritesCommand execute:nil], [self.updateNearbyCommand execute:nil] ]];
