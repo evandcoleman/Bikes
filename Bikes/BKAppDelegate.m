@@ -8,7 +8,6 @@
 
 #import "BKAppDelegate.h"
 #import "BKTabBarController.h"
-#import "BKAPIClient.h"
 #import "BKTabBarViewModel.h"
 
 #import <CocoaLumberjack/DDASLLogger.h>
@@ -27,8 +26,7 @@
     [[UINavigationBar appearance] setTitleTextAttributes:@{ NSFontAttributeName: [UIFont bikes_boldWithSize:16] }];
     [[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setFont:[UIFont bikes_boldWithSize:13]];
     
-    BKAPIClient *apiClient = [[BKAPIClient alloc] init];
-    BKTabBarViewModel *viewModel = [[BKTabBarViewModel alloc] initWithAPIClient:apiClient];
+    BKTabBarViewModel *viewModel = [[BKTabBarViewModel alloc] init];
     BKTabBarController *pageViewController = [[BKTabBarController alloc] initWithViewModel:viewModel];
     self.window.rootViewController = pageViewController;
     

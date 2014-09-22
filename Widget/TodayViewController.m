@@ -65,7 +65,7 @@
 
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {
     @weakify(self);
-    [[[self.client.cachedStations
+    [[[[self.client readStations]
         flattenMap:^RACSignal *(NSArray *stations) {
             return [[[stations.rac_sequence
                         filter:^BOOL(BKStation *station) {

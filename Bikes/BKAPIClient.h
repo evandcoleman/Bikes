@@ -13,8 +13,7 @@
 
 @interface BKAPIClient : OVCHTTPSessionManager
 
-@property (nonatomic, readonly) RACSignal *cachedStations;
-
-- (RACSignal *)stationsNearLocation:(CLLocation *)location;
+- (RACSignal *)readStations;
+- (void)clearCache;
 
 @end

@@ -9,29 +9,23 @@
 #import "BKTabBarViewModel.h"
 
 #import "BKAPIClient.h"
-#import "BKStation.h"
+#import "BKLocationManager.h"
+
+#import "BKStationsViewModel.h"
 
 @interface BKTabBarViewModel ()
-
-@property (nonatomic) BKAPIClient *apiClient;
-@property (nonatomic) RACSignal *presentViewModelSignal;
-@property (nonatomic) RACCommand *openViewModelCommand;
 
 @end
 
 @implementation BKTabBarViewModel
 
-- (instancetype)initWithAPIClient:(BKAPIClient *)client {
+- (instancetype)init {
     self = [super init];
     if (self != nil) {
-        _apiClient = client;
+        BKAPIClient *apiClient = [[BKAPIClient alloc] init];
+        BKLocationManager *locationManager = [[BKLocationManager alloc] init];
         
-        _openViewModelCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(RVMViewModel *viewModel) {
-            return [RACSignal return:viewModel];
-        }];
-        
-        _presentViewModelSignal = [[_openViewModelCommand executionSignals]
-                                       switchToLatest];
+        _stationsViewModel = [[BKStationsViewModel alloc] initWithAPIClient:apiClient locationManager:locationManager];
     }
     return self;
 }

@@ -8,33 +8,18 @@
 
 #import "BKMapViewModel.h"
 
-#import "BKAPIClient.h"
-#import "BKStationViewModel.h"
+#import "BKStationsViewModel.h"
 
 @interface BKMapViewModel ()
-
-@property (nonatomic) NSArray *stationViewModels;
-@property (nonatomic) RACCommand *openStationCommand;
 
 @end
 
 @implementation BKMapViewModel
 
-- (instancetype)initWithAPIClient:(BKAPIClient *)client openStationCommand:(RACCommand *)openStationCommand {
+- (instancetype)initWithStationsViewModel:(BKStationsViewModel *)stationsViewModel {
     self = [super init];
     if (self != nil) {
-        _openStationCommand = openStationCommand;
-        
-        RAC(self, stationViewModels) =
-            [client.cachedStations
-            flattenMap:^RACStream *(NSArray *stations) {
-                return [[[stations.rac_sequence
-                            map:^BKStationViewModel *(BKStation *station) {
-                                return [[BKStationViewModel alloc] initWithStation:station openStationCommand:_openStationCommand];
-                            }]
-                            signal]
-                            collect];
-            }];
+        RAC(self, stationViewModels) = RACObserve(stationsViewModel, viewModels);
     }
     return self;
 }

@@ -10,7 +10,7 @@
 
 #import "BKMapViewController.h"
 #import "BKMapViewModel.h"
-#import "BKStationViewModel.h"
+#import "BKStationsViewModel.h"
 #import "BKTabBarViewModel.h"
 #import "BKFavoritesViewModel.h"
 #import "BKFavoritesViewController.h"
@@ -18,8 +18,6 @@
 @interface BKTabBarController () <UITabBarControllerDelegate>
 
 @property (nonatomic) BKTabBarViewModel *viewModel;
-
-@property (nonatomic) RACCommand *presentViewModelCommand;
 
 @end
 
@@ -32,24 +30,19 @@
         
         self.delegate = self;
         
-        BKMapViewModel *mapViewModel = [[BKMapViewModel alloc] initWithAPIClient:viewModel.apiClient openStationCommand:viewModel.openViewModelCommand];
+        BKMapViewModel *mapViewModel = [[BKMapViewModel alloc] initWithStationsViewModel:_viewModel.stationsViewModel];
         UINavigationController *mapNavigationController = [[UINavigationController alloc] initWithRootViewController:[[BKMapViewController alloc] initWithViewModel:mapViewModel]];
         
-        BKFavoritesViewModel *favoritesViewModel = [[BKFavoritesViewModel alloc] initWithAPIClient:viewModel.apiClient];
+        BKFavoritesViewModel *favoritesViewModel = [[BKFavoritesViewModel alloc] initWithStationsViewModel:_viewModel.stationsViewModel];
         UINavigationController *favoritesNavigationController = [[UINavigationController alloc] initWithRootViewController:[[BKFavoritesViewController alloc] initWithViewModel:favoritesViewModel]];
         
         [self setViewControllers:@[favoritesNavigationController, mapNavigationController]
                         animated:NO];
         
-        [_viewModel.presentViewModelSignal subscribeNext:^(RVMViewModel *viewModel) {
-            DDLogInfo(@"BKTabBarController wants to present %@", NSStringFromClass([viewModel class]));
-            
-        }];
-        
-        [[self rac_signalForSelector:@selector(tabBarController:didSelectViewController:) fromProtocol:@protocol(UITabBarControllerDelegate)]
-         subscribeNext:^(UIViewController *viewController) {
-            
-        }];
+//        [[self rac_signalForSelector:@selector(tabBarController:didSelectViewController:) fromProtocol:@protocol(UITabBarControllerDelegate)]
+//         subscribeNext:^(UIViewController *viewController) {
+//            
+//        }];
     }
     return self;
 }

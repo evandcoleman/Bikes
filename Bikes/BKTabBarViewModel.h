@@ -8,16 +8,10 @@
 
 #import "RVMViewModel.h"
 
-@class BKAPIClient;
+@class BKStationsViewModel;
 
 @interface BKTabBarViewModel : RVMViewModel
 
-@property (nonatomic, readonly) RACSignal *presentViewModelSignal;
-
-@property (nonatomic, readonly) RACCommand *openViewModelCommand;
-
-@property (nonatomic, readonly) BKAPIClient *apiClient;
-
-- (instancetype)initWithAPIClient:(BKAPIClient *)client;
+@property (nonatomic, readonly) BKStationsViewModel *stationsViewModel;
 
 @end

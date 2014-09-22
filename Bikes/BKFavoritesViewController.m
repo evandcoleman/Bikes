@@ -99,12 +99,16 @@
             [self.mapView addAnnotation:stationViewModel];
             [self.mapView setRegion:MKCoordinateRegionMake(stationViewModel.coordinate, MKCoordinateSpanMake(0.003, 0.003)) animated:YES];
         }];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     
-    [self.viewModel.refreshCommand execute:nil];
+    [[[[[self.viewModel didBecomeActiveSignal]
+        flattenMap:^RACSignal *(BKFavoritesViewModel *viewModel) {
+            return [viewModel.refreshCommand execute:nil];
+        }]
+        mapReplace:self.tableView]
+        deliverOn:[RACScheduler mainThreadScheduler]]
+        subscribeNext:^(UITableView *tableView) {
+            [tableView reloadData];
+        }];
 }
 
 #pragma mark - UITableViewDataSource

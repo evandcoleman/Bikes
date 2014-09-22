@@ -25,14 +25,13 @@
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 @property (nonatomic) BOOL favorite;
 
-@property (nonatomic) RACCommand *selectStationCommand;
 @property (nonatomic) RACCommand *favoriteStationCommand;
 
 @end
 
 @implementation BKStationViewModel
 
-- (instancetype)initWithStation:(BKStation *)station openStationCommand:(RACCommand *)openStationCommand {
+- (instancetype)initWithStation:(BKStation *)station {
     self = [super init];
     if (self != nil) {
         _station = station;
@@ -64,9 +63,7 @@
         df.dateStyle = NSDateFormatterMediumStyle;
         df.timeStyle = NSDateFormatterMediumStyle;
         _lastUpdated = [df stringFromDate:station.lastUpdated];
-        
-        _selectStationCommand = openStationCommand;
-        
+                
         @weakify(self);
         _favoriteStationCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSNumber *favorite) {
             @strongify(self);

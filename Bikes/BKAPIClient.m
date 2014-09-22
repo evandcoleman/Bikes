@@ -37,33 +37,22 @@
 - (instancetype)init {
     self = [super initWithBaseURL:[NSURL URLWithString:@"http://citibikenyc.com"]];
     if (self != nil) {
-
-        _cachedStations = [[self stations] replayLast];
+        _lastUpdateDate = [NSDate distantPast];
     }
     return self;
 }
 
-- (RACSignal *)cachedStations {
+- (RACSignal *)readStations {
     // Refetch every 5 minutes
     if ([self.lastUpdateDate timeIntervalSinceNow] <= -60*5) {
-        _cachedStations = [[self stations] replayLast];
+        self.cachedStations = [[self stations] replayLast];
     }
-    return _cachedStations;
+    return self.cachedStations;
 }
 
-- (RACSignal *)stationsNearLocation:(CLLocation *)location {
-    return [self.cachedStations
-                flattenMap:^RACStream *(NSArray *stations) {
-                    return [[stations.rac_sequence
-                                filter:^BOOL(BKStation *station) {
-                                    // Is doing this here The Right Way To Do It™?
-                                    CLLocation *stationLocation = [[CLLocation alloc] initWithLatitude:station.latitude longitude:station.longitude];
-                                    CGFloat distance = [stationLocation distanceFromLocation:location];
-                                    station.distance = distance;
-                                    return (distance < 1000);
-                                }]
-                                signal];
-                }];
+- (void)clearCache {
+    self.cachedStations = nil;
+    self.lastUpdateDate = [NSDate distantPast];
 }
 
 #pragma mark - Private

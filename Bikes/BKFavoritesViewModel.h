@@ -8,14 +8,15 @@
 
 #import "RVMViewModel.h"
 
-@class BKAPIClient;
+@class BKStationsViewModel;
 
 @interface BKFavoritesViewModel : RVMViewModel
 
 @property (nonatomic, readonly) NSArray *nearbyStationViewModels;
 @property (nonatomic, readonly) NSArray *favoriteStationViewModels;
+
 @property (nonatomic, readonly) RACCommand *refreshCommand;
 
-- (instancetype)initWithAPIClient:(BKAPIClient *)apiClient;
+- (instancetype)initWithStationsViewModel:(BKStationsViewModel *)stationsViewModel;
 
 @end

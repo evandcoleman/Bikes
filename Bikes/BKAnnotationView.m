@@ -32,6 +32,11 @@
         [button setImage:[UIImage imageNamed:@"star_on"] forState:UIControlStateSelected];
         [button sizeToFit];
         
+        [RACObserve(self, annotation)
+            subscribeNext:^(BKStationViewModel *viewModel) {
+                button.selected = viewModel.favorite;
+            }];
+        
         self.rightCalloutAccessoryView = button;
     }
     return self;
