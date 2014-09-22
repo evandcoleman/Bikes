@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1694BBD9A4C94DD490174D8B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56CDA9C4674A467BACEF226D /* libPods.a */; };
 		2008FB4119CFA99100168357 /* BKStationsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2008FB4019CFA99100168357 /* BKStationsViewModel.m */; };
+		2008FB4319CFC80200168357 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2008FB4219CFC80200168357 /* Launch Screen.xib */; };
 		207AD28719CBA51D00333345 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 207AD28619CBA51D00333345 /* NotificationCenter.framework */; };
 		207AD28D19CBA51D00333345 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 207AD28C19CBA51D00333345 /* TodayViewController.m */; };
 		207AD29219CBA51D00333345 /* Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 207AD28519CBA51D00333345 /* Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -110,6 +111,7 @@
 /* Begin PBXFileReference section */
 		2008FB3F19CFA99100168357 /* BKStationsViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKStationsViewModel.h; sourceTree = "<group>"; };
 		2008FB4019CFA99100168357 /* BKStationsViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKStationsViewModel.m; sourceTree = "<group>"; };
+		2008FB4219CFC80200168357 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		207AD28519CBA51D00333345 /* Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Widget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		207AD28619CBA51D00333345 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		207AD28A19CBA51D00333345 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				20AAE68819731E0500E73391 /* InfoPlist.strings */,
 				20AAE68B19731E0500E73391 /* main.m */,
 				20AAE68D19731E0500E73391 /* Bikes-Prefix.pch */,
+				2008FB4219CFC80200168357 /* Launch Screen.xib */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				20AAE69219731E0500E73391 /* Images.xcassets in Resources */,
 				20AAE722197A2D7600E73391 /* star_on.png in Resources */,
 				20AAE70219776B4400E73391 /* favorites.png in Resources */,
+				2008FB4319CFC80200168357 /* Launch Screen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
