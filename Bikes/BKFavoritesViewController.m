@@ -49,7 +49,9 @@
     [self.view addSubview:self.tableView];
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    refreshControl.rac_command = self.viewModel.refreshCommand;
+    refreshControl.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id _) {
+        return [self.viewModel.refreshCommand execute:@YES];
+    }];
     [self.tableView addSubview:refreshControl];
     
     self.mapView = [[MKMapView alloc] initWithFrame:CGRectZero];
@@ -102,7 +104,7 @@
     
     [[[[[self.viewModel didBecomeActiveSignal]
         flattenMap:^RACSignal *(BKFavoritesViewModel *viewModel) {
-            return [viewModel.refreshCommand execute:nil];
+            return [viewModel.refreshCommand execute:@YES];
         }]
         mapReplace:self.tableView]
         deliverOn:[RACScheduler mainThreadScheduler]]
@@ -139,7 +141,7 @@
                                 state:MCSwipeTableViewCellState3
                       completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
                           [[stationViewModel.favoriteStationCommand execute:@NO] subscribeCompleted:^{
-                              [self.viewModel.refreshCommand execute:nil];
+                              [self.viewModel.refreshCommand execute:@NO];
                           }];
                       }];
     } else {
@@ -150,7 +152,7 @@
                                 state:MCSwipeTableViewCellState3
                       completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
                           [[stationViewModel.favoriteStationCommand execute:@YES] subscribeCompleted:^{
-                              [self.viewModel.refreshCommand execute:nil];
+                              [self.viewModel.refreshCommand execute:@NO];
                           }];
                       }];
     }

@@ -15,6 +15,7 @@
 @property (nonatomic, readonly) NSArray *nearbyStationViewModels;
 @property (nonatomic, readonly) NSArray *favoriteStationViewModels;
 
+// Input: NSNumber refetch?
 @property (nonatomic, readonly) RACCommand *refreshCommand;
 
 - (instancetype)initWithStationsViewModel:(BKStationsViewModel *)stationsViewModel;

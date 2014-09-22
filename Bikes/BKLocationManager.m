@@ -12,7 +12,6 @@
 
 @interface BKLocationManager () <CLLocationManagerDelegate>
 
-@property (nonatomic) RACSignal *locationSignal;
 @property (nonatomic) CLLocationManager *manager;
 
 @end
@@ -26,23 +25,16 @@
         _manager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
         _manager.delegate = self;
         
-        @weakify(self);
-        _locationSignal =
-            [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                @strongify(self);
-                [[[[self rac_signalForSelector:@selector(locationManager:didUpdateLocations:) fromProtocol:@protocol(CLLocationManagerDelegate)]
-                    reduceEach:^id(__unused CLLocationManager *_, NSArray *locations) {
-                        return locations;
-                    }]
-                    map:^id(NSArray *locations) {
-                        return [locations lastObject];
-                    }]
-                    subscribe:subscriber];
-                
-                return [RACDisposable disposableWithBlock:^{
-                    [self.manager stopUpdatingLocation];
-                }];
-            }];
+        _locationSignal = [RACReplaySubject replaySubjectWithCapacity:1];
+        
+        [[[[self rac_signalForSelector:@selector(locationManager:didUpdateLocations:) fromProtocol:@protocol(CLLocationManagerDelegate)]
+            reduceEach:^id(__unused CLLocationManager *_, NSArray *locations) {
+                return locations;
+            }]
+            map:^id(NSArray *locations) {
+                return [locations lastObject];
+            }]
+            subscribe:_locationSignal];
         
         [_manager requestWhenInUseAuthorization];
         [_manager startUpdatingLocation];

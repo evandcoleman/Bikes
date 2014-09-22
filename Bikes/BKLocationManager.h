@@ -11,6 +11,6 @@
 @interface BKLocationManager : NSObject
 
 // Sends CLLocation objects
-@property (nonatomic, readonly) RACSignal *locationSignal;
+@property (nonatomic, readonly) RACReplaySubject *locationSignal;
 
 @end

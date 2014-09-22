@@ -81,7 +81,7 @@
                   [[BKUserPreferencesClient sharedUserPreferencesClient] setObject:[favorites allObjects] forKey:@"BKFavoriteStations"];
               }];
             
-            return [RACSignal empty];
+            return [RACSignal return:self];
         }];
     }
     return self;

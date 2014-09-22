@@ -19,7 +19,9 @@
     self = [super init];
     if (self != nil) {
         _loadStationsCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id _) {
-            return [[[RACSignal combineLatest:@[ [apiClient readStations], [locationManager.locationSignal take:1] ]]
+            [apiClient clearCache];
+            return [[[[RACSignal combineLatest:@[ [apiClient readStations], [locationManager.locationSignal take:1] ]]
+                        distinctUntilChanged]
                         flattenMap:^RACSignal *(RACTuple *t) {
                             RACTupleUnpack(NSArray *stations, CLLocation *location) = t;
                             return [[[stations.rac_sequence

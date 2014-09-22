@@ -23,8 +23,12 @@
     self = [super init];
     if (self != nil) {
         
-        _refreshCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id _) {
-            return [stationsViewModel.loadStationsCommand execute:nil];
+        _refreshCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSNumber *refetch) {
+            if ([refetch boolValue]) {
+                return [stationsViewModel.loadStationsCommand execute:nil];
+            } else {
+                return [RACSignal return:stationsViewModel.viewModels];
+            }
         }];
         
         RAC(self, nearbyStationViewModels) =
@@ -33,7 +37,7 @@
                 flattenMap:^RACSignal *(NSArray *viewModels) {
                     return [[[viewModels.rac_sequence
                                 filter:^BOOL(BKStationViewModel *viewModel) {
-                                    return viewModel.station.distance < 800;
+                                    return viewModel.station.distance < 800 && !viewModel.favorite;
                                 }]
                                 signal]
                                 collect];
