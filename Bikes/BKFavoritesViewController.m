@@ -104,7 +104,7 @@
     
     [[[[[self.viewModel didBecomeActiveSignal]
         flattenMap:^RACSignal *(BKFavoritesViewModel *viewModel) {
-            return [viewModel.refreshCommand execute:@YES];
+            return [viewModel.refreshCommand execute:@NO];
         }]
         mapReplace:self.tableView]
         deliverOn:[RACScheduler mainThreadScheduler]]

@@ -12,6 +12,7 @@ pod 'PureLayout'
 pod 'ReactiveCocoa'
 pod 'ReactiveViewModel'
 pod 'SVProgressHUD'
+pod 'YapDatabase'
 
 target :BikesTests, :exclusive => true do
   pod 'Specta'

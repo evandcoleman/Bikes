@@ -24,11 +24,7 @@
     if (self != nil) {
         
         _refreshCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSNumber *refetch) {
-            if ([refetch boolValue]) {
-                return [stationsViewModel.loadStationsCommand execute:nil];
-            } else {
-                return [RACSignal return:stationsViewModel.viewModels];
-            }
+            return [stationsViewModel viewModels:[refetch boolValue]];
         }];
         
         RAC(self, nearbyStationViewModels) =

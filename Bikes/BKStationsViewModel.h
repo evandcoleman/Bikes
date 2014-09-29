@@ -13,10 +13,8 @@
 
 @interface BKStationsViewModel : RVMViewModel
 
-@property (nonatomic, readonly) NSArray *viewModels;
-
-@property (nonatomic, readonly) RACCommand *loadStationsCommand;
-
 - (instancetype)initWithAPIClient:(BKAPIClient *)apiClient locationManager:(BKLocationManager *)locationManager;
+
+- (RACSignal *)viewModels:(BOOL)fromSource;
 
 @end

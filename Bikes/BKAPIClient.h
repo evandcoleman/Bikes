@@ -14,6 +14,5 @@
 @interface BKAPIClient : OVCHTTPSessionManager
 
 - (RACSignal *)readStations;
-- (void)clearCache;
 
 @end

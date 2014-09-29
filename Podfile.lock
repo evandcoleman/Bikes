@@ -57,6 +57,12 @@ PODS:
   - Specta (0.2.1)
   - SVProgressHUD (1.0)
   - TPWeakProxy (1.0.1)
+  - YapDatabase (2.5.2):
+    - YapDatabase/standard
+  - YapDatabase/common (2.5.2):
+    - CocoaLumberjack (~> 1)
+  - YapDatabase/standard (2.5.2):
+    - YapDatabase/common
 
 DEPENDENCIES:
   - AFNetworking
@@ -72,6 +78,7 @@ DEPENDENCIES:
   - ReactiveViewModel
   - Specta
   - SVProgressHUD
+  - YapDatabase
 
 SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
@@ -89,5 +96,6 @@ SPEC CHECKSUMS:
   Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
   SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
   TPWeakProxy: da4177b6ae5eff685642c1cd9698f71ef7060ea5
+  YapDatabase: 50f763e49374c38025e8255b4c468d26d81b1048
 
 COCOAPODS: 0.33.1
