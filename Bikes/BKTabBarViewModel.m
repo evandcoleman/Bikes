@@ -9,7 +9,8 @@
 #import "BKTabBarViewModel.h"
 
 #import "BKAPIClient.h"
-#import "BKLocationManager.h"
+#import "BKAPICacheClient.h"
+#import "BKStationsController.h"
 
 #import "BKStationsViewModel.h"
 
@@ -23,9 +24,11 @@
     self = [super init];
     if (self != nil) {
         BKAPIClient *apiClient = [[BKAPIClient alloc] init];
-        BKLocationManager *locationManager = [[BKLocationManager alloc] init];
+        BKAPICacheClient *cacheClient = [[BKAPICacheClient alloc] init];
         
-        _stationsViewModel = [[BKStationsViewModel alloc] initWithAPIClient:apiClient locationManager:locationManager];
+        BKStationsController *stationsController = [[BKStationsController alloc] initWithAPIClient:apiClient cacheClient:cacheClient];
+        
+        _stationsViewModel = [[BKStationsViewModel alloc] initWithStationsController:stationsController];
     }
     return self;
 }

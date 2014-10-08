@@ -1,7 +1,10 @@
 platform :ios, "8.0"
 
+inhibit_all_warnings!
+
 link_with 'Bikes', 'Widget'
 
+pod 'AutoCoding'
 pod 'AFNetworking'
 pod 'CocoaLumberjack', '~> 1.9'
 pod 'HockeySDK'

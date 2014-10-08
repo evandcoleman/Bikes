@@ -50,7 +50,7 @@
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     refreshControl.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id _) {
-        return [self.viewModel.refreshCommand execute:@YES];
+        return [self.viewModel.refreshCommand execute:nil];
     }];
     [self.tableView addSubview:refreshControl];
     
@@ -100,16 +100,6 @@
             [self.mapView removeAnnotations:self.mapView.annotations];
             [self.mapView addAnnotation:stationViewModel];
             [self.mapView setRegion:MKCoordinateRegionMake(stationViewModel.coordinate, MKCoordinateSpanMake(0.003, 0.003)) animated:YES];
-        }];
-    
-    [[[[[self.viewModel didBecomeActiveSignal]
-        flattenMap:^RACSignal *(BKFavoritesViewModel *viewModel) {
-            return [viewModel.refreshCommand execute:@NO];
-        }]
-        mapReplace:self.tableView]
-        deliverOn:[RACScheduler mainThreadScheduler]]
-        subscribeNext:^(UITableView *tableView) {
-            [tableView reloadData];
         }];
 }
 

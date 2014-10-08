@@ -10,11 +10,14 @@
 
 #import "BKStation.h"
 #import "BKUserPreferencesClient.h"
+#import "BKLocationManager.h"
 
 #import <Overcoat/ReactiveCocoa+Overcoat.h>
 #import <CoreLocation/CoreLocation.h>
 
 @interface BKAPIClient ()
+
+@property (nonatomic) BKLocationManager *locationManager;
 
 @end
 
@@ -33,14 +36,14 @@
 - (instancetype)init {
     self = [super initWithBaseURL:[NSURL URLWithString:@"http://citibikenyc.com"]];
     if (self != nil) {
-        
+        _locationManager = [[BKLocationManager alloc] init];
     }
     return self;
 }
 
 - (RACSignal *)readStations {
     DDLogInfo(@"Fetching stations...");
-    return [[[self rac_GET:@"stations/json" parameters:nil]
+    return [[[[[self rac_GET:@"stations/json" parameters:nil]
                 map:^id(BKStationsResponse *response) {
                     return response.result;
                 }]
@@ -48,6 +51,19 @@
                     return [[stations.rac_sequence
                                 map:^BKStation *(BKStation *station) {
                                     station.favorite = [[BKUserPreferencesClient sharedUserPreferencesClient] stationIsFavorite:station.stationID];
+                                    station.lastUpdated = [NSDate date];
+                                    return station;
+                                }]
+                                array];
+                }]
+                combineLatestWith:[[self.locationManager locationSignal] take:1]]
+                map:^NSArray *(RACTuple *t) {
+                    RACTupleUnpack(NSArray *stations, CLLocation *location) = t;
+                    return [[stations.rac_sequence
+                                map:^BKStation *(BKStation *station) {
+                                    CLLocation *stationLocation = [[CLLocation alloc] initWithLatitude:station.latitude longitude:station.longitude];
+                                    CGFloat distance = [stationLocation distanceFromLocation:location];
+                                    station.distance = distance;
                                     return station;
                                 }]
                                 array];

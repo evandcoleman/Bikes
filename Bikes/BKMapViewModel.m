@@ -19,7 +19,7 @@
 - (instancetype)initWithStationsViewModel:(BKStationsViewModel *)stationsViewModel {
     self = [super init];
     if (self != nil) {
-        RAC(self, stationViewModels) = RACObserve(stationsViewModel, viewModels);
+        _stationsViewModel = stationsViewModel;
     }
     return self;
 }

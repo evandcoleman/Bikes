@@ -8,13 +8,16 @@
 
 #import "RVMViewModel.h"
 
-@class BKAPIClient;
-@class BKLocationManager;
+@class BKStationsController;
 
 @interface BKStationsViewModel : RVMViewModel
 
-- (instancetype)initWithAPIClient:(BKAPIClient *)apiClient locationManager:(BKLocationManager *)locationManager;
+@property (nonatomic, readonly) NSArray *viewModels;
 
-- (RACSignal *)viewModels:(BOOL)fromSource;
+@property (nonatomic, readonly) RACCommand *loadStationsCommand;
+
+@property (nonatomic, readonly) RACCommand *refreshStationsCommand;
+
+- (instancetype)initWithStationsController:(BKStationsController *)stationsController;
 
 @end

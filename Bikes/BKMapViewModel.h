@@ -12,7 +12,7 @@
 
 @interface BKMapViewModel : RVMViewModel
 
-@property (nonatomic, readonly) NSArray *stationViewModels;
+@property (nonatomic, readonly) BKStationsViewModel *stationsViewModel;
 
 - (instancetype)initWithStationsViewModel:(BKStationsViewModel *)stationsViewModel;
 

@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.4.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - AutoCoding (2.2)
   - CocoaLumberjack (1.9.2):
     - CocoaLumberjack/Extensions
   - CocoaLumberjack/Core (1.9.2)
@@ -66,6 +67,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - AutoCoding
   - CocoaLumberjack (~> 1.9)
   - Expecta
   - HockeySDK
@@ -82,6 +84,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
+  AutoCoding: 2a15d57acf78912b72cc3b3a472e614b2f112a18
   CocoaLumberjack: 205769c032b5fef85b92472046bcc8b7e7c8a817
   Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
   HockeySDK: f0e874d1c6833163ee0c4e423606faf33ad04071

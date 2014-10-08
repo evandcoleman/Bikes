@@ -15,6 +15,8 @@
 
 @interface BKFavoritesViewModel ()
 
+@property (nonatomic, readonly) BKStationsViewModel *stationsViewModel;
+
 @end
 
 @implementation BKFavoritesViewModel
@@ -22,34 +24,42 @@
 - (instancetype)initWithStationsViewModel:(BKStationsViewModel *)stationsViewModel {
     self = [super init];
     if (self != nil) {
+        _stationsViewModel = stationsViewModel;
         
-        _refreshCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSNumber *refetch) {
-            return [stationsViewModel viewModels:[refetch boolValue]];
+        @weakify(self);
+        _refreshCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id _) {
+            @strongify(self);
+            return [self.stationsViewModel.refreshStationsCommand execute:nil];
         }];
         
+        [[[self didBecomeActiveSignal]
+            flattenMap:^RACSignal *(id _) {
+                @strongify(self);
+                return [self.stationsViewModel.loadStationsCommand execute:nil];
+            }]
+            subscribeNext:^(id _) {
+                
+            }];
+        
         RAC(self, nearbyStationViewModels) =
-            [[[[_refreshCommand executionSignals]
-                switchToLatest]
-                flattenMap:^RACSignal *(NSArray *viewModels) {
-                    return [[[viewModels.rac_sequence
+            [[RACObserve(self.stationsViewModel, viewModels)
+                map:^NSArray *(NSArray *viewModels) {
+                    return [[viewModels.rac_sequence
                                 filter:^BOOL(BKStationViewModel *viewModel) {
                                     return viewModel.station.distance < 800 && !viewModel.favorite;
                                 }]
-                                signal]
-                                collect];
+                                array];
                 }]
                 deliverOn:[RACScheduler mainThreadScheduler]];
         
         RAC(self, favoriteStationViewModels) =
-            [[[[_refreshCommand executionSignals]
-                switchToLatest]
-                flattenMap:^RACSignal *(NSArray *viewModels) {
-                    return [[[viewModels.rac_sequence
+            [[RACObserve(self.stationsViewModel, viewModels)
+                map:^NSArray *(NSArray *viewModels) {
+                    return [[viewModels.rac_sequence
                                 filter:^BOOL(BKStationViewModel *viewModel) {
                                     return viewModel.station.favorite;
                                 }]
-                                signal]
-                                collect];
+                                array];
                 }]
                 deliverOn:[RACScheduler mainThreadScheduler]];
     }
