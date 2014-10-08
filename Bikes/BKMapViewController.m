@@ -10,6 +10,7 @@
 #import "BKStationViewModel.h"
 #import "BKAnnotationView.h"
 #import "BKMapViewModel.h"
+#import "BKStationsViewModel.h"
 
 #import <MapKit/MapKit.h>
 #import <PureLayout/PureLayout.h>
@@ -46,7 +47,7 @@
     [self.view addSubview:self.mapView];
     
     @weakify(self);
-    [[[RACObserve(self.viewModel, stationViewModels)
+    [[[RACObserve(self.viewModel.stationsViewModel, viewModels)
         ignore:nil]
         deliverOn:[RACScheduler mainThreadScheduler]]
         subscribeNext:^(NSArray *viewModels) {
