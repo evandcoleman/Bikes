@@ -16,6 +16,8 @@
 		207AD28D19CBA51D00333345 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 207AD28C19CBA51D00333345 /* TodayViewController.m */; };
 		207AD29219CBA51D00333345 /* Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 207AD28519CBA51D00333345 /* Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		207AD29B19CBA7B500333345 /* BKUserPreferencesClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE70B1977700700E73391 /* BKUserPreferencesClient.m */; };
+		20A40FE319E622EF00FC748D /* BKErrorViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A40FE219E622EF00FC748D /* BKErrorViewModel.m */; };
+		20A40FE819E6267200FC748D /* BKViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A40FE719E6267200FC748D /* BKViewModel.m */; };
 		20AAE68019731E0500E73391 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AAE67F19731E0500E73391 /* Foundation.framework */; };
 		20AAE68219731E0500E73391 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AAE68119731E0500E73391 /* CoreGraphics.framework */; };
 		20AAE68419731E0500E73391 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AAE68319731E0500E73391 /* UIKit.framework */; };
@@ -127,6 +129,10 @@
 		207AD29A19CBA5C700333345 /* Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Widget.entitlements; sourceTree = "<group>"; };
 		207AD29C19CBA81A00333345 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		207AD29E19CBAA1E00333345 /* Widget.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Widget.pch; sourceTree = "<group>"; };
+		20A40FE119E622EF00FC748D /* BKErrorViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKErrorViewModel.h; sourceTree = "<group>"; };
+		20A40FE219E622EF00FC748D /* BKErrorViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKErrorViewModel.m; sourceTree = "<group>"; };
+		20A40FE619E6267200FC748D /* BKViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKViewModel.h; sourceTree = "<group>"; };
+		20A40FE719E6267200FC748D /* BKViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKViewModel.m; sourceTree = "<group>"; };
 		20AAE67C19731E0500E73391 /* Bikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bikes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20AAE67F19731E0500E73391 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		20AAE68119731E0500E73391 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -273,6 +279,33 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		20A40FE419E6266200FC748D /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				20A40FE919E6287900FC748D /* Views */,
+				20A40FE519E6266700FC748D /* View Models */,
+			);
+			name = Generic;
+			sourceTree = "<group>";
+		};
+		20A40FE519E6266700FC748D /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				20A40FE619E6267200FC748D /* BKViewModel.h */,
+				20A40FE719E6267200FC748D /* BKViewModel.m */,
+			);
+			name = "View Models";
+			sourceTree = "<group>";
+		};
+		20A40FE919E6287900FC748D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				20AAE7101977781B00E73391 /* BKViewController.h */,
+				20AAE7111977781B00E73391 /* BKViewController.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		20AAE67319731E0500E73391 = {
 			isa = PBXGroup;
 			children = (
@@ -320,6 +353,7 @@
 				207AD29919CBA58700333345 /* Bikes.entitlements */,
 				20AAE68E19731E0500E73391 /* BKAppDelegate.h */,
 				20AAE68F19731E0500E73391 /* BKAppDelegate.m */,
+				20A40FE419E6266200FC748D /* Generic */,
 				20AAE6C41974BEC800E73391 /* UI */,
 				20687C8019E4D22A001CE276 /* Data Controllers */,
 				20AAE6B31973300A00E73391 /* Data Sources */,
@@ -388,6 +422,8 @@
 				20AAE6C21973820F00E73391 /* BKStationViewModel.m */,
 				20AAE70419776F9200E73391 /* BKFavoritesViewModel.h */,
 				20AAE70519776F9200E73391 /* BKFavoritesViewModel.m */,
+				20A40FE119E622EF00FC748D /* BKErrorViewModel.h */,
+				20A40FE219E622EF00FC748D /* BKErrorViewModel.m */,
 			);
 			name = "View Models";
 			sourceTree = "<group>";
@@ -419,8 +455,6 @@
 		20AAE6C41974BEC800E73391 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				20AAE7101977781B00E73391 /* BKViewController.h */,
-				20AAE7111977781B00E73391 /* BKViewController.m */,
 				20AAE6D51974CC1000E73391 /* BKTabBarController.h */,
 				20AAE6D61974CC1000E73391 /* BKTabBarController.m */,
 				20AAE6C51974BEFA00E73391 /* BKMapViewController.h */,
@@ -747,10 +781,12 @@
 				20AAE6E11976210600E73391 /* Globals.m in Sources */,
 				20AAE69019731E0500E73391 /* BKAppDelegate.m in Sources */,
 				20AAE6BC197374C800E73391 /* BKStationsResponse.m in Sources */,
+				20A40FE319E622EF00FC748D /* BKErrorViewModel.m in Sources */,
 				20AAE6DE197613A500E73391 /* UIColor+Bikes.m in Sources */,
 				20AAE70619776F9200E73391 /* BKFavoritesViewModel.m in Sources */,
 				20AAE6F3197759FC00E73391 /* UIFont+Bikes.m in Sources */,
 				20AAE70C1977700700E73391 /* BKUserPreferencesClient.m in Sources */,
+				20A40FE819E6267200FC748D /* BKViewModel.m in Sources */,
 				2008FB4119CFA99100168357 /* BKStationsViewModel.m in Sources */,
 				20AAE6C31973820F00E73391 /* BKStationViewModel.m in Sources */,
 				20AAE70919776FA300E73391 /* BKFavoritesViewController.m in Sources */,

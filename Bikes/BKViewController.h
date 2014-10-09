@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 Evan Coleman. All rights reserved.
 //
 
-#import <ReactiveViewModel/RVMViewModel.h>
+@class BKViewModel;
 
 @interface BKViewController : UIViewController
 
-@property (nonatomic, readonly) RVMViewModel *viewModel;
+@property (nonatomic, readonly) BKViewModel *viewModel;
 
-- (instancetype)initWithViewModel:(RVMViewModel *)viewModel;
+- (instancetype)initWithViewModel:(BKViewModel *)viewModel;
 
 @end

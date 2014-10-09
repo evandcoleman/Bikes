@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Evan Coleman. All rights reserved.
 //
 
-#import "RVMViewModel.h"
+#import "BKViewModel.h"
 
 @class BKStationsViewModel;
 
-@interface BKTabBarViewModel : RVMViewModel
+@interface BKTabBarViewModel : BKViewModel
 
 @property (nonatomic, readonly) BKStationsViewModel *stationsViewModel;
 

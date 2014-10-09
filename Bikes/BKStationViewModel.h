@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Evan Coleman. All rights reserved.
 //
 
-#import "RVMViewModel.h"
+#import "BKViewModel.h"
 
 #import <MapKit/MapKit.h>
 
 @class BKStation;
 
-@interface BKStationViewModel : RVMViewModel <MKAnnotation>
+@interface BKStationViewModel : BKViewModel <MKAnnotation>
 
 @property (nonatomic, readonly) BKStation *station;
 

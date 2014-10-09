@@ -11,6 +11,7 @@
 #import "BKStationsController.h"
 
 #import "BKStationViewModel.h"
+#import "BKErrorViewModel.h"
 
 @interface BKStationsViewModel ()
 
@@ -28,7 +29,7 @@
                 policy = [dataFetchPolicy unsignedIntegerValue];
             }
             
-            return [[[stationsController readStations:policy]
+            return [[[[stationsController readStations:policy]
                         map:^NSArray *(NSArray *stations) {
                             return [[stations.rac_sequence
                                         map:^BKStationViewModel *(BKStation *station) {
@@ -39,7 +40,8 @@
                         map:^NSArray *(NSArray *viewModels) {
                             NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"distance" ascending:YES];
                             return [viewModels sortedArrayUsingDescriptors:@[sortDescriptor]];
-                        }];
+                        }]
+                        timeout:10 onScheduler:RACScheduler.scheduler];
         }];
         
         _refreshStationsCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id _) {
@@ -48,8 +50,9 @@
         }];
         
         RAC(self, viewModels) =
-            [[_loadStationsCommand executionSignals]
-                 switchToLatest];
+            [[[_loadStationsCommand executionSignals]
+                switchToLatest]
+                ignore:nil];
     }
     return self;
 }

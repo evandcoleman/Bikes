@@ -10,6 +10,7 @@
 
 #import "BKStationsViewModel.h"
 #import "BKStationViewModel.h"
+#import "BKErrorViewModel.h"
 
 #import "BKStation.h"
 
@@ -42,7 +43,10 @@
             }];
         
         RAC(self, nearbyStationViewModels) =
-            [[RACObserve(self.stationsViewModel, viewModels)
+            [[[RACObserve(self.stationsViewModel, viewModels)
+                filter:^BOOL(NSArray *viewModels) {
+                    return ![[viewModels firstObject] isKindOfClass:[BKErrorViewModel class]];
+                }]
                 map:^NSArray *(NSArray *viewModels) {
                     return [[viewModels.rac_sequence
                                 filter:^BOOL(BKStationViewModel *viewModel) {
@@ -53,7 +57,10 @@
                 deliverOn:[RACScheduler mainThreadScheduler]];
         
         RAC(self, favoriteStationViewModels) =
-            [[RACObserve(self.stationsViewModel, viewModels)
+            [[[RACObserve(self.stationsViewModel, viewModels)
+                filter:^BOOL(NSArray *viewModels) {
+                    return ![[viewModels firstObject] isKindOfClass:[BKErrorViewModel class]];
+                }]
                 map:^NSArray *(NSArray *viewModels) {
                     return [[viewModels.rac_sequence
                                 filter:^BOOL(BKStationViewModel *viewModel) {
@@ -62,6 +69,13 @@
                                 array];
                 }]
                 deliverOn:[RACScheduler mainThreadScheduler]];
+        
+        [[[_stationsViewModel.loadStationsCommand errors]
+            map:^BKErrorViewModel *(NSError *error) {
+                @strongify(self);
+                return [[BKErrorViewModel alloc] initWithError:error retryCommand:self.stationsViewModel.loadStationsCommand];
+            }]
+            subscribe:self.errorViewModels];
     }
     return self;
 }

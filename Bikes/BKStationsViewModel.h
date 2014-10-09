@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Evan Coleman. All rights reserved.
 //
 
-#import "RVMViewModel.h"
+#import "BKViewModel.h"
 
 @class BKStationsController;
 
-@interface BKStationsViewModel : RVMViewModel
+@interface BKStationsViewModel : BKViewModel
 
 @property (nonatomic, readonly) NSArray *viewModels;
 
