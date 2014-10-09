@@ -9,15 +9,18 @@
 #import "BKMapViewController.h"
 #import "BKStationViewModel.h"
 #import "BKAnnotationView.h"
+#import "BKClusterAnnotationView.h"
 #import "BKMapViewModel.h"
 #import "BKStationsViewModel.h"
 
 #import <MapKit/MapKit.h>
+#import <FBAnnotationClustering/FBAnnotationClustering.h>
 #import <PureLayout/PureLayout.h>
 
 @interface BKMapViewController () <MKMapViewDelegate>
 
 @property (nonatomic) MKMapView *mapView;
+@property (nonatomic) FBClusteringManager *clusteringManager;
 
 @property (nonatomic, readonly) BKMapViewModel *viewModel;
 
@@ -31,7 +34,9 @@
     self = [super initWithViewModel:viewModel];
     if (self != nil) {
         self.tabBarItem.image = [UIImage imageNamed:@"map"];
-        [self.tabBarItem setImageInsets:UIEdgeInsetsMake(5, 0, -5, 0)];        
+        [self.tabBarItem setImageInsets:UIEdgeInsetsMake(5, 0, -5, 0)];
+        
+        _clusteringManager = [[FBClusteringManager alloc] init];
     }
     return self;
 }
@@ -53,6 +58,9 @@
         subscribeNext:^(NSArray *viewModels) {
             @strongify(self);
             [self.mapView addAnnotations:viewModels];
+            [self.clusteringManager addAnnotations:viewModels];
+            
+            [self mapView:self.mapView regionDidChangeAnimated:NO];
         }];
 }
 
@@ -81,9 +89,28 @@
         annotationView.annotation = annotation;
         
         return annotationView;
+    } else if ([annotation isKindOfClass:[FBAnnotationCluster class]]) {
+        BKClusterAnnotationView *annotationView = (BKClusterAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:NSStringFromClass([BKClusterAnnotationView class])];
+        if (annotationView == nil) {
+            annotationView = [[BKClusterAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:NSStringFromClass([BKClusterAnnotationView class])];
+            annotationView.frame = CGRectMake(0, 0, 36, 36);
+        }
+        
+        annotationView.annotation = annotation;
+        
+        return annotationView;
     }
     
     return nil;
+}
+
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+    [[NSOperationQueue new] addOperationWithBlock:^{
+        double scale = self.mapView.bounds.size.width / self.mapView.visibleMapRect.size.width;
+        NSArray *annotations = [self.clusteringManager clusteredAnnotationsWithinMapRect:mapView.visibleMapRect withZoomScale:scale];
+        
+        [self.clusteringManager displayAnnotations:annotations onMapView:mapView];
+    }];
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {

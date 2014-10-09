@@ -18,6 +18,7 @@
 		207AD29B19CBA7B500333345 /* BKUserPreferencesClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AAE70B1977700700E73391 /* BKUserPreferencesClient.m */; };
 		20A40FE319E622EF00FC748D /* BKErrorViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A40FE219E622EF00FC748D /* BKErrorViewModel.m */; };
 		20A40FE819E6267200FC748D /* BKViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A40FE719E6267200FC748D /* BKViewModel.m */; };
+		20A40FEC19E6301700FC748D /* BKClusterAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A40FEB19E6301700FC748D /* BKClusterAnnotationView.m */; };
 		20AAE68019731E0500E73391 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AAE67F19731E0500E73391 /* Foundation.framework */; };
 		20AAE68219731E0500E73391 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AAE68119731E0500E73391 /* CoreGraphics.framework */; };
 		20AAE68419731E0500E73391 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AAE68319731E0500E73391 /* UIKit.framework */; };
@@ -133,6 +134,8 @@
 		20A40FE219E622EF00FC748D /* BKErrorViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKErrorViewModel.m; sourceTree = "<group>"; };
 		20A40FE619E6267200FC748D /* BKViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKViewModel.h; sourceTree = "<group>"; };
 		20A40FE719E6267200FC748D /* BKViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKViewModel.m; sourceTree = "<group>"; };
+		20A40FEA19E6301700FC748D /* BKClusterAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKClusterAnnotationView.h; sourceTree = "<group>"; };
+		20A40FEB19E6301700FC748D /* BKClusterAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKClusterAnnotationView.m; sourceTree = "<group>"; };
 		20AAE67C19731E0500E73391 /* Bikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bikes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20AAE67F19731E0500E73391 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		20AAE68119731E0500E73391 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -204,10 +207,12 @@
 		20AAE721197A2D7600E73391 /* star_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star_off@2x.png"; sourceTree = "<group>"; };
 		20CEAA1F19CBB373006B835D /* BKStationSlimTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKStationSlimTableViewCell.h; sourceTree = "<group>"; };
 		20CEAA2019CBB373006B835D /* BKStationSlimTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKStationSlimTableViewCell.m; sourceTree = "<group>"; };
+		3A3AA85705BF6E632AF9FE05 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		56CDA9C4674A467BACEF226D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		58622F9041A24240B098E32C /* Pods-BikesTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikesTests.xcconfig"; path = "Pods/Pods-BikesTests.xcconfig"; sourceTree = "<group>"; };
 		795F318C83E2479C89BCDD62 /* libPods-BikesTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BikesTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FCA66F26E4EA4434B43390F3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		9C13CCA61316F4BBBECC129C /* Pods-BikesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BikesTests/Pods-BikesTests.release.xcconfig"; sourceTree = "<group>"; };
+		ACCD472A0A6D2DCF56C8100C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B7B62B6B47D8011D00E6D12E /* Pods-BikesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BikesTests/Pods-BikesTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,8 +319,7 @@
 				207AD28819CBA51D00333345 /* Widget */,
 				20AAE67E19731E0500E73391 /* Frameworks */,
 				20AAE67D19731E0500E73391 /* Products */,
-				FCA66F26E4EA4434B43390F3 /* Pods.xcconfig */,
-				58622F9041A24240B098E32C /* Pods-BikesTests.xcconfig */,
+				9480B8F06BC3DF65038C703B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -461,6 +465,8 @@
 				20AAE6C61974BEFA00E73391 /* BKMapViewController.m */,
 				20AAE6D81975FAF600E73391 /* BKAnnotationView.h */,
 				20AAE6D91975FAF600E73391 /* BKAnnotationView.m */,
+				20A40FEA19E6301700FC748D /* BKClusterAnnotationView.h */,
+				20A40FEB19E6301700FC748D /* BKClusterAnnotationView.m */,
 				20AAE70719776FA300E73391 /* BKFavoritesViewController.h */,
 				20AAE70819776FA300E73391 /* BKFavoritesViewController.m */,
 				20AAE70D197772D100E73391 /* BKStationTableViewCell.h */,
@@ -499,6 +505,17 @@
 				20AAE70119776B4400E73391 /* favorites@2x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		9480B8F06BC3DF65038C703B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3A3AA85705BF6E632AF9FE05 /* Pods.debug.xcconfig */,
+				ACCD472A0A6D2DCF56C8100C /* Pods.release.xcconfig */,
+				B7B62B6B47D8011D00E6D12E /* Pods-BikesTests.debug.xcconfig */,
+				9C13CCA61316F4BBBECC129C /* Pods-BikesTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -714,7 +731,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C2DDC6F4C98B42E893DB91F3 /* Copy Pods Resources */ = {
@@ -729,7 +746,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-BikesTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikesTests/Pods-BikesTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E162496DCF664985AA867059 /* Copy Pods Resources */ = {
@@ -744,7 +761,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -781,6 +798,7 @@
 				20AAE6E11976210600E73391 /* Globals.m in Sources */,
 				20AAE69019731E0500E73391 /* BKAppDelegate.m in Sources */,
 				20AAE6BC197374C800E73391 /* BKStationsResponse.m in Sources */,
+				20A40FEC19E6301700FC748D /* BKClusterAnnotationView.m in Sources */,
 				20A40FE319E622EF00FC748D /* BKErrorViewModel.m in Sources */,
 				20AAE6DE197613A500E73391 /* UIColor+Bikes.m in Sources */,
 				20AAE70619776F9200E73391 /* BKFavoritesViewModel.m in Sources */,
@@ -848,7 +866,7 @@
 /* Begin XCBuildConfiguration section */
 		207AD29619CBA51D00333345 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FCA66F26E4EA4434B43390F3 /* Pods.xcconfig */;
+			baseConfigurationReference = 3A3AA85705BF6E632AF9FE05 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_ENTITLEMENTS = Widget/Widget.entitlements;
@@ -877,7 +895,7 @@
 		};
 		207AD29719CBA51D00333345 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FCA66F26E4EA4434B43390F3 /* Pods.xcconfig */;
+			baseConfigurationReference = ACCD472A0A6D2DCF56C8100C /* Pods.release.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_ENTITLEMENTS = Widget/Widget.entitlements;
@@ -974,7 +992,7 @@
 		};
 		20AAE6A919731E0500E73391 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FCA66F26E4EA4434B43390F3 /* Pods.xcconfig */;
+			baseConfigurationReference = 3A3AA85705BF6E632AF9FE05 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -993,7 +1011,7 @@
 		};
 		20AAE6AA19731E0500E73391 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FCA66F26E4EA4434B43390F3 /* Pods.xcconfig */;
+			baseConfigurationReference = ACCD472A0A6D2DCF56C8100C /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1012,7 +1030,7 @@
 		};
 		20AAE6AC19731E0500E73391 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 58622F9041A24240B098E32C /* Pods-BikesTests.xcconfig */;
+			baseConfigurationReference = B7B62B6B47D8011D00E6D12E /* Pods-BikesTests.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Bikes.app/Bikes";
@@ -1036,7 +1054,7 @@
 		};
 		20AAE6AD19731E0500E73391 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 58622F9041A24240B098E32C /* Pods-BikesTests.xcconfig */;
+			baseConfigurationReference = 9C13CCA61316F4BBBECC129C /* Pods-BikesTests.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Bikes.app/Bikes";

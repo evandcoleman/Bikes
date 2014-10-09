@@ -4,9 +4,12 @@ inhibit_all_warnings!
 
 link_with 'Bikes', 'Widget'
 
+source 'https://github.com/CocoaPods/Specs.git'
+
 pod 'AutoCoding'
 pod 'AFNetworking'
 pod 'CocoaLumberjack', '~> 1.9'
+pod 'FBAnnotationClustering'
 pod 'HockeySDK'
 pod 'Mantle'
 pod 'MCSwipeTableViewCell'
