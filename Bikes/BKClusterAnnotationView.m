@@ -46,7 +46,7 @@ CGFloat const StrokeWidth = 3;
 - (void)setAnnotation:(id<MKAnnotation>)annotation {
     [super setAnnotation:annotation];
     
-    self.countLabel.text = [NSString stringWithFormat:@"%lu", [(FBAnnotationCluster *)annotation annotations].count];
+    self.countLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[(FBAnnotationCluster *)annotation annotations].count];
 }
 
 - (void)drawRect:(CGRect)rect {
