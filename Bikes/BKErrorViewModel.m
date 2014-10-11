@@ -15,7 +15,11 @@
     if (self != nil) {
         _retryCommand = retryCommand;
         
-        _message = [error localizedDescription];
+        if ([error.domain isEqualToString:RACSignalErrorDomain] && error.code == 1) {
+            _message = @"Error determining location. Did you grant Bikes access to your location?";
+        } else {
+            _message = [error localizedDescription];
+        }
     }
     return self;
 }
