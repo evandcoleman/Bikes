@@ -127,9 +127,10 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
     BKAnnotationView *aView = (BKAnnotationView *)view;
-    [[aView.viewModel.favoriteStationCommand execute:@(!control.selected)] subscribeCompleted:^{
-        control.selected = !control.selected;
-    }];
+    [[aView.viewModel.favoriteStationCommand execute:@(!control.selected)]
+        subscribeCompleted:^{
+            control.selected = !control.selected;
+        }];
 }
 
 @end
