@@ -131,7 +131,7 @@
                                 state:MCSwipeTableViewCellState3
                       completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
                           [[stationViewModel.favoriteStationCommand execute:@NO] subscribeCompleted:^{
-                              [self.viewModel.refreshCommand execute:@NO];
+                              [self.viewModel.refreshCommand execute:nil];
                           }];
                       }];
     } else {
@@ -142,7 +142,7 @@
                                 state:MCSwipeTableViewCellState3
                       completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
                           [[stationViewModel.favoriteStationCommand execute:@YES] subscribeCompleted:^{
-                              [self.viewModel.refreshCommand execute:@NO];
+                              [self.viewModel.refreshCommand execute:nil];
                           }];
                       }];
     }
