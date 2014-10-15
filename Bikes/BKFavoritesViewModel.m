@@ -33,6 +33,11 @@
             return [self.stationsViewModel.refreshStationsCommand execute:nil];
         }];
         
+        _favoriteStationCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(RACTuple *t) {
+            @strongify(self);
+            return [self.stationsViewModel.favoriteStationCommand execute:t];
+        }];
+                
         [[[self didBecomeActiveSignal]
             flattenMap:^RACSignal *(id _) {
                 @strongify(self);

@@ -49,6 +49,19 @@
             return [self.loadStationsCommand execute:@(DataFetchPolicySourceOnly)];
         }];
         
+        _favoriteStationCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(RACTuple *t) {
+            RACTupleUnpack(BKStationViewModel *viewModel, NSNumber *favorite) = t;
+            [self willChangeValueForKey:@keypath(self.viewModels)];
+            return [viewModel.favoriteStationCommand execute:favorite];
+        }];
+        
+        [[[_favoriteStationCommand executionSignals]
+            switchToLatest]
+            subscribeNext:^(id _) {
+                @strongify(self);
+                [self didChangeValueForKey:@keypath(self.viewModels)];
+            }];
+        
         RAC(self, viewModels) =
             [[[_loadStationsCommand executionSignals]
                 switchToLatest]

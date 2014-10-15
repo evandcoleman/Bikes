@@ -130,9 +130,7 @@
                                  mode:MCSwipeTableViewCellModeExit
                                 state:MCSwipeTableViewCellState3
                       completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-                          [[stationViewModel.favoriteStationCommand execute:@NO] subscribeCompleted:^{
-                              [self.viewModel.refreshCommand execute:nil];
-                          }];
+                          [self.viewModel.favoriteStationCommand execute:RACTuplePack(stationViewModel, @NO)];
                       }];
     } else {
         stationViewModel = self.viewModel.nearbyStationViewModels[indexPath.row];
@@ -141,9 +139,7 @@
                                  mode:MCSwipeTableViewCellModeExit
                                 state:MCSwipeTableViewCellState3
                       completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
-                          [[stationViewModel.favoriteStationCommand execute:@YES] subscribeCompleted:^{
-                              [self.viewModel.refreshCommand execute:nil];
-                          }];
+                          [self.viewModel.favoriteStationCommand execute:RACTuplePack(stationViewModel, @YES)];
                       }];
     }
     cell.viewModel = stationViewModel;

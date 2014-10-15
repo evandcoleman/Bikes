@@ -18,6 +18,8 @@
 
 @property (nonatomic, readonly) RACCommand *refreshStationsCommand;
 
+@property (nonatomic, readonly) RACCommand *favoriteStationCommand;
+
 - (instancetype)initWithStationsController:(BKStationsController *)stationsController;
 
 @end

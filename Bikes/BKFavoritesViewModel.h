@@ -16,6 +16,7 @@
 @property (nonatomic, readonly) NSArray *favoriteStationViewModels;
 
 @property (nonatomic, readonly) RACCommand *refreshCommand;
+@property (nonatomic, readonly) RACCommand *favoriteStationCommand;
 
 - (instancetype)initWithStationsViewModel:(BKStationsViewModel *)stationsViewModel;
 
