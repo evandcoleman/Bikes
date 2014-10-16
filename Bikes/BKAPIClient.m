@@ -56,9 +56,20 @@
                                 }]
                                 array];
                 }]
-                combineLatestWith:[[self.locationManager locationSignal] take:1]]
+                flattenMap:^RACStream *(NSArray *stations) {
+                    return [[[[[self.locationManager locationSignal]
+                                take:1]
+                                timeout:10 onScheduler:[RACScheduler scheduler]]
+                                map:^RACTuple *(CLLocation *location) {
+                                    return RACTuplePack(stations, location);
+                                }]
+                                catchTo:[RACSignal return:RACTuplePack(stations, nil)]];
+                }]
                 map:^NSArray *(RACTuple *t) {
                     RACTupleUnpack(NSArray *stations, CLLocation *location) = t;
+                    if (location == nil) {
+                        return stations;
+                    }
                     return [[stations.rac_sequence
                                 map:^BKStation *(BKStation *station) {
                                     CLLocation *stationLocation = [[CLLocation alloc] initWithLatitude:station.latitude longitude:station.longitude];
