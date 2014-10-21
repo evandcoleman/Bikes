@@ -10,11 +10,13 @@
 
 #import "BKAPIClient.h"
 #import "BKAPICacheClient.h"
+#import "BKLocationManager.h"
 
 @interface BKStationsController ()
 
-@property (nonatomic) BKAPIClient *apiClient;
-@property (nonatomic) BKAPICacheClient *cacheClient;
+@property (nonatomic, readonly) BKAPIClient *apiClient;
+@property (nonatomic, readonly) BKAPICacheClient *cacheClient;
+@property (nonatomic, readonly) BKLocationManager *locationManager;
 
 @end
 
@@ -25,6 +27,7 @@
     if (self != nil) {
         _apiClient = apiClient;
         _cacheClient = cacheClient;
+        _locationManager = [[BKLocationManager alloc] init];
     }
     return self;
 }
