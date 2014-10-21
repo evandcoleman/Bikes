@@ -11,6 +11,7 @@
 
 @interface BKAnnotationView ()
 
+@property (nonatomic, readonly) UIButton *button;
 
 @end
 
@@ -26,24 +27,20 @@
         self.layer.shouldRasterize = YES;
         
         // TODO: Keep this button state in sync with the favorite property on the view model.
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.adjustsImageWhenHighlighted = NO;
-        [button setImage:[UIImage imageNamed:@"star_off"] forState:UIControlStateNormal];
-        [button setImage:[UIImage imageNamed:@"star_on"] forState:UIControlStateSelected];
-        [button sizeToFit];
+        _button = [UIButton buttonWithType:UIButtonTypeCustom];
+        _button.adjustsImageWhenHighlighted = NO;
+        [_button setImage:[UIImage imageNamed:@"star_off"] forState:UIControlStateNormal];
+        [_button setImage:[UIImage imageNamed:@"star_on"] forState:UIControlStateSelected];
+        [_button sizeToFit];
         
-        [RACObserve(self, viewModel.favorite)
-            subscribeNext:^(NSNumber *favorite) {
-                button.selected = [favorite boolValue];
-            }];
-        
-        self.rightCalloutAccessoryView = button;
+        self.rightCalloutAccessoryView = _button;
     }
     return self;
 }
 
 - (void)setAnnotation:(id<MKAnnotation>)annotation {
     [super setAnnotation:annotation];
+    self.button.selected = [(BKStationViewModel *)annotation isFavorite];
     [self setNeedsDisplay];
 }
 

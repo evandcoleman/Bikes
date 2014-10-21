@@ -69,16 +69,20 @@
     [self.tableView autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:0];
     [self.tableView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:0];
     
-    [[RACObserve(self, viewModel.favoriteStationViewModels)
+    [[[RACObserve(self, viewModel.favoriteStationViewModels)
         mapReplace:self.tableView]
+        deliverOn:[RACScheduler mainThreadScheduler]]
         subscribeNext:^(UITableView *tableView) {
-            [tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView reloadData];
+//            [tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
         }];
     
-    [[RACObserve(self, viewModel.nearbyStationViewModels)
+    [[[RACObserve(self, viewModel.nearbyStationViewModels)
         mapReplace:self.tableView]
+        deliverOn:[RACScheduler mainThreadScheduler]]
         subscribeNext:^(UITableView *tableView) {
-            [tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView reloadData];
+//            [tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
         }];
     
     @weakify(self);
