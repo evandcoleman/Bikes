@@ -24,10 +24,7 @@
 @property (nonatomic, readonly) UIColor *statusColor;
 @property (nonatomic, readonly) NSString *distance;
 @property (nonatomic, readonly) NSString *lastUpdated;
-@property (nonatomic, readonly, getter = isFavorite) BOOL favorite;
-
-// Input: BOOL
-@property (nonatomic, readonly) RACCommand *favoriteStationCommand;
+@property (nonatomic, getter = isFavorite) BOOL favorite;
 
 - (instancetype)initWithStation:(BKStation *)station;
 

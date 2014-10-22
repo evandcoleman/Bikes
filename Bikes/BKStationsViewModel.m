@@ -52,7 +52,8 @@
         _favoriteStationCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(RACTuple *t) {
             RACTupleUnpack(BKStationViewModel *viewModel, NSNumber *favorite) = t;
             [self willChangeValueForKey:@keypath(self.viewModels)];
-            return [viewModel.favoriteStationCommand execute:favorite];
+            viewModel.favorite = [favorite boolValue];
+            return [RACSignal return:viewModel];
         }];
         
         [[[_favoriteStationCommand executionSignals]

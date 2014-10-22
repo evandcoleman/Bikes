@@ -23,9 +23,6 @@
 @property (nonatomic) NSString *distance;
 @property (nonatomic) NSString *lastUpdated;
 @property (nonatomic) CLLocationCoordinate2D coordinate;
-@property (nonatomic) BOOL favorite;
-
-@property (nonatomic) RACCommand *favoriteStationCommand;
 
 @end
 
@@ -63,26 +60,6 @@
         df.dateStyle = NSDateFormatterMediumStyle;
         df.timeStyle = NSDateFormatterMediumStyle;
         _lastUpdated = [df stringFromDate:station.lastUpdated];
-                
-        @weakify(self);
-        _favoriteStationCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSNumber *favorite) {
-            @strongify(self);
-            self.station.favorite = [favorite boolValue];
-            self.favorite = [favorite boolValue];
-            [[[[BKUserPreferencesClient sharedUserPreferencesClient] objectForKey:@"BKFavoriteStations"]
-              map:^id(NSArray *favorites) {
-                  return [NSMutableSet setWithArray:favorites];
-              }] subscribeNext:^(NSMutableSet *favorites) {
-                  if ([favorite boolValue]) {
-                      [favorites addObject:@(self.station.stationID)];
-                  } else {
-                      [favorites removeObject:@(self.station.stationID)];
-                  }
-                  [[BKUserPreferencesClient sharedUserPreferencesClient] setObject:[favorites allObjects] forKey:@"BKFavoriteStations"];
-              }];
-            
-            return [RACSignal return:self];
-        }];
     }
     return self;
 }
@@ -97,6 +74,23 @@
     } else {
         return [NSString stringWithFormat:@"%@ Bikes, %@ Docks", self.availableBikes, self.availableDocks];
     }
+}
+
+- (void)setFavorite:(BOOL)favorite {
+    _favorite = favorite;
+    
+    self.station.favorite = _favorite;
+    [[[[BKUserPreferencesClient sharedUserPreferencesClient] objectForKey:@"BKFavoriteStations"]
+      map:^id(NSArray *favorites) {
+          return [NSMutableSet setWithArray:favorites];
+      }] subscribeNext:^(NSMutableSet *favorites) {
+          if (_favorite) {
+              [favorites addObject:@(self.station.stationID)];
+          } else {
+              [favorites removeObject:@(self.station.stationID)];
+          }
+          [[BKUserPreferencesClient sharedUserPreferencesClient] setObject:[favorites allObjects] forKey:@"BKFavoriteStations"];
+      }];
 }
 
 @end
