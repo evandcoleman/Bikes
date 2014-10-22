@@ -80,17 +80,14 @@
     _favorite = favorite;
     
     self.station.favorite = _favorite;
-    [[[[BKUserPreferencesClient sharedUserPreferencesClient] objectForKey:@"BKFavoriteStations"]
-      map:^id(NSArray *favorites) {
-          return [NSMutableSet setWithArray:favorites];
-      }] subscribeNext:^(NSMutableSet *favorites) {
-          if (_favorite) {
-              [favorites addObject:@(self.station.stationID)];
-          } else {
-              [favorites removeObject:@(self.station.stationID)];
-          }
-          [[BKUserPreferencesClient sharedUserPreferencesClient] setObject:[favorites allObjects] forKey:@"BKFavoriteStations"];
-      }];
+    NSArray *favorites = [[[BKUserPreferencesClient sharedUserPreferencesClient] objectForKey:@"BKFavoriteStations"] first];
+    NSMutableSet *favoritesSet = [NSMutableSet setWithArray:favorites];
+    if (_favorite) {
+        [favoritesSet addObject:@(self.station.stationID)];
+    } else {
+        [favoritesSet removeObject:@(self.station.stationID)];
+    }
+    [[BKUserPreferencesClient sharedUserPreferencesClient] setObject:[favoritesSet allObjects] forKey:@"BKFavoriteStations"];
 }
 
 @end
