@@ -1,0 +1,7 @@
+github "Alamofire/Alamofire" "1.2.3"
+github "robrix/Box" "1.2.2"
+github "Hearst-DD/ObjectMapper" "0.12"
+github "nixzhu/Proposer" "0.6.2"
+github "antitypical/Result" "0.4.4"
+github "ReactiveCocoa/ReactiveCocoa" "6c37b5ef416799a3a2a61ff78f051d5deb0d76b2"
+github "tristanhimmelman/AlamofireObjectMapper" "0.5"

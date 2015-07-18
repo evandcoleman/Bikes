@@ -1,0 +1,510 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		20650A8C1B5ADFE9000B4F60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20650A8B1B5ADFE9000B4F60 /* AppDelegate.swift */; };
+		20650A8E1B5ADFE9000B4F60 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20650A8D1B5ADFE9000B4F60 /* MainViewController.swift */; };
+		20650A911B5ADFE9000B4F60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20650A8F1B5ADFE9000B4F60 /* Main.storyboard */; };
+		20650A931B5ADFE9000B4F60 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20650A921B5ADFE9000B4F60 /* Images.xcassets */; };
+		20650A961B5ADFE9000B4F60 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20650A941B5ADFE9000B4F60 /* LaunchScreen.xib */; };
+		20650AA21B5ADFE9000B4F60 /* BikesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20650AA11B5ADFE9000B4F60 /* BikesTests.swift */; };
+		20650AB91B5AE2D1000B4F60 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20650AB31B5AE2C3000B4F60 /* Alamofire.framework */; };
+		20650ABA1B5AE2D1000B4F60 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20650AB41B5AE2C3000B4F60 /* ObjectMapper.framework */; };
+		20650ABB1B5AE2D1000B4F60 /* Proposer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20650AB51B5AE2C3000B4F60 /* Proposer.framework */; };
+		20650ABD1B5AE698000B4F60 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20650ABC1B5AE698000B4F60 /* ReactiveCocoa.framework */; };
+		20650AC01B5AE6A5000B4F60 /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20650ABE1B5AE6A5000B4F60 /* Box.framework */; };
+		20650AC11B5AE6A5000B4F60 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20650ABF1B5AE6A5000B4F60 /* Result.framework */; };
+		20650AC31B5AE7C4000B4F60 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20650AC21B5AE7C4000B4F60 /* APIClient.swift */; };
+		20650AC51B5AE8E1000B4F60 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20650AC41B5AE8E1000B4F60 /* Station.swift */; };
+		20A9405B1B615E0D0014DE86 /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A9405A1B615E0D0014DE86 /* AlamofireObjectMapper.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		20650A9C1B5ADFE9000B4F60 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20650A7E1B5ADFE9000B4F60 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 20650A851B5ADFE9000B4F60;
+			remoteInfo = Bikes;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		20650A861B5ADFE9000B4F60 /* Bikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bikes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		20650A8A1B5ADFE9000B4F60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20650A8B1B5ADFE9000B4F60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		20650A8D1B5ADFE9000B4F60 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		20650A901B5ADFE9000B4F60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		20650A921B5ADFE9000B4F60 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		20650A951B5ADFE9000B4F60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		20650A9B1B5ADFE9000B4F60 /* BikesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BikesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		20650AA01B5ADFE9000B4F60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20650AA11B5ADFE9000B4F60 /* BikesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikesTests.swift; sourceTree = "<group>"; };
+		20650AB31B5AE2C3000B4F60 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		20650AB41B5AE2C3000B4F60 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
+		20650AB51B5AE2C3000B4F60 /* Proposer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Proposer.framework; path = Carthage/Build/iOS/Proposer.framework; sourceTree = "<group>"; };
+		20650ABC1B5AE698000B4F60 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		20650ABE1B5AE6A5000B4F60 /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = Carthage/Build/iOS/Box.framework; sourceTree = "<group>"; };
+		20650ABF1B5AE6A5000B4F60 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		20650AC21B5AE7C4000B4F60 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		20650AC41B5AE8E1000B4F60 /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		20A9405A1B615E0D0014DE86 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = Carthage/Build/iOS/AlamofireObjectMapper.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		20650A831B5ADFE9000B4F60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20650AB91B5AE2D1000B4F60 /* Alamofire.framework in Frameworks */,
+				20A9405B1B615E0D0014DE86 /* AlamofireObjectMapper.framework in Frameworks */,
+				20650ABA1B5AE2D1000B4F60 /* ObjectMapper.framework in Frameworks */,
+				20650ABB1B5AE2D1000B4F60 /* Proposer.framework in Frameworks */,
+				20650AC11B5AE6A5000B4F60 /* Result.framework in Frameworks */,
+				20650AC01B5AE6A5000B4F60 /* Box.framework in Frameworks */,
+				20650ABD1B5AE698000B4F60 /* ReactiveCocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20650A981B5ADFE9000B4F60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		20650A7D1B5ADFE9000B4F60 = {
+			isa = PBXGroup;
+			children = (
+				20650A881B5ADFE9000B4F60 /* Bikes */,
+				20650A9E1B5ADFE9000B4F60 /* BikesTests */,
+				20650A871B5ADFE9000B4F60 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		20650A871B5ADFE9000B4F60 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				20650A861B5ADFE9000B4F60 /* Bikes.app */,
+				20650A9B1B5ADFE9000B4F60 /* BikesTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		20650A881B5ADFE9000B4F60 /* Bikes */ = {
+			isa = PBXGroup;
+			children = (
+				20650A8B1B5ADFE9000B4F60 /* AppDelegate.swift */,
+				20650A8D1B5ADFE9000B4F60 /* MainViewController.swift */,
+				20650AC21B5AE7C4000B4F60 /* APIClient.swift */,
+				20650AC41B5AE8E1000B4F60 /* Station.swift */,
+				20650A8F1B5ADFE9000B4F60 /* Main.storyboard */,
+				20650A921B5ADFE9000B4F60 /* Images.xcassets */,
+				20650A941B5ADFE9000B4F60 /* LaunchScreen.xib */,
+				20650A891B5ADFE9000B4F60 /* Supporting Files */,
+				20650AB11B5AE1A1000B4F60 /* Frameworks */,
+			);
+			path = Bikes;
+			sourceTree = "<group>";
+		};
+		20650A891B5ADFE9000B4F60 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				20650A8A1B5ADFE9000B4F60 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		20650A9E1B5ADFE9000B4F60 /* BikesTests */ = {
+			isa = PBXGroup;
+			children = (
+				20650AA11B5ADFE9000B4F60 /* BikesTests.swift */,
+				20650A9F1B5ADFE9000B4F60 /* Supporting Files */,
+			);
+			path = BikesTests;
+			sourceTree = "<group>";
+		};
+		20650A9F1B5ADFE9000B4F60 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				20650AA01B5ADFE9000B4F60 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		20650AB11B5AE1A1000B4F60 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				20A9405A1B615E0D0014DE86 /* AlamofireObjectMapper.framework */,
+				20650ABE1B5AE6A5000B4F60 /* Box.framework */,
+				20650ABF1B5AE6A5000B4F60 /* Result.framework */,
+				20650ABC1B5AE698000B4F60 /* ReactiveCocoa.framework */,
+				20650AB31B5AE2C3000B4F60 /* Alamofire.framework */,
+				20650AB41B5AE2C3000B4F60 /* ObjectMapper.framework */,
+				20650AB51B5AE2C3000B4F60 /* Proposer.framework */,
+			);
+			name = Frameworks;
+			path = ..;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		20650A851B5ADFE9000B4F60 /* Bikes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20650AA51B5ADFE9000B4F60 /* Build configuration list for PBXNativeTarget "Bikes" */;
+			buildPhases = (
+				20650A821B5ADFE9000B4F60 /* Sources */,
+				20650A831B5ADFE9000B4F60 /* Frameworks */,
+				20650A841B5ADFE9000B4F60 /* Resources */,
+				20650AB21B5AE1B5000B4F60 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Bikes;
+			productName = Bikes;
+			productReference = 20650A861B5ADFE9000B4F60 /* Bikes.app */;
+			productType = "com.apple.product-type.application";
+		};
+		20650A9A1B5ADFE9000B4F60 /* BikesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20650AA81B5ADFE9000B4F60 /* Build configuration list for PBXNativeTarget "BikesTests" */;
+			buildPhases = (
+				20650A971B5ADFE9000B4F60 /* Sources */,
+				20650A981B5ADFE9000B4F60 /* Frameworks */,
+				20650A991B5ADFE9000B4F60 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				20650A9D1B5ADFE9000B4F60 /* PBXTargetDependency */,
+			);
+			name = BikesTests;
+			productName = BikesTests;
+			productReference = 20650A9B1B5ADFE9000B4F60 /* BikesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		20650A7E1B5ADFE9000B4F60 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "Evan Coleman";
+				TargetAttributes = {
+					20650A851B5ADFE9000B4F60 = {
+						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 52M9C6892K;
+					};
+					20650A9A1B5ADFE9000B4F60 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 20650A851B5ADFE9000B4F60;
+					};
+				};
+			};
+			buildConfigurationList = 20650A811B5ADFE9000B4F60 /* Build configuration list for PBXProject "Bikes" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 20650A7D1B5ADFE9000B4F60;
+			productRefGroup = 20650A871B5ADFE9000B4F60 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				20650A851B5ADFE9000B4F60 /* Bikes */,
+				20650A9A1B5ADFE9000B4F60 /* BikesTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		20650A841B5ADFE9000B4F60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20650A911B5ADFE9000B4F60 /* Main.storyboard in Resources */,
+				20650A961B5ADFE9000B4F60 /* LaunchScreen.xib in Resources */,
+				20650A931B5ADFE9000B4F60 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20650A991B5ADFE9000B4F60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		20650AB21B5AE1B5000B4F60 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Proposer.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Box.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AlamofireObjectMapper.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		20650A821B5ADFE9000B4F60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20650A8E1B5ADFE9000B4F60 /* MainViewController.swift in Sources */,
+				20650A8C1B5ADFE9000B4F60 /* AppDelegate.swift in Sources */,
+				20650AC51B5AE8E1000B4F60 /* Station.swift in Sources */,
+				20650AC31B5AE7C4000B4F60 /* APIClient.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20650A971B5ADFE9000B4F60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20650AA21B5ADFE9000B4F60 /* BikesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		20650A9D1B5ADFE9000B4F60 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 20650A851B5ADFE9000B4F60 /* Bikes */;
+			targetProxy = 20650A9C1B5ADFE9000B4F60 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		20650A8F1B5ADFE9000B4F60 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				20650A901B5ADFE9000B4F60 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		20650A941B5ADFE9000B4F60 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				20650A951B5ADFE9000B4F60 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		20650AA31B5ADFE9000B4F60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		20650AA41B5ADFE9000B4F60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		20650AA61B5ADFE9000B4F60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/evan/Projects/iOS/Bikes/Carthage/Build/iOS,
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Bikes/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		20650AA71B5ADFE9000B4F60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/evan/Projects/iOS/Bikes/Carthage/Build/iOS,
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Bikes/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		20650AA91B5ADFE9000B4F60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = BikesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bikes.app/Bikes";
+			};
+			name = Debug;
+		};
+		20650AAA1B5ADFE9000B4F60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = BikesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bikes.app/Bikes";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		20650A811B5ADFE9000B4F60 /* Build configuration list for PBXProject "Bikes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20650AA31B5ADFE9000B4F60 /* Debug */,
+				20650AA41B5ADFE9000B4F60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20650AA51B5ADFE9000B4F60 /* Build configuration list for PBXNativeTarget "Bikes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20650AA61B5ADFE9000B4F60 /* Debug */,
+				20650AA71B5ADFE9000B4F60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20650AA81B5ADFE9000B4F60 /* Build configuration list for PBXNativeTarget "BikesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20650AA91B5ADFE9000B4F60 /* Debug */,
+				20650AAA1B5ADFE9000B4F60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 20650A7E1B5ADFE9000B4F60 /* Project object */;
+}
