@@ -51,6 +51,7 @@
                                 <exclude reference="o9w-Oq-s2p"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="yzM-7e-Pdh"/>
                                 <exclude reference="X6w-qC-0Q3"/>
                                 <exclude reference="lsE-DQ-LcH"/>
                                 <exclude reference="ySO-8U-0pZ"/>
@@ -58,7 +59,6 @@
                                 <exclude reference="JY0-20-jRE"/>
                                 <exclude reference="O4R-f7-bWB"/>
                                 <exclude reference="thU-nh-bwl"/>
-                                <exclude reference="yzM-7e-Pdh"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -67,6 +67,7 @@
                                 <include reference="o9w-Oq-s2p"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="yzM-7e-Pdh"/>
                                 <include reference="X6w-qC-0Q3"/>
                                 <include reference="lsE-DQ-LcH"/>
                                 <include reference="ySO-8U-0pZ"/>
@@ -74,7 +75,6 @@
                                 <include reference="JY0-20-jRE"/>
                                 <include reference="O4R-f7-bWB"/>
                                 <include reference="thU-nh-bwl"/>
-                                <include reference="yzM-7e-Pdh"/>
                             </mask>
                         </variation>
                     </view>
