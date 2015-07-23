@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StationCell" id="QCy-Be-GCl">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StationCell" id="QCy-Be-GCl" customClass="StationCell" customModule="Bikes" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QCy-Be-GCl" id="LnE-Pi-jKK">
@@ -200,6 +200,12 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bikesLabel" destination="e2w-3L-szV" id="voJ-Au-4xK"/>
+                                            <outlet property="distanceLabel" destination="Srs-6V-2ps" id="toi-6t-xCW"/>
+                                            <outlet property="docksLabel" destination="1vz-GK-cwq" id="hgJ-lL-ybb"/>
+                                            <outlet property="nameLabel" destination="dwV-IR-tbT" id="ph9-Wj-FrL"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">

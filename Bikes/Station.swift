@@ -36,6 +36,17 @@ enum StationStatus: TransformType {
     func transformToJSON(value: Object?) -> JSON? {
         return nil
     }
+
+    func statusText() -> String {
+        switch self {
+        case .InService:
+            return "In Service"
+        case .OutOfService:
+            return "Out Of Service"
+        default:
+            return "Unknown"
+        }
+    }
 }
 
 struct Station: Mappable {
