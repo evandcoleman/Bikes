@@ -65,3 +65,17 @@ struct Station: Mappable {
         bikes <- map["availableBikes"]
     }
 }
+
+struct StationsResponse: Mappable {
+    var stations: Array<Station>?
+
+    init(){}
+
+    init?(_ map: Map) {
+        mapping(map)
+    }
+
+    mutating func mapping(map: Map) {
+        stations <- map["stationBeanList"]
+    }
+}

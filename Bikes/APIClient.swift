@@ -6,15 +6,24 @@
 //  Copyright (c) 2015 Evan Coleman. All rights reserved.
 //
 
-import Foundation
 import Alamofire
+import AlamofireObjectMapper
+import ReactiveCocoa
 
 class APIClient {
     
-    class func readStations() {
+    class func readStations() -> Signal<Array<Station>, NSError> {
+        let (signal, sink) = Signal<Array<Station>, NSError>.pipe()
+
         Alamofire.request(.GET, "https://www.citibikenyc.com/stations/json")
-            .responseJSON { _, _, JSON, _ in
-                
+            .responseObject { (response: StationsResponse?, error: NSError?) in
+                if let stations = response?.stations {
+                    sendNext(sink, stations)
+                } else {
+                    sendError(sink, error!)
+                }
             }
+
+        return signal
     }
 }
