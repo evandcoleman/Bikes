@@ -12,18 +12,17 @@ import ReactiveCocoa
 
 class APIClient {
     
-    class func readStations() -> Signal<Array<Station>, NSError> {
-        let (signal, sink) = Signal<Array<Station>, NSError>.pipe()
-
-        Alamofire.request(.GET, "https://www.citibikenyc.com/stations/json")
-            .responseObject { (response: StationsResponse?, error: NSError?) in
-                if let stations = response?.stations {
-                    sendNext(sink, stations)
-                } else {
-                    sendError(sink, error!)
+    class func readStations() -> SignalProducer<Array<Station>, NSError> {
+        return SignalProducer<Array<Station>, NSError> { sink, _ in
+            Alamofire.request(.GET, "https://www.citibikenyc.com/stations/json")
+                .responseObject { (response: StationsResponse?, error: NSError?) in
+                    if let stations = response?.stations {
+                        sendNext(sink, stations)
+                        sendCompleted(sink)
+                    } else {
+                        sendError(sink, error!)
+                    }
                 }
-            }
-
-        return signal
+        }
     }
 }
