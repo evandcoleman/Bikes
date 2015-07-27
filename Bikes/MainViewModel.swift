@@ -10,13 +10,14 @@ import Foundation
 import ReactiveCocoa
 
 class MainViewModel: ViewModel {
-    let refreshStationsAction: Action<AnyObject?, Array<StationViewModel>, NSError>!
+    let refreshStationsAction: Action<Void, Array<StationViewModel>, NSError>!
 
-    let stationViewModels: Array<StationViewModel>
+    var stationViewModels: Array<StationViewModel>?
 
     override init() {
-        self.refreshStationsAction = Action<AnyObject?, Array<StationViewModel>, NSError>(execute: { _ in
-            return SignalProducer<Array<StationViewModel>, NSError>()
-        })
+        refreshStationsAction = Action<Void, Array<StationViewModel>, NSError> { _ in
+            return APIClient.readStations()
+                |> map { stations in stations.map { station in StationViewModel(station: station) } }
+        }
     }
 }
