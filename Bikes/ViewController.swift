@@ -7,7 +7,18 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
 class ViewController: UIViewController {
     var viewModel: ViewModel?
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+
+        let appearSignal = self.rac_signalForSelector(Selector("viewDidAppear:")).toSignalProducer() |> map { _ in true }
+        let disappearSignal = self.rac_signalForSelector(Selector("viewWillDisappear:")).toSignalProducer() |> map { _ in false }
+        let presented = SignalProducer<SignalProducer<Bool, NSError>, NSError>(values: [appearSignal, disappearSignal]) |> flatten(FlattenStrategy.Merge)
+
+        
+    }
 }
