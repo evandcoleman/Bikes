@@ -9,14 +9,27 @@
 import Foundation
 import ObjectMapper
 
-enum StationStatus: TransformType {
-    typealias Object = StationStatus
-    typealias JSON = Int
-    
+enum StationStatus {
     case Unknown
     case InService
     case OutOfService
-    
+
+    func statusText() -> String {
+        switch self {
+        case .InService:
+            return "In Service"
+        case .OutOfService:
+            return "Out Of Service"
+        default:
+            return "Unknown"
+        }
+    }
+}
+
+private class StationStatusTransform: TransformType {
+    typealias Object = StationStatus
+    typealias JSON = Int
+
     func transformFromJSON(value: AnyObject?) -> Object? {
         if let val:AnyObject = value {
             if let intVal = val as? Int {
@@ -32,20 +45,9 @@ enum StationStatus: TransformType {
         }
         return .Unknown
     }
-    
+
     func transformToJSON(value: Object?) -> JSON? {
         return nil
-    }
-
-    func statusText() -> String {
-        switch self {
-        case .InService:
-            return "In Service"
-        case .OutOfService:
-            return "Out Of Service"
-        default:
-            return "Unknown"
-        }
     }
 }
 
@@ -70,7 +72,7 @@ struct Station: Mappable {
         name <- map["stationName"]
         latitude <- map["latitude"]
         longitude <- map["longitude"]
-        status <- map["statusKey"]
+        status <- (map["statusKey"], StationStatusTransform())
         totalDocks <- map["totalDocks"]
         openDocks <- map["availableDocks"]
         bikes <- map["availableBikes"]
