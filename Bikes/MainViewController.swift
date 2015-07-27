@@ -24,7 +24,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     }
 
-    // MARKL UITableViewDataSource
+    // MARK: UITableViewDataSource
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
