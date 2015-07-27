@@ -10,14 +10,16 @@ import Foundation
 import ReactiveCocoa
 
 class MainViewModel: ViewModel {
-    let refreshStationsAction: Action<Void, Array<StationViewModel>, NSError>!
-
-    var stationViewModels: Array<StationViewModel>?
+    let refreshStationsAction: Action<Bool, Array<StationViewModel>, NSError>!
+    let stationViewModels: MutableProperty<Array<StationViewModel>>!
 
     override init() {
-        refreshStationsAction = Action<Void, Array<StationViewModel>, NSError> { _ in
+        refreshStationsAction = Action<Bool, Array<StationViewModel>, NSError> { _ in
             return APIClient.readStations()
                 |> map { stations in stations.map { station in StationViewModel(station: station) } }
         }
+
+        stationViewModels = MutableProperty<Array<StationViewModel>>([])
+        stationViewModels <~ refreshStationsAction.values
     }
 }

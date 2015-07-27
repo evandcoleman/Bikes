@@ -26,6 +26,7 @@
 		20A9405F1B617A740014DE86 /* StationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9405E1B617A740014DE86 /* StationViewModel.swift */; };
 		20A940611B617C3C0014DE86 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A940601B617C3C0014DE86 /* ViewModel.swift */; };
 		20A940631B6189BA0014DE86 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A940621B6189B90014DE86 /* MainViewModel.swift */; };
+		20A940651B66A9AA0014DE86 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A940641B66A9AA0014DE86 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		20A9405E1B617A740014DE86 /* StationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationViewModel.swift; sourceTree = "<group>"; };
 		20A940601B617C3C0014DE86 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		20A940621B6189B90014DE86 /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		20A940641B66A9AA0014DE86 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			children = (
 				20650A8B1B5ADFE9000B4F60 /* AppDelegate.swift */,
 				20650A8D1B5ADFE9000B4F60 /* MainViewController.swift */,
+				20A940641B66A9AA0014DE86 /* ViewController.swift */,
 				20A940621B6189B90014DE86 /* MainViewModel.swift */,
 				20A9405C1B617A140014DE86 /* StationCell.swift */,
 				20A940601B617C3C0014DE86 /* ViewModel.swift */,
@@ -295,6 +298,7 @@
 				20A9405D1B617A140014DE86 /* StationCell.swift in Sources */,
 				20650A8E1B5ADFE9000B4F60 /* MainViewController.swift in Sources */,
 				20650A8C1B5ADFE9000B4F60 /* AppDelegate.swift in Sources */,
+				20A940651B66A9AA0014DE86 /* ViewController.swift in Sources */,
 				20A9405F1B617A740014DE86 /* StationViewModel.swift in Sources */,
 				20650AC51B5AE8E1000B4F60 /* Station.swift in Sources */,
 				20650AC31B5AE7C4000B4F60 /* APIClient.swift in Sources */,
