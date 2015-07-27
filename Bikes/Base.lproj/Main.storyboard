@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Main View Controller-->
@@ -208,9 +209,6 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="167" width="400" height="633"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="vXZ-lx-hvc" id="whe-9l-Qtw"/>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="GBy-gw-jtb"/>
@@ -218,14 +216,12 @@
                             </tableView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="o9w-Oq-s2p">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="400" height="166"/>
-                                </variation>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="nxq-Ta-Ced" firstAttribute="top" secondItem="o9w-Oq-s2p" secondAttribute="bottom" id="3fm-nD-eXV"/>
+                            <constraint firstItem="o9w-Oq-s2p" firstAttribute="height" secondItem="kh9-bI-dsS" secondAttribute="height" multiplier="0.2" id="6hQ-dg-k9I"/>
                             <constraint firstAttribute="trailing" secondItem="nxq-Ta-Ced" secondAttribute="trailing" id="JY0-20-jRE"/>
                             <constraint firstItem="nxq-Ta-Ced" firstAttribute="top" secondItem="o9w-Oq-s2p" secondAttribute="bottom" id="O4R-f7-bWB"/>
                             <constraint firstItem="o9w-Oq-s2p" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="X6w-qC-0Q3"/>
@@ -240,7 +236,7 @@
                                 <exclude reference="o9w-Oq-s2p"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="yzM-7e-Pdh"/>
+                                <exclude reference="6hQ-dg-k9I"/>
                                 <exclude reference="X6w-qC-0Q3"/>
                                 <exclude reference="lsE-DQ-LcH"/>
                                 <exclude reference="ySO-8U-0pZ"/>
@@ -248,6 +244,7 @@
                                 <exclude reference="JY0-20-jRE"/>
                                 <exclude reference="O4R-f7-bWB"/>
                                 <exclude reference="thU-nh-bwl"/>
+                                <exclude reference="yzM-7e-Pdh"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -256,7 +253,7 @@
                                 <include reference="o9w-Oq-s2p"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="yzM-7e-Pdh"/>
+                                <include reference="6hQ-dg-k9I"/>
                                 <include reference="X6w-qC-0Q3"/>
                                 <include reference="lsE-DQ-LcH"/>
                                 <include reference="ySO-8U-0pZ"/>
@@ -264,6 +261,7 @@
                                 <include reference="JY0-20-jRE"/>
                                 <include reference="O4R-f7-bWB"/>
                                 <include reference="thU-nh-bwl"/>
+                                <include reference="yzM-7e-Pdh"/>
                             </mask>
                         </variation>
                     </view>
