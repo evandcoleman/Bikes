@@ -21,5 +21,14 @@ class MainViewModel: ViewModel {
 
         stationViewModels = MutableProperty<Array<StationViewModel>>([])
         stationViewModels <~ refreshStationsAction.values
+
+        super.init()
+
+        self.didBecomeActiveSignal
+            .start(next: { next in
+                if let viewModel = next as? MainViewModel {
+                    viewModel.refreshStationsAction.apply(false).start()
+                }
+            })
     }
 }

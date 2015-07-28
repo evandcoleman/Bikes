@@ -25,13 +25,6 @@ class MainViewController: ViewController, UITableViewDelegate, UITableViewDataSo
             })
     }
 
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-
-        let viewModel = self.viewModel! as! MainViewModel
-        viewModel.refreshStationsAction.apply(false).start()
-    }
-
     // MARK: UITableViewDelegate
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
