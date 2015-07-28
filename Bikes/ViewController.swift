@@ -15,10 +15,21 @@ class ViewController: UIViewController {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        let appearSignal = self.rac_signalForSelector(Selector("viewDidAppear:")).toSignalProducer() |> map { _ in true }
-        let disappearSignal = self.rac_signalForSelector(Selector("viewWillDisappear:")).toSignalProducer() |> map { _ in false }
-        let presented = SignalProducer<SignalProducer<Bool, NSError>, NSError>(values: [appearSignal, disappearSignal]) |> flatten(FlattenStrategy.Merge)
+        let appear = self.rac_signalForSelector(Selector("viewDidAppear:")).toSignalProducer() |> map { _ in true } |> catch { _ in SignalProducer<Bool, NoError>.empty }
+        let disappear = self.rac_signalForSelector(Selector("viewWillDisappear:")).toSignalProducer() |> map { _ in false } |> catch { _ in SignalProducer<Bool, NoError>.empty }
+        let presented = SignalProducer<SignalProducer<Bool, NoError>, NoError>(values: [appear, disappear]) |> flatten(FlattenStrategy.Merge)
 
-        
+        let currentState = SignalProducer<Bool, NoError>(value: (UIApplication.sharedApplication().applicationState == .Active))
+        let didBecomeActive = NSNotificationCenter.defaultCenter().rac_notifications(name: UIApplicationDidBecomeActiveNotification, object: nil) |> map { _ in true }
+        let willResignActive = NSNotificationCenter.defaultCenter().rac_notifications(name: UIApplicationWillResignActiveNotification, object: nil) |> map { _ in false }
+        let appActive = SignalProducer<SignalProducer<Bool, NoError>, NoError>(values: [currentState, didBecomeActive, willResignActive]) |> flatten(FlattenStrategy.Merge)
+
+        combineLatest(presented, appActive)
+            |> map { presented, active in presented && active }
+            |> start(next: { [weak self] active in
+                if let viewModel = self?.viewModel {
+                    viewModel.active = active
+                }
+            })
     }
 }
