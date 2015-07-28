@@ -28,7 +28,7 @@ class ViewController: UIViewController {
             |> map { presented, active in presented && active }
             |> start(next: { [weak self] active in
                 if let viewModel = self?.viewModel {
-                    viewModel.active = active
+                    viewModel.active.value = active
                 }
             })
     }
