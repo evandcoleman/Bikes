@@ -7,21 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09196BD70CAA9FC46A245CD9 /* Pods_Bikes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0C02B0D6B8E05D9E7481B86 /* Pods_Bikes.framework */; };
 		20650A8C1B5ADFE9000B4F60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20650A8B1B5ADFE9000B4F60 /* AppDelegate.swift */; };
 		20650A8E1B5ADFE9000B4F60 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20650A8D1B5ADFE9000B4F60 /* MainViewController.swift */; };
 		20650A911B5ADFE9000B4F60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20650A8F1B5ADFE9000B4F60 /* Main.storyboard */; };
 		20650A931B5ADFE9000B4F60 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20650A921B5ADFE9000B4F60 /* Images.xcassets */; };
 		20650A961B5ADFE9000B4F60 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20650A941B5ADFE9000B4F60 /* LaunchScreen.xib */; };
 		20650AA21B5ADFE9000B4F60 /* BikesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20650AA11B5ADFE9000B4F60 /* BikesTests.swift */; };
-		20650AB91B5AE2D1000B4F60 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20650AB31B5AE2C3000B4F60 /* Alamofire.framework */; };
-		20650ABA1B5AE2D1000B4F60 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20650AB41B5AE2C3000B4F60 /* ObjectMapper.framework */; };
-		20650ABB1B5AE2D1000B4F60 /* Proposer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20650AB51B5AE2C3000B4F60 /* Proposer.framework */; };
-		20650ABD1B5AE698000B4F60 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20650ABC1B5AE698000B4F60 /* ReactiveCocoa.framework */; };
-		20650AC01B5AE6A5000B4F60 /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20650ABE1B5AE6A5000B4F60 /* Box.framework */; };
-		20650AC11B5AE6A5000B4F60 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20650ABF1B5AE6A5000B4F60 /* Result.framework */; };
 		20650AC31B5AE7C4000B4F60 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20650AC21B5AE7C4000B4F60 /* APIClient.swift */; };
 		20650AC51B5AE8E1000B4F60 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20650AC41B5AE8E1000B4F60 /* Station.swift */; };
-		20A9405B1B615E0D0014DE86 /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A9405A1B615E0D0014DE86 /* AlamofireObjectMapper.framework */; };
 		20A9405D1B617A140014DE86 /* StationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9405C1B617A140014DE86 /* StationCell.swift */; };
 		20A9405F1B617A740014DE86 /* StationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9405E1B617A740014DE86 /* StationViewModel.swift */; };
 		20A940611B617C3C0014DE86 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A940601B617C3C0014DE86 /* ViewModel.swift */; };
@@ -50,20 +44,16 @@
 		20650A9B1B5ADFE9000B4F60 /* BikesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BikesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20650AA01B5ADFE9000B4F60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20650AA11B5ADFE9000B4F60 /* BikesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikesTests.swift; sourceTree = "<group>"; };
-		20650AB31B5AE2C3000B4F60 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		20650AB41B5AE2C3000B4F60 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
-		20650AB51B5AE2C3000B4F60 /* Proposer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Proposer.framework; path = Carthage/Build/iOS/Proposer.framework; sourceTree = "<group>"; };
-		20650ABC1B5AE698000B4F60 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
-		20650ABE1B5AE6A5000B4F60 /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = Carthage/Build/iOS/Box.framework; sourceTree = "<group>"; };
-		20650ABF1B5AE6A5000B4F60 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		20650AC21B5AE7C4000B4F60 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		20650AC41B5AE8E1000B4F60 /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
-		20A9405A1B615E0D0014DE86 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = Carthage/Build/iOS/AlamofireObjectMapper.framework; sourceTree = "<group>"; };
 		20A9405C1B617A140014DE86 /* StationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationCell.swift; sourceTree = "<group>"; };
 		20A9405E1B617A740014DE86 /* StationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationViewModel.swift; sourceTree = "<group>"; };
 		20A940601B617C3C0014DE86 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		20A940621B6189B90014DE86 /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		20A940641B66A9AA0014DE86 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		312F3A56D30CFF3A97AFEF6A /* Pods-Bikes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bikes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bikes/Pods-Bikes.debug.xcconfig"; sourceTree = "<group>"; };
+		875DA448624A6AB033FFB798 /* Pods-Bikes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bikes.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bikes/Pods-Bikes.release.xcconfig"; sourceTree = "<group>"; };
+		C0C02B0D6B8E05D9E7481B86 /* Pods_Bikes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bikes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,13 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20650AB91B5AE2D1000B4F60 /* Alamofire.framework in Frameworks */,
-				20A9405B1B615E0D0014DE86 /* AlamofireObjectMapper.framework in Frameworks */,
-				20650ABA1B5AE2D1000B4F60 /* ObjectMapper.framework in Frameworks */,
-				20650ABB1B5AE2D1000B4F60 /* Proposer.framework in Frameworks */,
-				20650AC11B5AE6A5000B4F60 /* Result.framework in Frameworks */,
-				20650AC01B5AE6A5000B4F60 /* Box.framework in Frameworks */,
-				20650ABD1B5AE698000B4F60 /* ReactiveCocoa.framework in Frameworks */,
+				09196BD70CAA9FC46A245CD9 /* Pods_Bikes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +81,8 @@
 				20650A881B5ADFE9000B4F60 /* Bikes */,
 				20650A9E1B5ADFE9000B4F60 /* BikesTests */,
 				20650A871B5ADFE9000B4F60 /* Products */,
+				B9C3047ABF8D5F0C316FE17F /* Pods */,
+				45C605863F91930EB7979686 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,7 +111,6 @@
 				20650A921B5ADFE9000B4F60 /* Images.xcassets */,
 				20650A941B5ADFE9000B4F60 /* LaunchScreen.xib */,
 				20650A891B5ADFE9000B4F60 /* Supporting Files */,
-				20650AB11B5AE1A1000B4F60 /* Frameworks */,
 			);
 			path = Bikes;
 			sourceTree = "<group>";
@@ -155,19 +140,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		20650AB11B5AE1A1000B4F60 /* Frameworks */ = {
+		45C605863F91930EB7979686 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				20A9405A1B615E0D0014DE86 /* AlamofireObjectMapper.framework */,
-				20650ABE1B5AE6A5000B4F60 /* Box.framework */,
-				20650ABF1B5AE6A5000B4F60 /* Result.framework */,
-				20650ABC1B5AE698000B4F60 /* ReactiveCocoa.framework */,
-				20650AB31B5AE2C3000B4F60 /* Alamofire.framework */,
-				20650AB41B5AE2C3000B4F60 /* ObjectMapper.framework */,
-				20650AB51B5AE2C3000B4F60 /* Proposer.framework */,
+				C0C02B0D6B8E05D9E7481B86 /* Pods_Bikes.framework */,
 			);
 			name = Frameworks;
-			path = ..;
+			sourceTree = "<group>";
+		};
+		B9C3047ABF8D5F0C316FE17F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				312F3A56D30CFF3A97AFEF6A /* Pods-Bikes.debug.xcconfig */,
+				875DA448624A6AB033FFB798 /* Pods-Bikes.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,10 +164,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 20650AA51B5ADFE9000B4F60 /* Build configuration list for PBXNativeTarget "Bikes" */;
 			buildPhases = (
+				0B4847A055106C47597D57C9 /* Check Pods Manifest.lock */,
 				20650A821B5ADFE9000B4F60 /* Sources */,
 				20650A831B5ADFE9000B4F60 /* Frameworks */,
 				20650A841B5ADFE9000B4F60 /* Resources */,
-				20650AB21B5AE1B5000B4F60 /* ShellScript */,
+				0FE2714C7215095A81DE1921 /* Embed Pods Frameworks */,
+				83110F117C83137E7CC36DE7 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -215,6 +204,7 @@
 		20650A7E1B5ADFE9000B4F60 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Evan Coleman";
 				TargetAttributes = {
@@ -268,25 +258,50 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		20650AB21B5AE1B5000B4F60 /* ShellScript */ = {
+		0B4847A055106C47597D57C9 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Proposer.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Box.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/AlamofireObjectMapper.framework",
 			);
+			name = "Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		0FE2714C7215095A81DE1921 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bikes/Pods-Bikes-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		83110F117C83137E7CC36DE7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bikes/Pods-Bikes-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -428,6 +443,7 @@
 		};
 		20650AA61B5ADFE9000B4F60 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 312F3A56D30CFF3A97AFEF6A /* Pods-Bikes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -444,6 +460,7 @@
 		};
 		20650AA71B5ADFE9000B4F60 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 875DA448624A6AB033FFB798 /* Pods-Bikes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
