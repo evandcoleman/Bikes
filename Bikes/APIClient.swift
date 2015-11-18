@@ -14,14 +14,14 @@ class APIClient {
 
     class func readStations() -> SignalProducer<Array<Station>, NSError> {
         return SignalProducer<Array<Station>, NSError> { s, _ in
-            let sink = s; // Fixes a weird swift bug
+            let sink = s;
             Alamofire.request(.GET, "https://www.citibikenyc.com/stations/json")
-                .responseObject { (response: StationsResponse?, error: NSError?) in
-                    if let stations = response?.stations {
+                .responseObject { (response: Response<StationsResponse, NSError>) in
+                    if let stations = response.result.value?.stations {
                         sendNext(sink, stations)
                         sendCompleted(sink)
                     } else {
-                        sendError(sink, error!)
+                        sendError(sink, response.result.error!)
                     }
                 }
         }

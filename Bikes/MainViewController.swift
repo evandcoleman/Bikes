@@ -20,7 +20,7 @@ class MainViewController: ViewController, UITableViewDelegate, UITableViewDataSo
         let viewModel = self.viewModel! as! MainViewModel
 
         viewModel.stationViewModels.producer
-            .start(next: { viewModels in
+            .startWithNext({ viewModels in
                 self.tableView.reloadData()
             })
     }
@@ -43,7 +43,7 @@ class MainViewController: ViewController, UITableViewDelegate, UITableViewDataSo
         if section == 0 {
             return 0
         } else if section == 1 {
-            return count(viewModel.stationViewModels.value)
+            return viewModel.stationViewModels.value.count
         } else {
             return 0
         }

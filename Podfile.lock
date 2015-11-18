@@ -3,8 +3,6 @@ PODS:
   - AlamofireObjectMapper (2.0.2):
     - Alamofire (~> 3.1.0)
     - ObjectMapper (~> 1.0)
-  - MMPReactiveCoreLocation (0.6.2):
-    - ReactiveCocoa
   - ObjectMapper (1.0.1)
   - Proposer (0.7.1)
   - ReactiveCocoa (4.0.4-alpha-1):
@@ -19,22 +17,23 @@ PODS:
     - ReactiveCocoa/Core
     - Result (~> 0.6-beta.1)
   - Result (0.6.0-beta.6)
+  - SwiftLocation (0.2.0)
 
 DEPENDENCIES:
   - Alamofire (= 3.1.2)
   - AlamofireObjectMapper (= 2.0.2)
-  - MMPReactiveCoreLocation (= 0.6.2)
   - ObjectMapper (= 1.0.1)
   - Proposer (= 0.7.1)
   - ReactiveCocoa (= 4.0.4-alpha-1)
+  - SwiftLocation (= 0.2.0)
 
 SPEC CHECKSUMS:
   Alamofire: 7c16ca65f3c7e681fd925fd7f2dec7747ff96855
   AlamofireObjectMapper: 3047127bcc25ec43e8243b89d819022ccee77546
-  MMPReactiveCoreLocation: a4add2f8b0bba2204d88f5badb02c27e1eaba9b0
   ObjectMapper: 98524bac0dca46c6b3d5ee02cd410fc700ec6ce2
   Proposer: e9759ad71a6702fd94315a0bff1f8c116edf6f07
   ReactiveCocoa: 618a2fc13d4ed80e380aa6fa56547cef43c7341d
   Result: dc390d0b58f9ec43fcd536f1ebdd130803cc6cbc
+  SwiftLocation: ea78ae4a822581bde7379d98c8513273723c8840
 
 COCOAPODS: 0.39.0

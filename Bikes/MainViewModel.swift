@@ -16,7 +16,7 @@ class MainViewModel: ViewModel {
     override init() {
         refreshStationsAction = Action<Bool, Array<StationViewModel>, NSError> { _ in
             return APIClient.readStations()
-                |> map { stations in stations.map { station in StationViewModel(station: station) } }
+                .map { stations in stations.map { station in StationViewModel(station: station) } }
         }
 
         stationViewModels = MutableProperty<Array<StationViewModel>>([])
@@ -25,7 +25,7 @@ class MainViewModel: ViewModel {
         super.init()
 
         self.didBecomeActiveSignal
-            .start(next: { next in
+            .startWithNext({ next in
                 if let viewModel = next as? MainViewModel {
                     viewModel.refreshStationsAction.apply(false).start()
                 }

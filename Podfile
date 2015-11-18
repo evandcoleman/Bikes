@@ -1,5 +1,6 @@
 platform :ios, '9.0'
 use_frameworks!
+inhibit_all_warnings!
 
 target 'Bikes' do
   pod 'Alamofire', '3.1.2'
@@ -7,7 +8,7 @@ target 'Bikes' do
   pod 'AlamofireObjectMapper', '2.0.2'
   pod 'Proposer', '0.7.1'
   pod 'ReactiveCocoa', '4.0.4-alpha-1'
-  pod 'MMPReactiveCoreLocation', '0.6.2'
+  pod 'SwiftLocation', '0.2.0'
 end
 
 target 'BikesTests' do
