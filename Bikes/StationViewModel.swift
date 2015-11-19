@@ -20,6 +20,6 @@ class StationViewModel: ViewModel {
         self.status = station.status!.statusText()
         self.openDocks = "\(station.openDocks!)"
         self.bikes = "\(station.bikes!)"
-        self.distance = "0.00 miles"
+        self.distance = NSString(format: "%0.2f mi", station.distance! * 0.000621371) as String
     }
 }

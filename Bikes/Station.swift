@@ -8,6 +8,7 @@
 
 import Foundation
 import ObjectMapper
+import CoreLocation
 
 enum StationStatus {
     case Unknown
@@ -60,6 +61,7 @@ struct Station: Mappable {
     var totalDocks: Int?
     var openDocks: Int?
     var bikes: Int?
+    var distance: Double?
     
     init(){}
     
@@ -76,6 +78,10 @@ struct Station: Mappable {
         totalDocks <- map["totalDocks"]
         openDocks <- map["availableDocks"]
         bikes <- map["availableBikes"]
+    }
+
+    func location() -> CLLocation {
+        return CLLocation(latitude: self.latitude!, longitude: self.longitude!)
     }
 }
 
