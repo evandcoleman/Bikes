@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import ReactiveCocoa
 
-class MainViewController: ViewController, UITableViewDelegate, UITableViewDataSource {
+class MainViewController: ViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
 
@@ -23,6 +23,12 @@ class MainViewController: ViewController, UITableViewDelegate, UITableViewDataSo
             .startWithNext({ viewModels in
                 self.tableView.reloadData()
             })
+    }
+
+    // MARK: MKMapViewDelegate
+
+    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+        mapView.setRegion(MKCoordinateRegionMake(userLocation.coordinate, MKCoordinateSpanMake(0.005, 0.005)), animated: true)
     }
 
     // MARK: UITableViewDelegate
