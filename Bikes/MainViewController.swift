@@ -19,22 +19,37 @@ class MainViewController: ViewController, UITableViewDelegate, UITableViewDataSo
 
         let viewModel = self.viewModel as! MainViewModel
 
+        self.rac_signalForSelector(Selector("mapView:didUpdateUserLocation:"))
+            .toSignalProducer()
+            .map { t -> MKUserLocation in
+                let tuple = t as! RACTuple
+                return tuple.second as! MKUserLocation
+            }
+            .combineLatestWith(viewModel.selectedStationViewModel.producer.promoteErrors(NSError))
+            .map { (userLocation, selectedViewModel) -> CLLocationCoordinate2D in
+                if let stationViewModel = selectedViewModel {
+                    return stationViewModel.coordinate
+                } else {
+                    return userLocation.coordinate
+                }
+            }
+            .startWithNext { [unowned self] coordinate in
+                self.mapView.setRegion(MKCoordinateRegionMake(coordinate, MKCoordinateSpanMake(0.005, 0.005)), animated: true)
+            }
+
         viewModel.stationViewModels.producer
             .startWithNext({ viewModels in
                 self.tableView.reloadData()
             })
     }
 
-    // MARK: MKMapViewDelegate
-
-    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
-        mapView.setRegion(MKCoordinateRegionMake(userLocation.coordinate, MKCoordinateSpanMake(0.005, 0.005)), animated: true)
-    }
-
     // MARK: UITableViewDelegate
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let viewModel = self.viewModel as! MainViewModel
+        let selectedViewModel = viewModel.stationViewModels.value[indexPath.row]
 
+        viewModel.selectStationAction.apply(selectedViewModel).start()
     }
 
     // MARK: UITableViewDataSource

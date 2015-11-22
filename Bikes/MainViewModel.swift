@@ -11,8 +11,11 @@ import ReactiveCocoa
 import SwiftLocation
 
 class MainViewModel: ViewModel {
-    let refreshStationsAction: Action<Bool, Array<StationViewModel>, NSError>!
-    let stationViewModels: MutableProperty<Array<StationViewModel>>!
+    let refreshStationsAction: Action<Bool, Array<StationViewModel>, NSError>
+    let selectStationAction: Action<StationViewModel?, StationViewModel?, NoError>
+
+    let stationViewModels: MutableProperty<Array<StationViewModel>>
+    let selectedStationViewModel: MutableProperty<StationViewModel?>
 
     init() {
         refreshStationsAction = Action<Bool, Array<StationViewModel>, NSError> { _ in
@@ -33,8 +36,15 @@ class MainViewModel: ViewModel {
                 .map { stations in stations.map { station in StationViewModel(station: station) } }
         }
 
+        selectStationAction = Action<StationViewModel?, StationViewModel?, NoError> { stationViewModel in
+            return SignalProducer<StationViewModel?, NoError>(value: stationViewModel)
+        }
+
         stationViewModels = MutableProperty<Array<StationViewModel>>([])
         stationViewModels <~ refreshStationsAction.values
+
+        selectedStationViewModel = MutableProperty<StationViewModel?>(nil)
+        selectedStationViewModel <~ selectStationAction.values
 
         self.didBecomeActiveSignal
             .startWithNext({ next in
