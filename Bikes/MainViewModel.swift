@@ -14,7 +14,7 @@ class MainViewModel: ViewModel {
     let refreshStationsAction: Action<Bool, Array<StationViewModel>, NSError>!
     let stationViewModels: MutableProperty<Array<StationViewModel>>!
 
-    override init() {
+    init() {
         refreshStationsAction = Action<Bool, Array<StationViewModel>, NSError> { _ in
             return APIClient.readStations()
                 .flatMap(.Concat, transform: { (stations: Array<Station>) -> SignalProducer<Array<Station>, NSError> in
@@ -35,8 +35,6 @@ class MainViewModel: ViewModel {
 
         stationViewModels = MutableProperty<Array<StationViewModel>>([])
         stationViewModels <~ refreshStationsAction.values
-
-        super.init()
 
         self.didBecomeActiveSignal
             .startWithNext({ next in
