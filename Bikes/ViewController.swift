@@ -10,7 +10,7 @@ import UIKit
 import ReactiveCocoa
 
 class ViewController: UIViewController {
-    var viewModel: ViewModel?
+    var viewModel: ViewModel!
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!

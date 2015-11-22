@@ -17,7 +17,7 @@ class MainViewController: ViewController, UITableViewDelegate, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let viewModel = self.viewModel! as! MainViewModel
+        let viewModel = self.viewModel as! MainViewModel
 
         viewModel.stationViewModels.producer
             .startWithNext({ viewModels in
@@ -44,7 +44,7 @@ class MainViewController: ViewController, UITableViewDelegate, UITableViewDataSo
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let viewModel = self.viewModel! as! MainViewModel
+        let viewModel = self.viewModel as! MainViewModel
 
         if section == 0 {
             return 0
@@ -58,7 +58,7 @@ class MainViewController: ViewController, UITableViewDelegate, UITableViewDataSo
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("StationCell", forIndexPath: indexPath) as! StationCell
 
-        let viewModel = self.viewModel! as! MainViewModel
+        let viewModel = self.viewModel as! MainViewModel
         cell.viewModel = viewModel.stationViewModels.value[indexPath.row]
 
         return cell;
