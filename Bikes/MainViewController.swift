@@ -12,6 +12,7 @@ import ReactiveCocoa
 
 class MainViewController: ViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
@@ -36,6 +37,22 @@ class MainViewController: ViewController, UITableViewDelegate, UITableViewDataSo
             .startWithNext { [unowned self] coordinate in
                 self.mapView.setRegion(MKCoordinateRegionMake(coordinate, MKCoordinateSpanMake(0.005, 0.005)), animated: true)
             }
+
+        let mapTapGesture = UITapGestureRecognizer()
+        mapTapGesture.rac_gestureSignal()
+            .toSignalProducer()
+            .filter { gesture -> Bool in
+                return gesture!.state == UIGestureRecognizerState.Recognized
+            }
+            .startWithNext { [unowned self] _ in
+                // TODO: Figure out why the spring animation isn't working
+                UIView.animateWithDuration(0.22, delay: 0, usingSpringWithDamping: 14, initialSpringVelocity: 4, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
+                    self.mapViewHeightConstraint.constant = self.mapViewHeightConstraint.constant == 0 ? CGRectGetHeight(self.view.bounds) * (1 - self.mapViewHeightConstraint.multiplier) : 0
+                    self.view.setNeedsLayout()
+                    self.view.layoutIfNeeded()
+                    }, completion: nil)
+            }
+        self.mapView.addGestureRecognizer(mapTapGesture)
 
         viewModel.stationViewModels.producer
             .startWithNext({ viewModels in
