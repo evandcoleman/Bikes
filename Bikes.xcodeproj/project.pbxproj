@@ -16,6 +16,8 @@
 		20650AA21B5ADFE9000B4F60 /* BikesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20650AA11B5ADFE9000B4F60 /* BikesTests.swift */; };
 		20650AC31B5AE7C4000B4F60 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20650AC21B5AE7C4000B4F60 /* APIClient.swift */; };
 		20650AC51B5AE8E1000B4F60 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20650AC41B5AE8E1000B4F60 /* Station.swift */; };
+		207E0B4C1C03355A009CDBE0 /* StationAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207E0B4B1C03355A009CDBE0 /* StationAnnotationView.swift */; };
+		207E0B4E1C033830009CDBE0 /* UIColor+Bikes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207E0B4D1C033830009CDBE0 /* UIColor+Bikes.swift */; };
 		208AE3121BFD441200809DB6 /* SwiftLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208AE3111BFD441200809DB6 /* SwiftLocation.swift */; };
 		20A9405D1B617A140014DE86 /* StationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9405C1B617A140014DE86 /* StationCell.swift */; };
 		20A9405F1B617A740014DE86 /* StationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A9405E1B617A740014DE86 /* StationViewModel.swift */; };
@@ -47,6 +49,8 @@
 		20650AA11B5ADFE9000B4F60 /* BikesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikesTests.swift; sourceTree = "<group>"; };
 		20650AC21B5AE7C4000B4F60 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		20650AC41B5AE8E1000B4F60 /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		207E0B4B1C03355A009CDBE0 /* StationAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationAnnotationView.swift; sourceTree = "<group>"; };
+		207E0B4D1C033830009CDBE0 /* UIColor+Bikes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Bikes.swift"; sourceTree = "<group>"; };
 		208AE3111BFD441200809DB6 /* SwiftLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftLocation.swift; sourceTree = "<group>"; };
 		20A9405C1B617A140014DE86 /* StationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationCell.swift; sourceTree = "<group>"; };
 		20A9405E1B617A740014DE86 /* StationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationViewModel.swift; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 				20A940641B66A9AA0014DE86 /* ViewController.swift */,
 				20650A8D1B5ADFE9000B4F60 /* MainViewController.swift */,
 				20A9405C1B617A140014DE86 /* StationCell.swift */,
+				207E0B4B1C03355A009CDBE0 /* StationAnnotationView.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -179,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				208AE3101BFC74D500809DB6 /* Signal Support */,
+				207E0B4D1C033830009CDBE0 /* UIColor+Bikes.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -361,10 +367,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				207E0B4E1C033830009CDBE0 /* UIColor+Bikes.swift in Sources */,
 				20A9405D1B617A140014DE86 /* StationCell.swift in Sources */,
 				20650A8E1B5ADFE9000B4F60 /* MainViewController.swift in Sources */,
 				20650A8C1B5ADFE9000B4F60 /* AppDelegate.swift in Sources */,
 				20A940651B66A9AA0014DE86 /* ViewController.swift in Sources */,
+				207E0B4C1C03355A009CDBE0 /* StationAnnotationView.swift in Sources */,
 				20A9405F1B617A740014DE86 /* StationViewModel.swift in Sources */,
 				20650AC51B5AE8E1000B4F60 /* Station.swift in Sources */,
 				208AE3121BFD441200809DB6 /* SwiftLocation.swift in Sources */,

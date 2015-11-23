@@ -56,8 +56,23 @@ class MainViewController: ViewController, UITableViewDelegate, UITableViewDataSo
 
         viewModel.stationViewModels.producer
             .startWithNext({ viewModels in
+                self.mapView.addAnnotations(viewModels.map({ viewModel in viewModel.annotation }))
                 self.tableView.reloadData()
             })
+    }
+
+    // MARK: MKMapViewDelegate
+
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation.isKindOfClass(StationAnnotation) {
+            let annotationView = StationAnnotationView(annotation: annotation, reuseIdentifier: "StationAnnotation")
+            annotationView.frame = CGRect(x: 0, y: 0, width: 25, height: 50)
+            annotationView.canShowCallout = true
+
+            return annotationView
+        }
+
+        return nil
     }
 
     // MARK: UITableViewDelegate
