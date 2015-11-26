@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import ReactiveCocoa
 
-class MainViewController: ViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
+class MainViewController: ViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate, UIGestureRecognizerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mapViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
@@ -38,27 +38,56 @@ class MainViewController: ViewController, UITableViewDelegate, UITableViewDataSo
                 self.mapView.setRegion(MKCoordinateRegionMake(coordinate, MKCoordinateSpanMake(0.005, 0.005)), animated: true)
             }
 
-        let mapTapGesture = UITapGestureRecognizer()
-        mapTapGesture.rac_gestureSignal()
-            .toSignalProducer()
-            .filter { gesture -> Bool in
-                return gesture!.state == UIGestureRecognizerState.Recognized
-            }
-            .startWithNext { [unowned self] _ in
+        let tapGesture = UITapGestureRecognizer()
+        tapGesture.delegate = self
+        viewModel.mapExpanded <~
+            tapGesture.rac_gestureSignal()
+                .toSignalProducer()
+                .filter { gesture -> Bool in
+                    return gesture!.state == UIGestureRecognizerState.Recognized
+                }
+                .map { [unowned self] _ in
+                    return self.mapViewHeightConstraint.constant != 0
+                }
+                .flatMapError({ _ in
+                    return SignalProducer<Bool, NoError>.empty
+                })
+        self.view.addGestureRecognizer(tapGesture)
+        
+        viewModel.mapExpanded.producer
+            .skip(1)
+            .skipRepeats()
+            .startWithNext { mapExpanded in
                 // TODO: Figure out why the spring animation isn't working
                 UIView.animateWithDuration(0.22, delay: 0, usingSpringWithDamping: 14, initialSpringVelocity: 4, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
-                    self.mapViewHeightConstraint.constant = self.mapViewHeightConstraint.constant == 0 ? CGRectGetHeight(self.view.bounds) * (1 - self.mapViewHeightConstraint.multiplier) : 0
+                    self.mapViewHeightConstraint.constant = self.mapViewHeightConstraint.constant == 0 ? CGRectGetHeight(self.view.bounds) * ((1 - self.mapViewHeightConstraint.multiplier) - self.mapViewHeightConstraint.multiplier) : 0
                     self.view.setNeedsLayout()
                     self.view.layoutIfNeeded()
-                    }, completion: nil)
+                }, completion: nil)
             }
-        self.mapView.addGestureRecognizer(mapTapGesture)
 
         viewModel.stationViewModels.producer
             .startWithNext({ viewModels in
                 self.mapView.addAnnotations(viewModels.map({ viewModel in viewModel.annotation }))
                 self.tableView.reloadData()
             })
+    }
+    
+    // MARK: UIGestureRecognizerDelegate
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        let viewModel = self.viewModel as! MainViewModel
+        let point = touch.locationInView(self.view)
+        
+        if !viewModel.mapExpanded.value && CGRectContainsPoint(self.tableView.frame, point) {
+            return true
+        }
+        
+        if viewModel.mapExpanded.value && CGRectContainsPoint(self.mapView.frame, point) {
+            return true
+        }
+        
+        return false
     }
 
     // MARK: MKMapViewDelegate

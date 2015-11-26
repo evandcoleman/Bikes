@@ -16,6 +16,8 @@ class MainViewModel: ViewModel {
 
     let stationViewModels: MutableProperty<Array<StationViewModel>>
     let selectedStationViewModel: MutableProperty<StationViewModel?>
+    
+    let mapExpanded: MutableProperty<Bool>
 
     init() {
         refreshStationsAction = Action<Bool, Array<StationViewModel>, NSError> { _ in
@@ -45,6 +47,8 @@ class MainViewModel: ViewModel {
 
         selectedStationViewModel = MutableProperty<StationViewModel?>(nil)
         selectedStationViewModel <~ selectStationAction.values
+        
+        mapExpanded = MutableProperty<Bool>(false)
 
         self.didBecomeActiveSignal
             .startWithNext({ next in
